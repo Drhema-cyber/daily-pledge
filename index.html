@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily pledge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --white:#FFFFFF;
+  --paper:#F6F8F6;
+  --ink:#10231B;
+  --mute:#5F6F67;
+  --line:#E4EAE6;
+  --green:#0B5D3B;
+  --green-deep:#073D27;
+  --green-wash:#E6F2EB;
+  --orange:#F26B1D;
+  --orange-wash:#FEF0E6;
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --body:'Figtree',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.5;font-size:16px;min-height:100vh}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px;border-radius:8px}
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-0.02em;line-height:1.1}
+.wrap{max-width:440px;margin:0 auto;padding:0 24px}
+.screen{display:none}
+.screen.on{display:block}
+
+/* buttons */
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:56px;border-radius:999px;font-weight:600;font-size:17px;transition:background .15s,transform .1s}
+.btn:active{transform:scale(.985)}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{background:var(--green-deep)}
+.btn-primary[disabled]{background:var(--line);color:var(--mute);cursor:not-allowed}
+.btn-quiet{color:var(--green);height:48px}
+.btn-quiet:hover{background:var(--green-wash)}
+.btn-outline{border:1.5px solid var(--line);color:var(--ink)}
+.btn-outline:hover{border-color:var(--green)}
+
+/* landing */
+.landing{min-height:100vh;display:flex;flex-direction:column;padding-top:28px;padding-bottom:40px}
+.brand{font-family:var(--display);font-weight:700;font-size:20px;color:var(--green);display:flex;align-items:center;gap:8px}
+.brand i{width:12px;height:12px;border-radius:50%;background:var(--orange);display:inline-block}
+.hero{flex:1;display:flex;flex-direction:column;justify-content:center;padding:56px 0 40px}
+.hero h1{font-size:clamp(40px,12vw,54px);color:var(--green-deep)}
+.hero p{margin-top:24px;color:var(--mute);font-size:18px;max-width:34ch}
+.week{display:flex;gap:8px;margin-top:44px}
+.week span{flex:1;height:44px;border-radius:12px;background:var(--green)}
+.week span.half{background:var(--green-wash);box-shadow:inset 0 0 0 1.5px var(--green)}
+.week span.today{background:#fff;box-shadow:inset 0 0 0 2px var(--orange)}
+.actions{display:flex;flex-direction:column;gap:12px}
+
+/* auth */
+.auth{padding-top:28px;padding-bottom:48px;min-height:100vh}
+.auth h1{font-size:36px;margin-top:64px;color:var(--green-deep)}
+.auth .sub{color:var(--mute);margin-top:12px}
+.field{margin-top:28px}
+.field label{display:block;font-size:14px;font-weight:600;margin-bottom:8px}
+.field input{width:100%;height:56px;border:1.5px solid var(--line);border-radius:14px;padding:0 16px;background:#fff;transition:border-color .15s}
+.field input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px var(--green-wash)}
+.auth form .btn{margin-top:36px}
+.switch{display:block;margin:20px auto 0;color:var(--mute);font-size:15px}
+.switch b{color:var(--green);font-weight:600}
+.back{margin-top:0;color:var(--mute);font-size:15px}
+
+/* app shell */
+.top{display:flex;align-items:center;justify-content:space-between;padding:24px 0 0}
+.top .out{color:var(--mute);font-size:14px}
+.tabs{display:flex;gap:28px;margin-top:28px;border-bottom:1px solid var(--line)}
+.tab{padding:0 0 14px;color:var(--mute);font-weight:600;font-size:16px;position:relative}
+.tab.on{color:var(--green-deep)}
+.tab.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;border-radius:3px;background:var(--green)}
+.tab .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--orange);margin-left:6px;vertical-align:middle}
+.page{padding:40px 0 72px}
+.date{color:var(--mute);font-size:15px}
+.page h1{font-size:40px;margin-top:8px;color:var(--green-deep)}
+.lede{color:var(--mute);margin-top:12px;max-width:36ch}
+
+/* nudge */
+.nudge{margin-top:32px;background:var(--orange-wash);border-radius:20px;padding:18px 20px}
+.nudge small{display:block;color:#A3470F;font-weight:600;font-size:14px}
+.nudge p{margin-top:4px;font-size:17px}
+
+/* tasks */
+.tasks{margin-top:40px}
+.task{display:flex;align-items:center;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.task:first-child{border-top:1px solid var(--line)}
+.check{flex:none;width:32px;height:32px;border-radius:50%;border:2px solid var(--green);display:grid;place-items:center;color:#fff;transition:background .15s,transform .15s}
+.check svg{width:16px;height:16px;opacity:0;transition:opacity .15s}
+.check.done{background:var(--green)}
+.check.done svg{opacity:1}
+.check[disabled]{cursor:default}
+.check.pulse{transform:scale(1.15)}
+.dotmark{flex:none;width:10px;height:10px;margin:0 11px;border-radius:50%;background:var(--green)}
+.task .txt{flex:1;min-width:0}
+.task .name{font-size:18px;font-weight:500;overflow-wrap:anywhere}
+.task .meta{font-size:14px;color:var(--mute);margin-top:2px}
+.task.done .name{color:var(--mute);text-decoration:line-through;text-decoration-color:var(--line);text-decoration-thickness:2px}
+.task.next{background:var(--orange-wash);margin:0 -16px;padding:20px 16px;border-radius:18px;border-bottom-color:transparent}
+.task.next + .task{border-top-color:transparent}
+.task.next .meta{color:#A3470F;font-weight:600}
+.rm{color:var(--mute);width:36px;height:36px;border-radius:50%;display:grid;place-items:center}
+.rm:hover{background:var(--paper);color:#B3261E}
+.empty{padding:36px 0;color:var(--mute);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+/* add form */
+.add{margin-top:28px}
+.add .row{display:flex;gap:10px;margin-top:10px}
+.add input[type=text]{flex:1;height:56px;border:1.5px solid var(--line);border-radius:14px;padding:0 16px;min-width:0}
+.add input[type=time]{width:128px;height:56px;border:1.5px solid var(--line);border-radius:14px;padding:0 12px;color:var(--mute)}
+.add input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px var(--green-wash)}
+.add .btn{margin-top:12px}
+.hint{font-size:14px;color:var(--mute);margin-top:12px}
+.lockbar{margin-top:40px}
+.fine{font-size:14px;color:var(--mute);text-align:center;margin-top:12px}
+
+/* check-in */
+.checkin{margin-top:48px}
+.checkin h2{font-size:26px;color:var(--green-deep)}
+.checkin textarea{width:100%;min-height:96px;margin-top:10px;border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;resize:vertical}
+.checkin textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px var(--green-wash)}
+.checkin .btn{margin-top:28px}
+.checkin label{display:block;font-size:14px;font-weight:600;margin-top:20px}
+.notes{margin-top:44px}
+.notes h2{font-size:22px;color:var(--green-deep)}
+.notes dt{font-size:14px;color:var(--mute);margin-top:18px}
+.notes dd{margin-top:4px;font-size:17px}
+
+/* streak */
+.streak{margin-top:56px}
+.streak .head{display:flex;align-items:baseline;justify-content:space-between}
+.streak h2{font-size:22px;color:var(--green-deep)}
+.streak .num{font-family:var(--display);font-weight:700;font-size:56px;line-height:1;color:var(--orange)}
+.streak .num small{font-family:var(--body);font-weight:500;font-size:16px;color:var(--mute);margin-left:6px}
+.strip{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:20px}
+.strip div{text-align:center;font-size:13px;color:var(--mute)}
+.strip span{display:block;height:44px;border-radius:12px;margin-bottom:8px;background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--line)}
+.strip .full span{background:var(--green);box-shadow:none}
+.strip .part span{background:var(--green-wash);box-shadow:inset 0 0 0 1.5px var(--green)}
+.strip .now span{box-shadow:inset 0 0 0 2.5px var(--orange)}
+.strip .now{color:var(--ink);font-weight:600}
+.legend{display:flex;gap:20px;margin-top:16px;font-size:13px;color:var(--mute)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:6px;vertical-align:-1px}
+
+/* partner */
+.status{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:8px 14px;border-radius:999px;background:var(--green-wash);color:var(--green-deep);font-weight:600;font-size:14px}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.status.wait{background:var(--paper);color:var(--mute)}
+.status.wait i{background:var(--mute)}
+.send{margin-top:48px}
+.send h2{font-size:22px;color:var(--green-deep)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chip{padding:10px 16px;border-radius:999px;border:1.5px solid var(--line);font-size:15px;transition:all .15s}
+.chip:hover{border-color:var(--green);color:var(--green)}
+.chip.sent{background:var(--green);border-color:var(--green);color:#fff}
+.send .row{display:flex;gap:10px;margin-top:16px}
+.send input{flex:1;height:52px;border:1.5px solid var(--line);border-radius:14px;padding:0 16px;min-width:0}
+.send input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px var(--green-wash)}
+.send .row .btn{width:auto;padding:0 24px;height:52px}
+.unlink{display:block;margin:56px auto 0;color:var(--mute);font-size:14px}
+.unlink:hover{color:#B3261E}
+
+/* invite */
+.invite-box{margin-top:32px;padding:20px;border-radius:20px;background:var(--paper)}
+.invite-box p{font-size:14px;color:var(--mute)}
+.invite-box code{display:block;margin-top:8px;font-family:var(--body);font-weight:600;font-size:16px;word-break:break-all;color:var(--green-deep)}
+.invite-box .btn{margin-top:16px;height:48px;font-size:16px}
+.demo{margin-top:40px;font-size:14px;color:var(--mute);padding:16px 18px;border-radius:16px;border:1.5px dashed var(--line)}
+.demo button{color:var(--green);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,24px);background:var(--green-deep);color:#fff;padding:14px 22px;border-radius:999px;font-weight:500;font-size:15px;opacity:0;pointer-events:none;transition:all .25s;z-index:10;max-width:90vw}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (prefers-color-scheme:dark){
+  :root{--white:#0C1511;--paper:#142019;--ink:#EAF2ED;--mute:#97A89F;--line:#25352C;--green:#3FBF86;--green-deep:#8FE0B8;--green-wash:#14291F;--orange:#FF8A3D;--orange-wash:#2B1B10}
+  .btn-primary{color:#05160E}.btn-primary:hover{background:#6AD3A3}
+  .check{color:#05160E}.chip.sent{color:#05160E}
+  .task.next .meta,.nudge small{color:#FFB27F}
+  .week span.today{background:var(--white)}
+}
+
+/* study groups (separate feature) */
+.sg h2{font-size:24px;color:var(--green-deep)}
+.sg h3{font-size:18px}
+.sg label{display:block;font-size:14px;font-weight:600;margin:16px 0 6px}
+.sg-in{width:100%;border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--white);resize:vertical}
+.sg-in:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px var(--green-wash)}
+.sg .btn{height:48px;font-size:16px;width:auto;padding:0 22px}
+.sg .btn-block{width:100%;margin-top:20px}
+.sg-card{border:1.5px solid var(--line);border-radius:20px;padding:20px;margin-top:14px;background:var(--white)}
+.sg-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sg-sp{justify-content:space-between}
+.sg-meta{color:var(--mute);font-size:14px}
+.sg-now{margin-top:10px;font-size:14px;background:var(--green-wash);color:var(--green-deep);padding:8px 12px;border-radius:12px}
+.av{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;flex:none}
+.a0{background:var(--green-wash);color:var(--green)}.a1{background:var(--orange-wash);color:var(--orange)}.a2{background:var(--line);color:var(--ink)}.a3{background:var(--green);color:#fff}
+.avs{display:flex}.avs .av+.av{margin-left:-8px}.avs .av{border:2px solid var(--white)}
+.pill{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px}
+.p-planned{background:var(--line);color:var(--mute)}.p-studying{background:var(--orange-wash);color:var(--orange)}.p-done{background:var(--green-wash);color:var(--green)}
+.sg-tabs{display:flex;gap:4px;border-bottom:1.5px solid var(--line);margin-top:18px}
+.sg-tabs button{padding:10px 12px;font-weight:600;color:var(--mute);border-bottom:3px solid transparent;margin-bottom:-1.5px}
+.sg-tabs button[aria-selected=true]{color:var(--green);border-color:var(--green)}
+.sg-empty{text-align:center;padding:36px 12px;color:var(--mute)}
+.sg-empty h3{color:var(--ink);margin-bottom:8px}
+.msg{display:flex;gap:10px;margin-top:16px}
+.bubble{background:var(--paper);border-radius:16px;padding:10px 14px;flex:1}
+.msg.me .bubble{background:var(--green-wash)}
+.kind{font-size:12px;font-weight:600;color:var(--orange);text-transform:uppercase;letter-spacing:.04em}
+.sug{border:1.5px dashed var(--orange);border-radius:16px;padding:16px;margin-top:14px;background:var(--orange-wash)}
+.sug li{list-style:none;margin-top:10px;display:flex;gap:10px;justify-content:space-between;align-items:center}
+.sug button.use{color:var(--green);font-weight:600;white-space:nowrap}
+.sg-back{color:var(--green);font-weight:600;margin-bottom:14px}
+.sg-note{font-size:13px;color:var(--mute);margin-top:12px}
+.sg-err{color:#B3261E;font-size:14px;margin-top:6px}
+.sg-tabs{overflow-x:auto}.sg-tabs button{white-space:nowrap}
+.bar{height:6px;border-radius:6px;background:var(--line);margin-top:10px;overflow:hidden}.bar i{display:block;height:100%;background:var(--green)}
+.priv{border:1.5px solid var(--green);border-radius:16px;padding:14px;margin-top:14px;background:var(--green-wash)}
+
+/* landing page (marketing) */
+.lp{max-width:1080px;margin:0 auto;padding:0 24px}
+.lp-nav{position:sticky;top:0;z-index:5;background:var(--white);border-bottom:1px solid var(--line)}
+.lp-nav .lp{display:flex;align-items:center;justify-content:space-between;height:64px}
+.lp-btn{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 24px;border-radius:999px;font-weight:600;font-size:16px;transition:background .15s,transform .1s}
+.lp-btn:active{transform:scale(.985)}.lp-btn.p{background:var(--green);color:#fff}.lp-btn.p:hover{background:var(--green-deep)}.lp-btn.o{border:1.5px solid var(--line)}.lp-btn.o:hover{border-color:var(--green)}.lp-btn.q{color:var(--green)}
+.lp-hero{display:grid;gap:44px;padding:56px 0 72px;align-items:center}
+.lp-hero h1{font-size:clamp(38px,8vw,62px);color:var(--green-deep)}
+.lp-hero .sub,.lp-sec .sub{color:var(--mute);margin-top:18px;max-width:40ch;font-size:19px}
+.lp-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.lp-sec{padding:72px 0;border-top:1px solid var(--line)}
+.lp-sec h2{font-size:clamp(28px,5vw,40px);color:var(--green-deep)}
+.lp-grid{display:grid;gap:36px;align-items:center}
+.lp-list{margin-top:20px;display:grid;gap:10px;list-style:none}.lp-list li{padding-left:22px;position:relative}.lp-list li::before{content:"";position:absolute;left:0;top:10px;width:9px;height:9px;border-radius:50%;background:var(--orange)}
+.pv{background:var(--white);border:1.5px solid var(--line);border-radius:28px;padding:22px;box-shadow:0 24px 48px -24px rgba(7,61,39,.3),0 2px 6px rgba(7,61,39,.06)}
+.pv h3{font-size:22px;color:var(--green-deep);margin-top:2px}.lp-meta{font-size:13px;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
+.tk{display:flex;align-items:center;gap:12px;padding:14px;border:1.5px solid var(--line);border-radius:16px;margin-top:10px;text-align:left;width:100%;background:var(--white);transition:all .2s}
+.tk .cb{width:24px;height:24px;border-radius:8px;border:2px solid var(--line);display:grid;place-items:center;flex:none;color:#fff;transition:all .2s}.tk .cb svg{width:14px;height:14px}
+.tk.done .cb{background:var(--green);border-color:var(--green)}.tk.done .t{color:var(--mute);text-decoration:line-through}.tk.next{border-color:var(--orange);background:var(--orange-wash)}.tk[disabled]{cursor:default;opacity:.75}.tk .tm{margin-left:auto;color:var(--mute);font-size:14px;white-space:nowrap}
+.st{display:flex;gap:6px;margin:14px 0 4px}.st span{flex:1;height:10px;border-radius:6px;background:var(--green)}.st .h{background:var(--green-wash);box-shadow:inset 0 0 0 1.5px var(--green)}.st .n{background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--line)}.st .t{background:var(--white);box-shadow:inset 0 0 0 2px var(--orange)}
+.lp-hint{font-size:14px;color:var(--mute);margin-top:12px;min-height:21px}
+.lp-tabs{display:flex;gap:4px;overflow-x:auto;border-bottom:1.5px solid var(--line);margin:10px 0 6px}.lp-tabs button{padding:10px 12px;font-weight:600;color:var(--mute);white-space:nowrap;border-bottom:3px solid transparent;margin-bottom:-1.5px}.lp-tabs [aria-selected=true]{color:var(--green);border-color:var(--green)}
+.bb{background:var(--paper);border-radius:16px;padding:10px 14px;margin-top:12px;font-size:15px}.bb b{display:block;font-size:13px;color:var(--mute)}
+.lp-link{color:var(--green);font-weight:600;font-size:14px;margin-top:8px}
+.lp-steps{display:grid;gap:20px;margin-top:32px}.stp{border:1.5px solid var(--line);border-radius:20px;padding:24px}.stp i{font-style:normal;font-family:var(--display);font-weight:700;color:var(--orange);font-size:28px}.stp h3{font-size:20px;margin:8px 0}.stp p{color:var(--mute)}
+.lp-end{margin:24px 0 40px;background:var(--green-wash);border:1.5px solid var(--green);border-radius:32px;padding:56px 24px;text-align:center}.lp-end h2{font-size:clamp(28px,5vw,40px);color:var(--green-deep)}.lp-end p{color:var(--mute);margin:12px auto 24px;max-width:40ch}
+.lp-foot{color:var(--mute);font-size:13px;text-align:center;padding:0 0 40px}
+@keyframes lpf{50%{transform:translateY(-8px)}}.float{animation:lpf 7s ease-in-out infinite}
+html.lp-js .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}html.lp-js .rv.in{opacity:1;transform:none}
+@media(min-width:860px){.lp-hero,.lp-grid{grid-template-columns:1fr 1fr;gap:64px}.lp-grid.rev .lp-copy{order:2}.lp-steps{grid-template-columns:repeat(3,1fr)}}
+@media(prefers-reduced-motion:reduce){.float{animation:none}html.lp-js .rv{opacity:1;transform:none;transition:none}.tk,.tk .cb{transition:none}}
+
+/* responsive fixes: let grid/flex children shrink, wrap long text, scale type and spacing */
+body{overflow-wrap:break-word}
+img{max-width:100%;height:auto}
+.lp-hero,.lp-grid,.lp-steps{grid-template-columns:minmax(0,1fr)}
+.lp-hero>*,.lp-grid>*,.lp-steps>*{min-width:0}
+.sg-in,.field input{min-width:0;max-width:100%}
+.sg-row>*,.msg>.bubble,.tk>.t,.tk>.tm{min-width:0}
+.sg-card,.bubble,.pv,.sug,.priv{min-width:0;overflow-wrap:anywhere}
+.page h1{font-size:clamp(30px,9.5vw,40px)}
+@media(max-width:640px){
+  .lp{padding:0 16px}
+  .lp-nav .lp{height:60px}.lp-nav .lp>div:last-child{gap:2px!important}
+  .lp-nav .lp-btn{padding:0 12px;font-size:15px}
+  .lp-hero{padding:32px 0 48px;gap:32px}
+  .lp-sec{padding:52px 0}
+  .lp-hero .sub,.lp-sec .sub{font-size:17px}
+  .pv{padding:18px;border-radius:24px}
+  .lp-end{padding:40px 20px;border-radius:24px}
+  .lp-cta .lp-btn{flex:1 1 auto}
+}
+@media(min-width:860px){.lp-hero,.lp-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.lp-steps{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.lp-nav .brand,.lp-nav .lp-btn{white-space:nowrap}
+@media(max-width:400px){.lp-nav .brand{font-size:18px}.lp-nav .lp-btn{padding:0 10px;font-size:14px}.lp-nav .lp-btn.p{height:40px!important}}
+@media(max-width:360px){.lp-nav .brand{font-size:17px}.lp-nav .lp-btn{padding:0 8px}}
+</style>
+</head>
+<body>
+
+<!-- LANDING -->
+<section class="screen on" id="landing">
+  <header class="lp-nav"><div class="lp"><div class="brand"><i></i>Daily pledge</div><div style="display:flex;gap:8px"><button class="lp-btn q" data-go="login">Log in</button><button class="lp-btn p" data-go="signup" style="height:44px">Sign up</button></div></div></header>
+  <main class="lp">
+    <section class="lp-hero">
+      <div class="rv"><h1>Say what you'll do. Someone sees if you did.</h1><p class="sub">Pick up to three tasks each morning and lock them in. One partner sees how your day goes, and you see theirs.</p>
+        <div class="lp-cta"><button class="lp-btn p" data-go="signup">Create an account</button><button class="lp-btn o" id="lpHow">See how it works</button></div></div>
+      <div class="pv float rv" id="hv"><div class="lp-meta">Today</div><h3 id="hvT">Plan your day</h3><div id="hvL"></div><button class="lp-btn p" id="hvB" style="width:100%;margin-top:16px">Lock in my day</button><p class="lp-hint" id="hvH" aria-live="polite">Try it: lock in your day, then tick things off. This is a preview.</p></div>
+    </section>
+
+    <section class="lp-sec"><div class="lp-grid">
+      <div class="lp-copy rv"><div class="lp-meta">Accountability partner</div><h2>A friend who sees your day</h2><p class="sub">Your partner sees what you committed to and how it went. You see theirs, and can cheer them on.</p>
+        <ul class="lp-list"><li>Tasks lock in once your day starts, so plans stay honest.</li><li>An end-of-day check-in: what got done, what got in the way.</li><li>A 7-day streak strip you both can read at a glance.</li></ul></div>
+      <div class="pv rv" id="pv"><div class="lp-meta">Maya's day</div><h3>2 of 3 done</h3><div class="st" aria-label="Last 7 days"><span></span><span></span><span class="h"></span><span></span><span></span><span></span><span class="t"></span></div>
+        <div class="tk done" style="cursor:default"><span class="cb"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg></span><span class="t">Morning run</span><span class="tm">6:30 AM</span></div>
+        <div class="tk next" style="cursor:default"><span class="cb"></span><span class="t">Finish the budget review</span><span class="tm">11:00 AM</span></div>
+        <div class="lp-meta" style="margin-top:16px">Send encouragement</div><div class="chips" id="pvC"><button class="chip">You've got this</button><button class="chip">Proud of you</button><button class="chip">Keep going</button></div><p class="lp-hint" id="pvH" aria-live="polite"></p></div>
+    </div></section>
+
+    <section class="lp-sec"><div class="lp-grid rev">
+      <div class="lp-copy rv"><div class="lp-meta">Study groups</div><h2>Learn it together, in your own words</h2><p class="sub">Commit to a topic, explain it to your group, test each other, and keep the explanations worth revisiting.</p>
+        <ul class="lp-list"><li>Commitments are separate from your daily tasks.</li><li>Challenges let friends quiz each other, with or without expected answers.</li><li>The Study Assistant is optional: share it with the group, or keep it just yours.</li></ul></div>
+      <div class="pv rv" id="sv"><div class="lp-meta">Physics finals crew</div>
+        <div class="lp-tabs" role="tablist" aria-label="Study group features"><button role="tab" aria-selected="true" data-p="0">Discussion</button><button role="tab" aria-selected="false" data-p="1">Challenge</button><button role="tab" aria-selected="false" data-p="2">Notes<span class="dot" id="svDot" style="display:none;display:none"></span></button><button role="tab" aria-selected="false" data-p="3">Assistant</button></div>
+        <div data-pn="0"><div class="bb"><b>Maya · Explanation</b>Electrons sit at fixed energy levels. They jump between levels by absorbing or emitting a photon.</div><button class="lp-link" id="svSave">Save as note</button><div class="bb"><b>Tomás · Question</b>Why can't an electron sit between two levels?</div></div>
+        <div data-pn="1" hidden><div class="bb"><b>Atomic structure check · 2 of 4 answered</b>Why can an electron only have certain energies?</div><button class="lp-link" id="svRev">Show creator's expected answer</button><div class="bb" id="svExp" hidden><b>Expected answer</b>Only certain standing-wave patterns fit around the nucleus, so only certain energies are allowed.</div></div>
+        <div data-pn="2" hidden><div class="bb"><b>Maya · Atomic physics</b>Energy levels in one paragraph</div><div class="bb" id="svNote" hidden style="border:1.5px solid var(--green)"><b>You · just now</b>Electrons sit at fixed energy levels. They jump between levels by absorbing or emitting a photon.</div></div>
+        <div data-pn="3" hidden><div class="chips" id="svM"><button class="chip sent" data-m="0">Share with group</button><button class="chip" data-m="1">Just me</button></div><p class="lp-hint" id="svMH">The question and reply appear in the group discussion.</p><button class="lp-btn o" id="svSug" style="margin-top:8px;height:44px">Suggest questions</button><div class="bb" id="svQ" hidden><b>Simulated reply</b>How does absorption differ from emission? Can you give an example of an electron changing levels?</div></div>
+      </div>
+    </div></section>
+
+    <section class="lp-sec" id="lpHowSec"><div class="rv"><div class="lp-meta">How it works</div><h2>Three steps, every day</h2></div>
+      <div class="lp-steps"><div class="stp rv"><i>1</i><h3>Pick up to three</h3><p>Choose what matters today and give each task a time if you like.</p></div><div class="stp rv"><i>2</i><h3>Lock it in</h3><p>Once locked, tasks can't be added or removed. Then see it through.</p></div><div class="stp rv"><i>3</i><h3>Check in</h3><p>Close your day with what got done and what got in the way. Your partner sees it.</p></div></div></section>
+
+    <section class="lp-end rv"><h2>Make a pledge today</h2><p>Create an account, plan your day, and invite a partner.</p><button class="lp-btn p" data-go="signup">Create an account</button></section>
+    <p class="lp-foot">Previews on this page are simulated. Nothing you try here is saved or sent.</p>
+  </main>
+</section>
+
+<!-- AUTH -->
+<section class="screen" id="auth">
+  <div class="wrap auth">
+    <button class="back" data-go="landing">&larr; Back</button>
+    <h1 id="authTitle">Create your account</h1>
+    <p class="sub" id="authSub">It takes under a minute.</p>
+    <form id="authForm">
+      <div class="field" id="nameField"><label for="name">Your name</label><input id="name" autocomplete="given-name" placeholder="Vic"></div>
+      <div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="email" placeholder="you@example.com"></div>
+      <div class="field"><label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password" placeholder="At least 6 characters"></div>
+      <button class="btn btn-primary" type="submit" id="authBtn">Create account</button>
+    </form>
+    <button class="switch" id="authSwitch"></button>
+  </div>
+</section>
+
+<!-- APP -->
+<section class="screen" id="app">
+  <div class="wrap">
+    <div class="top">
+      <div class="brand"><i></i>Daily pledge</div>
+      <button class="out" id="signout">Sign out</button>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab on" role="tab" data-tab="today">Today</button>
+      <button class="tab" role="tab" data-tab="partner">Partner<span class="dot" id="partnerDot"></span></button>
+      <button class="tab" role="tab" data-tab="study">Study<span class="dot" id="studyDot"></span></button>
+    </div>
+
+    <!-- TODAY -->
+    <div class="page" id="todayPage">
+      <div class="date" id="dateLabel"></div>
+      <h1 id="todayTitle">Plan your day</h1>
+      <p class="lede" id="todayLede">Pick up to three things that matter. Lock them in, then see it through.</p>
+
+      <div class="nudge" id="nudge" hidden><small id="nudgeFrom"></small><p id="nudgeText"></p></div>
+
+      <div class="tasks" id="tasks"></div>
+
+      <form class="add" id="addForm">
+        <div class="row">
+          <input type="text" id="taskTitle" maxlength="80" placeholder="What will you do?" aria-label="Task">
+          <input type="time" id="taskTime" aria-label="Start time, optional">
+        </div>
+        <button class="btn btn-quiet" type="submit">Add task</button>
+        <p class="hint" id="addHint"></p>
+      </form>
+
+      <div class="lockbar" id="lockbar">
+        <button class="btn btn-primary" id="lockBtn" disabled>Lock in my day</button>
+        <p class="fine">Once locked, you can't add or remove tasks.</p>
+      </div>
+
+      <div class="checkin" id="checkin" hidden>
+        <h2>End-of-day check-in</h2>
+        <label for="doneNote">What got done?</label>
+        <textarea id="doneNote"></textarea>
+        <label for="blockNote">What got in the way?</label>
+        <textarea id="blockNote"></textarea>
+        <button class="btn btn-primary" id="closeBtn">Close the day</button>
+      </div>
+
+      <dl class="notes" id="myNotes" hidden>
+        <h2>Your check-in</h2>
+        <dt>What got done</dt><dd id="myDone"></dd>
+        <dt>What got in the way</dt><dd id="myBlock"></dd>
+      </dl>
+
+      <div class="streak">
+        <div class="head"><h2>Your streak</h2><div class="num"><span id="streakNum">0</span><small id="streakUnit">days</small></div></div>
+        <div class="strip" id="strip"></div>
+        <div class="legend"><span><i style="background:var(--green)"></i>Full</span><span><i style="background:var(--green-wash);box-shadow:inset 0 0 0 1.5px var(--green)"></i>Partial</span><span><i style="background:var(--paper);box-shadow:inset 0 0 0 1.5px var(--line)"></i>Empty</span></div>
+      </div>
+    </div>
+
+    <!-- PARTNER -->
+    <div class="page sg" id="studyPage" hidden></div>
+
+    <div class="page" id="partnerPage" hidden>
+      <div id="partnerLinked">
+        <div class="date">Your partner</div>
+        <h1 id="pName">Maya</h1>
+        <div class="status" id="pStatus"><i></i><span></span></div>
+
+        <div class="tasks" id="pTasks"></div>
+
+        <dl class="notes" id="pNotes" hidden>
+          <h2>Their check-in</h2>
+          <dt>What got done</dt><dd id="pDone"></dd>
+          <dt>What got in the way</dt><dd id="pBlock"></dd>
+        </dl>
+
+        <div class="streak">
+          <div class="head"><h2 id="pStreakTitle">Their streak</h2><div class="num"><span id="pStreakNum">0</span><small>days</small></div></div>
+          <div class="strip" id="pStrip"></div>
+        </div>
+
+        <div class="send">
+          <h2>Send encouragement</h2>
+          <div class="chips" id="chips"></div>
+          <form class="row" id="msgForm"><input id="msg" maxlength="120" placeholder="Or write your own" aria-label="Message"><button class="btn btn-primary" type="submit">Send</button></form>
+        </div>
+        <button class="unlink" id="unlink">Unlink partner</button>
+      </div>
+
+      <div id="partnerEmpty" hidden>
+        <div class="date">Your partner</div>
+        <h1>Invite one person</h1>
+        <p class="lede">You'll see each other's days. Nobody else will.</p>
+        <div class="invite-box">
+          <p>Your invite link</p>
+          <code>dailypledge.app/invite/k3x9-mq2v</code>
+          <button class="btn btn-primary" id="copyInvite">Copy link</button>
+        </div>
+        <div class="demo">This is a prototype with demo data. <button id="demoLink">Link a demo partner</button> to see the Partner screen.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const KEY='dp-proto-v2';
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const shift=(k,n)=>{const [y,m,d]=k.split('-').map(Number);return iso(new Date(y,m-1,d+n))};
+const today=iso(new Date());
+const fmt=t=>{if(!t)return '';const [h,m]=t.split(':').map(Number);const d=new Date();d.setHours(h,m);return d.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})};
+const CHECK='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg>';
+const TRASH='<svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h12M8 6V4h4v2M6 6l.7 10h6.6L14 6"/></svg>';
+
+// demo partner: a believable week
+function demoPartner(){
+  const days={};
+  const mk=(off,tasks,closed,done,block)=>{days[shift(today,off)]={locked:true,closed,tasks,done,block}};
+  mk(-6,[['Morning run','06:30',1],['Draft the proposal','09:00',1]],true,'Both done.','');
+  mk(-5,[['Morning run','06:30',1],['Call the bank','11:00',1],['Read 20 pages','21:00',1]],true,'All three.','');
+  mk(-4,[['Morning run','06:30',1],['Invoice clients','10:00',0]],true,'Run done.','Invoices got pushed by a long meeting.');
+  mk(-3,[['Morning run','06:30',1],['Invoice clients','10:00',1]],true,'Back on track.','');
+  mk(-2,[['Morning run','06:30',1],['Plan next week','16:00',1],['Read 20 pages','21:00',1]],true,'Done.','');
+  mk(-1,[['Morning run','06:30',1],['Finish slide deck','10:00',1]],true,'Deck sent.','');
+  days[today]={locked:true,closed:false,tasks:[['Morning run','06:30',1],['Finish the budget review','11:00',0],['Read 20 pages','21:00',0]],done:'',block:''};
+  return days;
+}
+function fresh(){return {user:null,days:{},partner:null,inbox:[],sent:[]}}
+let S;try{S=JSON.parse(localStorage.getItem(KEY))||fresh()}catch(e){S=fresh()}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),2200)}
+function show(id){$$('.screen').forEach(s=>s.classList.toggle('on',s.id===id));window.scrollTo(0,0)}
+
+// helpers over a days map
+const dayOf=(days,k)=>days[k];
+const status=(d)=>{if(!d||!d.tasks.length)return 'empty';const done=d.tasks.filter(t=>t[2]).length;if(d.closed&&done===d.tasks.length)return 'full';if(done>0||d.closed)return 'part';return 'empty'};
+function streak(days){let k=today;if(status(days[k])!=='full')k=shift(today,-1);let n=0;while(status(days[k])==='full'){n++;k=shift(k,-1)}return n}
+function sorted(tasks){return tasks.map((t,i)=>({t,i})).sort((a,b)=>{const x=a.t[1],y=b.t[1];if(x&&y)return x.localeCompare(y);if(x)return -1;if(y)return 1;return a.i-b.i})}
+function renderStrip(el,days){
+  el.innerHTML='';
+  for(let i=-6;i<=0;i++){const k=shift(today,i);const [y,m,d]=k.split('-').map(Number);
+    const lab=new Date(y,m-1,d).toLocaleDateString([],{weekday:'short'}).slice(0,3);
+    const s=status(days[k]);const div=document.createElement('div');
+    div.className=(s==='full'?'full':s==='part'?'part':'')+(i===0?' now':'');
+    div.innerHTML='<span></span>'+lab;el.appendChild(div)}
+}
+
+// ---------- AUTH ----------
+let mode='signup';
+function setMode(m){mode=m;const su=m==='signup';
+  $('#authTitle').textContent=su?'Create your account':'Welcome back';
+  $('#authSub').textContent=su?'It takes under a minute.':'Pick up where you left off.';
+  $('#nameField').style.display=su?'block':'none';
+  $('#authBtn').textContent=su?'Create account':'Log in';
+  $('#authSwitch').innerHTML=su?'Already have an account? <b>Log in</b>':'New here? <b>Create an account</b>';
+  $('#pw').autocomplete=su?'new-password':'current-password'}
+$$('[data-go]').forEach(b=>b.addEventListener('click',()=>{const g=b.dataset.go;if(g==='landing')return show('landing');setMode(g);show('auth')}));
+$('#authSwitch').addEventListener('click',()=>setMode(mode==='signup'?'login':'signup'));
+$('#authForm').addEventListener('submit',e=>{e.preventDefault();
+  const email=$('#email').value.trim();if(!email){toast('Add your email to continue');$('#email').focus();return}
+  if($('#pw').value.length<6){toast('Use at least 6 characters');$('#pw').focus();return}
+  const nm=$('#name').value.trim()||email.split('@')[0];
+  S.user=S.user||{name:nm,email};if(mode==='signup'&&$('#name').value.trim())S.user.name=nm;
+  save();enter()});
+$('#signout').addEventListener('click',()=>{S.user=null;save();show('landing')});
+
+function enter(){show('app');switchTab('today');render()}
+
+// ---------- TABS ----------
+function switchTab(t){$$('.tab').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));
+  $('#todayPage').hidden=t!=='today';$('#partnerPage').hidden=t!=='partner';$('#studyPage').hidden=t!=='study';window.scrollTo(0,0);if(t==='partner')renderPartner();if(t==='study'){$('#studyDot').style.display='none';sgRender()}}
+$$('.tab').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+
+// ---------- TODAY ----------
+function todayDay(){return S.days[today]}
+function ensure(){if(!S.days[today])S.days[today]={locked:false,closed:false,tasks:[],done:'',block:''};return S.days[today]}
+
+function render(){
+  const d=todayDay()||{locked:false,closed:false,tasks:[]};
+  $('#dateLabel').textContent=new Date().toLocaleDateString([],{weekday:'long',month:'long',day:'numeric'});
+  const locked=d.locked,closed=d.closed;
+  $('#todayTitle').textContent=closed?'Day closed':locked?'You\u2019re locked in':'Plan your day';
+  $('#todayLede').textContent=closed?'Nicely done. See you tomorrow.':locked?'Tick tasks off as you finish them.':'Pick up to three things that matter. Lock them in, then see it through.';
+
+  // nudge
+  const n=S.inbox[S.inbox.length-1];$('#nudge').hidden=!n;
+  if(n){$('#nudgeFrom').textContent='From '+S.partner.name;$('#nudgeText').textContent=n}
+
+  // tasks
+  const box=$('#tasks');box.innerHTML='';
+  const list=sorted(d.tasks);
+  const nextIdx=locked&&!closed?(list.find(x=>!x.t[2])||{}).i:-1;
+  if(!list.length){box.innerHTML='<div class="empty">Nothing planned yet.</div>'}
+  list.forEach(({t,i})=>{
+    const el=document.createElement('div');
+    el.className='task'+(t[2]?' done':'')+(i===nextIdx?' next':'');
+    const meta=(i===nextIdx?'Up next'+(t[1]?' at '+fmt(t[1]):''):t[1]?fmt(t[1]):'');
+    el.innerHTML=(locked?'<button class="check'+(t[2]?' done':'')+'" aria-label="'+(t[2]?'Mark not done':'Mark done')+'"'+(closed?' disabled':'')+'>'+CHECK+'</button>':'<span class="dotmark"></span>')+
+      '<div class="txt"><div class="name"></div>'+(meta?'<div class="meta">'+meta+'</div>':'')+'</div>'+
+      (!locked?'<button class="rm" aria-label="Remove task">'+TRASH+'</button>':'');
+    el.querySelector('.name').textContent=t[0];
+    const c=el.querySelector('.check');if(c&&!closed)c.addEventListener('click',()=>{t[2]=t[2]?0:1;save();render();if(t[2]&&list.every(x=>x.t[2]))toast('That\u2019s everything. Close out your day when you\u2019re ready.')});
+    const r=el.querySelector('.rm');if(r)r.addEventListener('click',()=>{d.tasks.splice(i,1);save();render()});
+    box.appendChild(el)});
+
+  // add form
+  const canAdd=!locked&&d.tasks.length<3;
+  $('#addForm').hidden=!canAdd;
+  $('#addHint').textContent=(3-d.tasks.length)+(3-d.tasks.length===1?' task':' tasks')+' left. Start time is optional.';
+  $('#lockbar').hidden=locked||!d.tasks.length&&false;
+  $('#lockbar').style.display=locked?'none':'block';
+  $('#lockBtn').disabled=!d.tasks.length;
+  $('#checkin').hidden=!(locked&&!closed);
+  $('#myNotes').hidden=!closed||!(d.done||d.block);
+  if(closed){$('#myDone').textContent=d.done||'Nothing written.';$('#myBlock').textContent=d.block||'Nothing written.'}
+
+  // streak
+  const s=streak(S.days);$('#streakNum').textContent=s;$('#streakUnit').textContent=s===1?'day':'days';
+  renderStrip($('#strip'),S.days);
+  $('#partnerDot').style.display=(!S.partner)?'none':(S.inbox.length?'none':'none');
+}
+
+$('#addForm').addEventListener('submit',e=>{e.preventDefault();
+  const v=$('#taskTitle').value.trim();if(!v){$('#taskTitle').focus();return}
+  const d=ensure();if(d.tasks.length>=3)return;
+  d.tasks.push([v,$('#taskTime').value||'',0]);$('#taskTitle').value='';$('#taskTime').value='';save();render();$('#taskTitle').focus()});
+$('#lockBtn').addEventListener('click',()=>{const d=ensure();if(!d.tasks.length)return;d.locked=true;save();render();toast('Your day is locked in');window.scrollTo({top:0,behavior:'smooth'})});
+$('#closeBtn').addEventListener('click',()=>{const d=ensure();d.closed=true;d.done=$('#doneNote').value.trim();d.block=$('#blockNote').value.trim();save();render();toast('Day closed');window.scrollTo({top:0,behavior:'smooth'})});
+
+// ---------- PARTNER ----------
+const QUICK=['You\u2019ve got this','Proud of you','Go finish that first task','Checking in on you'];
+function renderPartner(){
+  const linked=!!S.partner;$('#partnerLinked').hidden=!linked;$('#partnerEmpty').hidden=linked;
+  if(!linked)return;
+  const p=S.partner,days=p.days,d=days[today];
+  $('#pName').textContent=p.name;
+  const st=$('#pStatus');const done=d?d.tasks.filter(t=>t[2]).length:0;
+  const label=!d||!d.tasks.length?'Hasn\u2019t planned yet':d.closed?'Day closed':d.locked?'Locked in \u00b7 '+done+' of '+d.tasks.length+' done':'Still planning';
+  st.className='status'+(!d||!d.locked?' wait':'');st.querySelector('span').textContent=label;
+  const box=$('#pTasks');box.innerHTML='';
+  if(!d||!d.tasks.length)box.innerHTML='<div class="empty">No tasks yet today.</div>';
+  else sorted(d.tasks).forEach(({t})=>{const el=document.createElement('div');el.className='task'+(t[2]?' done':'');
+    el.innerHTML='<span class="check'+(t[2]?' done':'')+'" style="cursor:default">'+CHECK+'</span><div class="txt"><div class="name"></div>'+(t[1]?'<div class="meta">'+fmt(t[1])+'</div>':'')+'</div>';
+    el.querySelector('.name').textContent=t[0];box.appendChild(el)});
+  $('#pNotes').hidden=!(d&&d.closed);if(d&&d.closed){$('#pDone').textContent=d.done||'Nothing written.';$('#pBlock').textContent=d.block||'Nothing written.'}
+  $('#pStreakTitle').textContent=p.name+'\u2019s streak';
+  $('#pStreakNum').textContent=streak(days);renderStrip($('#pStrip'),days);
+  const ch=$('#chips');ch.innerHTML='';
+  QUICK.forEach(q=>{const b=document.createElement('button');b.className='chip';b.textContent=q;b.addEventListener('click',()=>sendMsg(q,b));ch.appendChild(b)});
+}
+function sendMsg(m,btn){S.sent.push(m);save();if(btn){btn.classList.add('sent');setTimeout(()=>btn.classList.remove('sent'),1400)}toast('Sent to '+S.partner.name)}
+$('#msgForm').addEventListener('submit',e=>{e.preventDefault();const v=$('#msg').value.trim();if(!v)return;sendMsg(v);$('#msg').value=''});
+$('#unlink').addEventListener('click',()=>{if(confirm('Stop partnering with '+S.partner.name+'?')){S.partner=null;S.inbox=[];save();render();renderPartner()}});
+$('#demoLink').addEventListener('click',()=>{S.partner={name:'Maya',days:demoPartner()};S.inbox=['Proud of you for locking in early. Go get it.'];save();render();renderPartner();toast('Linked with Maya (demo)')});
+$('#copyInvite').addEventListener('click',()=>{try{navigator.clipboard.writeText('dailypledge.app/invite/k3x9-mq2v')}catch(e){}toast('Invite link copied')});
+
+
+// ---------- STUDY GROUPS (front end only: mock data, in memory, nothing is sent or saved) ----------
+const STUDY_MOCK=()=>({groups:[
+ {id:'g1',name:'Physics finals crew',desc:'Four of us working through the syllabus before December.',members:['me','Maya','Tomás','Ife'],
+  commits:[{id:'c1',who:'Maya',subject:'Physics',topic:'Atomic physics',material:'Chapter 3, pp. 20–35',goal:'Understand atomic structure and electron energy levels.',due:'Fri',status:'done'},
+   {id:'c2',who:'Tomás',subject:'Physics',topic:'Nuclear decay',material:'Chapter 4, pp. 40–52',goal:'Tell alpha, beta and gamma decay apart.',due:'Sat',status:'studying'},
+   {id:'c3',who:'me',subject:'Physics',topic:'Wave–particle duality',material:'Chapter 5, pp. 60–71',goal:'Explain why light acts as both.',due:'Sun',status:'planned'}],
+  msgs:[{who:'Maya',kind:'Explanation',t:'9:12 AM',text:'Electrons only sit at fixed energy levels. They jump between levels by absorbing or emitting a photon with exactly the energy gap.'},
+   {who:'Tomás',kind:'Question',t:'9:20 AM',text:'Why can’t an electron sit between two levels? Is that just a rule, or is there a reason?'}]},
+ {id:'g2',name:'Spanish, ten minutes a day',desc:'Two friends keeping each other honest.',members:['me','Sam'],
+  commits:[{id:'c4',who:'Sam',subject:'Spanish',topic:'Past tense verbs',material:'Unit 6 workbook',goal:'Use pretérito correctly in five sentences.',due:'Thu',status:'studying'}],msgs:[]}]});
+const FRAMES=[t=>`Explain the main idea of ${t} in your own words.`,t=>`Why does this happen in ${t}?`,t=>`Can you give an example of ${t}?`,t=>`What evidence supports this explanation of ${t}?`,t=>`How does ${t} differ from a related concept?`,t=>`Which part of ${t} was most difficult to understand?`,t=>`How might ${t} appear in an examination?`];
+const sg={view:'list',gid:null,tab:'chat',step:1,draft:{},kind:'Explanation',comp:'',sug:false,sugText:'',page:0,form:false,justDone:null,err:'',data:STUDY_MOCK()};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ini=n=>n==='me'?'Y':n==='Study Assistant'?'✦':n[0].toUpperCase();
+const nm=n=>n==='me'?'You':n;
+const ens=g=>{if(g){g.chals=g.chals||[];g.notes=g.notes||[];g.act=g.act||[];g.priv=g.priv||[]}return g};
+const grp=()=>ens(sg.data.groups.find(g=>g.id===sg.gid));
+const av=(g,n)=>`<span class="av a${n==='Study Assistant'?3:Math.max(0,g.members.indexOf(n))%4}" title="${esc(nm(n))}">${ini(n)}</span>`;
+const avs=g=>`<span class="avs" aria-label="${g.members.length} members">${g.members.slice(0,5).map(n=>av(g,n)).join('')}${g.members.length>5?`<span class="av a2">+${g.members.length-5}</span>`:''}</span>`;
+const PILL={planned:['Planned','p-planned'],studying:['Studying','p-studying'],done:['Completed','p-done']};
+const nowT=()=>new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
+
+function sgRender(){
+  const el=$('#studyPage');let o='';
+  if(sg.view==='list')o=vList();else if(sg.view==='create')o=vCreate();else o=vGroup();
+  el.innerHTML=o;
+}
+function vList(){
+  const gs=sg.data.groups;
+  let o=`<div class="date">Study groups</div><h1>Learn it together</h1><p class="lede">Study your own material, then explain it to your group in your own words. Separate from your daily pledge.</p>
+  <div class="sg-row" style="margin-top:24px"><button class="btn btn-primary" data-a="new">Create a group</button></div>
+  <label for="joinCode">Have an invite code?</label><div class="sg-row"><input id="joinCode" class="sg-in" style="flex:1;width:auto" placeholder="e.g. PHYS-4821" autocomplete="off"><button class="btn btn-outline" data-a="join">Join</button></div><div class="sg-err" id="joinErr">${esc(sg.err)}</div>`;
+  if(!gs.length)return o+`<div class="sg-empty"><h3>No study groups yet</h3><p>Start one with friends and hold each other accountable for learning, not just for finishing.</p></div>`;
+  o+=`<h2 style="margin-top:36px">Your groups</h2>`;
+  gs.forEach(g=>{const c=g.commits.find(x=>x.status!=='done')||g.commits[0];
+    o+=`<div class="sg-card"><div class="sg-row sg-sp"><h3>${esc(g.name)}</h3>${avs(g)}</div><p class="sg-meta" style="margin-top:6px">${esc(g.desc||'')}</p><p class="sg-meta" style="margin-top:4px">${g.members.length} members</p>${c?`<div class="sg-now">Now: ${esc(c.topic)} · ${esc(nm(c.who))}</div>`:''}<button class="btn btn-primary btn-block" data-a="open" data-id="${g.id}" aria-label="Open ${esc(g.name)}">Open group</button></div>`});
+  const rec=[];gs.forEach(g=>g.commits.forEach(c=>rec.push(`${nm(c.who)} ${c.status==='done'?'finished':c.status==='studying'?'is studying':'plans to study'} ${c.topic} <span class="sg-meta">· ${esc(g.name)}</span>`)));
+  return o+`<h2 style="margin-top:36px">Recent activity</h2><div class="sg-card">${rec.slice(0,4).map(r=>`<p style="margin:6px 0">${r}</p>`).join('')||'<p class="sg-meta">Nothing yet.</p>'}</div><p class="sg-note">Preview only: groups, messages and activity are demo content on this device.</p>`;
+}
+function vCreate(){
+  const d=sg.draft;
+  if(sg.step===1)return `<button class="sg-back" data-a="home">← Study groups</button><h2>Create a study group</h2>
+  <label for="gn">Group name</label><input id="gn" class="sg-in" maxlength="40" value="${esc(d.name||'')}" placeholder="e.g. Chemistry study circle"><div class="sg-err">${esc(sg.err)}</div>
+  <label for="gd">Description <span class="sg-meta">(optional)</span></label><textarea id="gd" class="sg-in" rows="3" maxlength="140" placeholder="What are you learning together?">${esc(d.desc||'')}</textarea>
+  <label for="gs">Expected size</label><select id="gs" class="sg-in"><option>Two friends</option><option ${d.size==='Small group (up to 10)'?'selected':''}>Small group (up to 10)</option><option ${d.size==='Large group (up to 50)'?'selected':''}>Large group (up to 50)</option></select>
+  <button class="btn btn-primary btn-block" data-a="review">Review</button>`;
+  return `<button class="sg-back" data-a="back1">← Edit details</button><h2>Review your group</h2><div class="sg-card"><h3>${esc(d.name)}</h3><p class="sg-meta" style="margin-top:6px">${esc(d.desc||'No description')}</p><p class="sg-meta" style="margin-top:6px">${esc(d.size)}</p></div>
+  <h3 style="margin-top:28px">Invite people</h3><p class="sg-meta">Preview: nothing is sent and no one will actually join.</p>
+  <div class="chips">${['Maya','Tomás','Ife','Sam'].map(n=>`<button class="chip" data-a="inv" data-n="${n}" aria-pressed="${(d.inv||[]).includes(n)}">${(d.inv||[]).includes(n)?'✓ ':''}${n}</button>`).join('')}</div>
+  <div class="sg-row" style="margin-top:16px"><input class="sg-in" style="flex:1;width:auto" readonly aria-label="Invite link" value="dailypledge.app/study/PHYS-4821"><button class="btn btn-outline" data-a="copy">Copy</button></div>
+  <button class="btn btn-primary btn-block" data-a="make">Create group</button>`;
+}
+function vGroup(){
+  const g=grp(),T=[['chat','Discussion'],['commit','Commitments'],['chal','Challenges'],['notes','Notes'],['asst','Assistant'],['mem','Members']];
+  let o=`<button class="sg-back" data-a="home">← Study groups</button><div class="sg-row sg-sp"><h2>${esc(g.name)}</h2><div id="callSlot"></div></div><p class="sg-meta" style="margin-top:6px">${esc(g.desc||'')}</p><div class="sg-row" style="margin-top:12px">${avs(g)}<span class="sg-meta">${g.members.length} members</span></div>
+  <div class="sg-tabs" role="tablist">${T.map(t=>`<button role="tab" data-a="tab" data-t="${t[0]}" aria-selected="${sg.tab===t[0]}">${t[1]}</button>`).join('')}</div>`;
+  if(sg.tab==='chat')o+=vChat(g);else if(sg.tab==='commit')o+=vCommit(g);else if(sg.tab==='chal')o+=vChal(g);else if(sg.tab==='notes')o+=vNotes(g);else if(sg.tab==='asst')o+=vAsst(g);else o+=vMem(g);
+  return o;
+}
+function vChat(g){
+  let o='';
+  if(sg.justDone)o+=`<div class="sg-card" style="border-color:var(--green)"><h3>You finished ${esc(sg.justDone.topic)}</h3><p class="sg-meta" style="margin-top:6px">Tell the group what stuck, in your own words. Then they can ask you follow-ups.</p><div class="sg-row" style="margin-top:12px"><button class="btn btn-outline" data-x="mkch">Make a challenge</button><button class="btn btn-outline" data-x="mknote">Write a note</button></div></div>`;
+  o+=g.msgs.length?g.msgs.map((m,i)=>`<div class="msg ${m.who==='me'?'me':''}">${av(g,m.who)}<div class="bubble"><div class="sg-row sg-sp"><strong>${esc(nm(m.who))}</strong><span class="sg-meta">${m.t}</span></div><div class="kind">${m.kind}</div><p style="white-space:pre-wrap">${esc(m.text)}</p><button class="sg-meta" style="margin-top:6px;color:var(--green);font-weight:600" data-x="tonote" data-i="${i}">Save as note</button></div></div>`).join(''):`<div class="sg-empty"><h3>No discussion yet</h3><p>Finish a commitment, then explain it here, or ask a question to get things started.</p></div>`;
+  o+=`<form id="sgForm" style="margin-top:20px"><div class="chips" role="group" aria-label="Message type">${['Explanation','Question','Reply'].map(k=>`<button type="button" class="chip ${sg.kind===k?'sent':''}" data-a="kind" data-k="${k}" aria-pressed="${sg.kind===k}">${k==='Explanation'?'Explain in my words':k==='Question'?'Ask a question':'Reply'}</button>`).join('')}</div>
+  <label for="sgMsg" style="margin-top:12px">Your message</label><textarea id="sgMsg" class="sg-in" rows="3" placeholder="${sg.kind==='Explanation'?'What did you learn? Put it in your own words…':sg.kind==='Question'?'What would you like them to explain?':'Respond to what was said…'}">${esc(sg.comp)}</textarea>
+  <div class="sg-row sg-sp" style="margin-top:12px"><button type="button" class="btn btn-outline" data-a="sug">Suggest questions</button><button class="btn btn-primary" type="submit">Send</button></div></form>`;
+  if(sg.sug)o+=vSug();
+  return o+`<p class="sg-note">Preview: messages stay on this screen and aren’t delivered to anyone.</p>`;
+}
+function vSug(){
+  const t=(sg.sugText||'').split(/[.\n]/)[0].trim().slice(0,70),has=!!t,topic=has?t:'this topic';
+  const start=sg.page*3%FRAMES.length,list=[0,1,2,3,4].map(i=>FRAMES[(start+i)%FRAMES.length](topic));
+  return `<div class="sug"><h3>Question prompts</h3><p class="sg-meta" style="margin-top:4px">Ideas for your group to talk through. They’re prompts, not answers, and you choose what to ask.</p>
+  <label for="sugT" style="margin-top:12px">What are you studying, or what did you just explain?</label><textarea id="sugT" class="sg-in" rows="2" placeholder="e.g. Atomic structure: electrons sit at fixed energy levels">${esc(sg.sugText)}</textarea>
+  ${has?'':'<p class="sg-meta" style="margin-top:8px">Add a topic for tailored prompts. Here are general ones to start with.</p>'}
+  <ul>${list.map(q=>`<li><span>${esc(q)}</span><button class="use" data-a="use" data-q="${esc(q)}">Use</button></li>`).join('')}</ul>
+  <div class="sg-row sg-sp" style="margin-top:14px"><button class="btn btn-outline" data-a="more">Different prompts</button><button class="btn-quiet btn" data-a="closesug">Close</button></div></div>`;
+}
+function vCommit(g){
+  const done=g.commits.filter(c=>c.status==='done').length;
+  let o=`<div class="sg-row sg-sp" style="margin-top:20px"><span class="sg-meta">${done} of ${g.commits.length} finished</span><button class="btn btn-primary" data-a="addc">${sg.form?'Cancel':'Add commitment'}</button></div>`;
+  if(sg.form)o+=`<form id="cForm" class="sg-card"><label for="cs" style="margin-top:0">Subject</label><input id="cs" class="sg-in" placeholder="Physics"><label for="ct">Topic</label><input id="ct" class="sg-in" placeholder="Atomic physics"><label for="cm">Material <span class="sg-meta">(optional)</span></label><input id="cm" class="sg-in" placeholder="Chapter 3, pp. 20–35"><label for="cg">Learning goal <span class="sg-meta">(optional)</span></label><textarea id="cg" class="sg-in" rows="2" placeholder="What do you want to understand?"></textarea><label for="cd">Target date</label><input id="cd" type="date" class="sg-in"><div class="sg-err">${esc(sg.err)}</div><button class="btn btn-primary btn-block">Save commitment</button></form>`;
+  if(!g.commits.length)return o+`<div class="sg-empty"><h3>No commitments yet</h3><p>Say what you’ll study, so the group knows what to ask about.</p></div>`;
+  g.commits.forEach(c=>{const P=PILL[c.status];
+    o+=`<div class="sg-card"><div class="sg-row sg-sp"><div class="sg-row">${av(g,c.who)}<strong>${esc(nm(c.who))}</strong></div><span class="pill ${P[1]}">${P[0]}</span></div><h3 style="margin-top:10px">${esc(c.subject)}: ${esc(c.topic)}</h3>${c.material?`<p class="sg-meta" style="margin-top:4px">${esc(c.material)}</p>`:''}${c.goal?`<p style="margin-top:6px">${esc(c.goal)}</p>`:''}<p class="sg-meta" style="margin-top:6px">Target: ${esc(c.due||'No date')}</p>
+    ${c.who==='me'&&c.status==='planned'?`<button class="btn btn-outline btn-block" data-a="start" data-id="${c.id}">Start studying</button>`:''}${c.who==='me'&&c.status==='studying'?`<button class="btn btn-primary btn-block" data-a="finish" data-id="${c.id}">Mark completed and discuss</button>`:''}</div>`});
+  return o;
+}
+function vMem(g){return `<div style="margin-top:12px">${g.members.map(n=>{const c=g.commits.find(x=>x.who===n),P=c&&PILL[c.status];return `<div class="sg-card sg-row sg-sp" style="padding:14px 16px">${'<div class="sg-row">'+av(g,n)+`<div><strong>${esc(nm(n))}</strong><div class="sg-meta">${c?esc(c.topic):'No commitment yet'}</div></div></div>`}${P?`<span class="pill ${P[1]}">${P[0]}</span>`:''}</div>`}).join('')}</div>`}
+
+const sp=$('#studyPage');
+sp.addEventListener('input',e=>{if(e.target.id==='sgMsg')sg.comp=e.target.value;if(e.target.id==='sugT')sg.sugText=e.target.value});
+sp.addEventListener('submit',e=>{e.preventDefault();const g=grp();
+  if(e.target.id==='sgForm'){const v=sg.comp.trim();if(!v){toast('Write a message first');return}g.msgs.push({who:'me',kind:sg.kind,t:nowT(),text:v});sg.comp='';sg.justDone=null;sgRender();const l=sp.querySelector('.msg:last-of-type');if(l)l.scrollIntoView({block:'center'})}
+  if(e.target.id==='cForm'){const s=$('#cs').value.trim(),t=$('#ct').value.trim();if(!s||!t){sg.err='Subject and topic are required.';sgRender();return}
+    g.commits.unshift({id:'c'+Date.now(),who:'me',subject:s,topic:t,material:$('#cm').value.trim(),goal:$('#cg').value.trim(),due:$('#cd').value||'',status:'planned'});sg.form=false;sg.err='';sgRender();toast('Commitment added (demo)')}
+});
+sp.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,g=sg.gid?grp():null;sg.err='';
+  if(a==='new'){sg.view='create';sg.step=1;sg.draft={}}
+  else if(a==='home'){sg.view='list';sg.gid=null;sg.sug=false;sg.justDone=null}
+  else if(a==='open'){sg.view='group';sg.gid=b.dataset.id;sg.tab='chat';sg.sug=false;sg.form=false}
+  else if(a==='join'){const v=$('#joinCode').value.trim();if(!/^[A-Za-z]{2,6}-\d{3,5}$/.test(v)){sg.err='Enter a code like PHYS-4821.';sgRender();return}
+    sg.data.groups.push({id:'g'+Date.now(),name:'Joined group ('+v.toUpperCase()+')',desc:'Demo group. Real invite codes need the backend.',members:['me','Maya'],commits:[],msgs:[]});toast('Joined (demo)')}
+  else if(a==='review'){const n=$('#gn').value.trim();sg.draft={name:n,desc:$('#gd').value.trim(),size:$('#gs').value,inv:sg.draft.inv||[]};if(n.length<3){sg.err='Give your group a name (3+ characters).';sgRender();return}sg.step=2}
+  else if(a==='back1')sg.step=1;
+  else if(a==='inv'){const i=sg.draft.inv,n=b.dataset.n;i.includes(n)?i.splice(i.indexOf(n),1):i.push(n)}
+  else if(a==='copy'){try{navigator.clipboard.writeText('dailypledge.app/study/PHYS-4821')}catch(x){}toast('Link copied (demo link)');return}
+  else if(a==='make'){const id='g'+Date.now();sg.data.groups.unshift({id,name:sg.draft.name,desc:sg.draft.desc,members:['me'],commits:[],msgs:[]});sg.gid=id;sg.view='group';sg.tab='chat';toast('Group created (demo)')}
+  else if(a==='tab'){sg.tab=b.dataset.t;sg.form=false}
+  else if(a==='kind')sg.kind=b.dataset.k;
+  else if(a==='sug')sg.sug=!sg.sug;
+  else if(a==='closesug')sg.sug=false;
+  else if(a==='more')sg.page++;
+  else if(a==='use'){sg.comp=b.dataset.q;sg.kind='Question';sg.sug=false;sgRender();const m=$('#sgMsg');m.focus();toast('Edit it however you like');return}
+  else if(a==='addc')sg.form=!sg.form;
+  else if(a==='start')g.commits.find(c=>c.id===b.dataset.id).status='studying';
+  else if(a==='finish'){const c=g.commits.find(c=>c.id===b.dataset.id);c.status='done';sg.justDone=c;sg.tab='chat';sg.kind='Explanation'}
+  sgRender();
+});
+
+// ---------- CHALLENGES, NOTES, ASSISTANT (front end only: mock data, in memory, nothing sent) ----------
+(function(){const g=ens(sg.data.groups[0]);
+ g.chals.push({id:'q1',title:'Atomic structure check',topic:'Atomic physics',by:'Maya',inst:'Answer in your own words, without looking at the book.',qs:[{q:'Why can an electron only have certain energies?',exp:'Only certain standing-wave patterns fit around the nucleus, so only certain energies are allowed.'},{q:'How is emission different from absorption?',exp:''}],resp:{'Tomás':['It behaves like a wave, so only some wavelengths fit.','Absorbing takes energy in, emitting gives it out as light.']}});
+ g.notes.push({id:'n1',title:'Energy levels in one paragraph',topic:'Atomic physics',by:'Maya',t:'Oct 22',body:'Electrons occupy fixed energy levels. Moving up needs exactly the right amount of energy. Moving down releases it as a photon.'});
+ g.act.push({who:'Ife',mode:'private',t:'Today, 8:40 AM'},{who:'Tomás',mode:'public',action:'Clarify a concept',t:'Yesterday'});
+})();
+Object.assign(sg,{ch:null,cm:'answer',cf:false,cd:{title:'',topic:'',inst:'',qs:[{q:'',exp:''},{q:'',exp:''}]},ans:{},nq:'',note:null,ne:false,nd:{},am:'public',aa:'suggest',ain:'',xerr:''});
+const AA={suggest:['Suggest questions','Paste a topic or what you learned'],clarify:['Clarify a concept','Which concept is hard to understand?'],summary:['Revision summary','Paste your summary or a discussion excerpt']};
+const empty=(t,s)=>`<div class="sg-empty"><h3>${t}</h3><p>${s}</p></div>`;
+const err=()=>sg.xerr?`<div class="sg-err" role="alert">${esc(sg.xerr)}</div>`:'';
+function chStatus(c){const r=c.resp.me;if(!r)return sg.ans[c.id]&&sg.ans[c.id].some(x=>x&&x.trim())?['In progress','p-studying']:['Available','p-planned'];return c.qs.every(q=>q.exp)?['Completed','p-done']:['Awaiting discussion','p-studying']}
+function vChal(g){
+  const c=sg.ch&&g.chals.find(x=>x.id===sg.ch);if(c)return sg.cm==='review'?vRev(g,c):vAns(g,c);
+  let o=`<div class="sg-row sg-sp" style="margin-top:20px"><span class="sg-meta">${g.chals.length} challenges</span><button class="btn btn-primary" data-x="cf">${sg.cf?'Cancel':'New challenge'}</button></div>`;
+  if(sg.cf)o+=vCF();
+  if(!g.chals.length&&!sg.cf)return o+empty('No challenges yet','Test your friends with a few questions on what you’re all studying.');
+  g.chals.forEach(c=>{const n=Object.keys(c.resp).length,st=chStatus(c);
+    o+=`<div class="sg-card"><div class="sg-row sg-sp"><h3>${esc(c.title)}</h3><span class="pill ${st[1]}">${st[0]}</span></div><p class="sg-meta" style="margin-top:6px">by ${esc(nm(c.by))} · ${esc(c.topic)} · ${c.qs.length} questions</p><div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="${g.members.length}" aria-valuenow="${n}"><i style="width:${Math.round(n/g.members.length*100)}%"></i></div><p class="sg-meta" style="margin-top:6px">${n} of ${g.members.length} have answered</p><button class="btn ${c.resp.me?'btn-outline':'btn-primary'} btn-block" data-x="chopen" data-id="${c.id}">${c.resp.me?'Review answers':'Open challenge'}</button></div>`});
+  return o;
+}
+function vCF(){const d=sg.cd;
+  return `<form id="chForm" class="sg-card"><label for="cft" style="margin-top:0">Title</label><input id="cft" class="sg-in" data-cf="title" value="${esc(d.title)}" placeholder="Atomic structure check"><label for="cfp">Subject or topic</label><input id="cfp" class="sg-in" data-cf="topic" value="${esc(d.topic)}" placeholder="Atomic physics"><label for="cfi">Instructions <span class="sg-meta">(optional)</span></label><textarea id="cfi" class="sg-in" rows="2" data-cf="inst">${esc(d.inst)}</textarea>
+  ${d.qs.map((q,i)=>`<div class="sg-card" style="margin-top:14px"><div class="sg-row sg-sp"><strong>Question ${i+1}</strong>${d.qs.length>1?`<button type="button" class="sg-meta" data-x="rmq" data-i="${i}">Remove</button>`:''}</div><label for="cq${i}">Question</label><textarea id="cq${i}" class="sg-in" rows="2" data-cq="${i}.q">${esc(q.q)}</textarea><label for="ce${i}">Expected answer <span class="sg-meta">(optional, shown after members answer)</span></label><textarea id="ce${i}" class="sg-in" rows="2" data-cq="${i}.exp">${esc(q.exp)}</textarea></div>`).join('')}
+  <div class="sg-row" style="margin-top:14px"><button type="button" class="btn btn-outline" data-x="addq">Add question</button><button type="button" class="btn btn-outline" data-x="sugq">Suggest with assistant</button></div><p class="sg-note">Suggestions are simulated prompts based on your topic. Edit them freely.</p>${err()}<button class="btn btn-primary btn-block">Create challenge</button></form>`}
+function vAns(g,c){const a=sg.ans[c.id]||[],n=c.qs.filter((q,i)=>(a[i]||'').trim()).length;
+  return `<button class="sg-back" data-x="chback" style="margin-top:18px">← All challenges</button><h2>${esc(c.title)}</h2><p class="sg-meta" style="margin-top:6px">by ${esc(nm(c.by))} · ${esc(c.topic)}</p>${c.inst?`<p style="margin-top:10px">${esc(c.inst)}</p>`:''}<p class="sg-meta" style="margin-top:10px">${n} of ${c.qs.length} answered. Your draft stays if you switch tabs.</p>
+  <form id="anForm">${c.qs.map((q,i)=>`<label for="an${i}">${i+1}. ${esc(q.q)}</label><textarea id="an${i}" class="sg-in" rows="3" data-an="${i}" placeholder="In your own words. “Not sure” is a fine answer.">${esc(a[i]||'')}</textarea>`).join('')}${err()}<button class="btn btn-primary btn-block">Submit answers</button></form>`}
+function vRev(g,c){const others=Object.entries(c.resp).filter(e=>e[0]!=='me'),mine=c.resp.me||[];
+  return `<button class="sg-back" data-x="chback" style="margin-top:18px">← All challenges</button><h2>${esc(c.title)}: review</h2><p class="sg-meta" style="margin-top:6px">${Object.keys(c.resp).length} of ${g.members.length} have answered</p>
+  ${c.qs.map((q,i)=>`<div class="sg-card"><strong>${i+1}. ${esc(q.q)}</strong><p class="sg-meta" style="margin-top:10px">Your answer</p><p>${esc(mine[i]||'')}</p>${q.exp?`<div class="sg-now"><strong>Creator’s expected answer</strong><br>${esc(q.exp)}</div>`:`<div class="sg-now" style="background:var(--orange-wash);color:var(--ink)">No expected answer here. Compare answers and discuss rather than score.</div>`}
+  ${others.map(o=>`<div class="sg-row" style="margin-top:10px;align-items:flex-start">${av(g,o[0])}<div><strong>${esc(nm(o[0]))}</strong><p>${esc(o[1][i]||'')}</p></div></div>`).join('')}<button class="btn btn-outline" style="margin-top:12px" data-x="disc" data-i="${i}">Discuss in the group</button></div>`).join('')}`}
+function nList(g){const q=sg.nq.toLowerCase(),l=g.notes.filter(n=>(n.title+' '+n.topic+' '+n.body).toLowerCase().includes(q));
+  return l.length?l.map(n=>`<div class="sg-card"><h3>${esc(n.title)}</h3><p class="sg-meta" style="margin-top:4px">${esc(n.topic||'General')} · ${esc(nm(n.by))} · ${esc(n.t)}</p><p style="margin-top:8px">${esc(n.body.slice(0,110))}${n.body.length>110?'…':''}</p><button class="btn btn-outline btn-block" data-x="nopen" data-id="${n.id}">Open note</button></div>`).join(''):empty(g.notes.length?'No matching notes':'No notes yet','Save a good explanation from the discussion, or write one yourself.')}
+function vNotes(g){
+  if(sg.note){const n=g.notes.find(x=>x.id===sg.note);
+    if(sg.ne)return `<button class="sg-back" data-x="nback" style="margin-top:18px">← All notes</button><form id="noteForm"><label for="nft" style="margin-top:0">Title</label><input id="nft" class="sg-in" data-nf="title" value="${esc(sg.nd.title||'')}"><label for="nfp">Subject or topic</label><input id="nfp" class="sg-in" data-nf="topic" value="${esc(sg.nd.topic||'')}"><label for="nfb">Note</label><textarea id="nfb" class="sg-in" rows="7" data-nf="body">${esc(sg.nd.body||'')}</textarea>${err()}<button class="btn btn-primary btn-block">Save note</button></form><p class="sg-note">Preview: notes live on this screen only.</p>`;
+    if(n)return `<button class="sg-back" data-x="nback" style="margin-top:18px">← All notes</button><h2>${esc(n.title)}</h2><p class="sg-meta" style="margin-top:6px">${esc(n.topic||'General')} · ${esc(nm(n.by))} · ${esc(n.t)}</p><p style="margin-top:16px;white-space:pre-wrap">${esc(n.body)}</p>${n.by==='me'?`<button class="btn btn-outline btn-block" data-x="nedit">Edit note</button>`:''}`}
+  return `<div class="sg-row sg-sp" style="margin-top:20px;flex-wrap:nowrap"><input id="ns" type="search" class="sg-in" style="flex:1;width:auto" placeholder="Search notes" aria-label="Search notes" value="${esc(sg.nq)}"><button class="btn btn-primary" data-x="nnew">New note</button></div><div id="nList">${nList(g)}</div>`}
+function vAsst(g){
+  const M=[['public','Share with group','Recommended. The question and reply appear in the group discussion so everyone can learn.'],['private','Just me','Only you see the question and reply. The group sees only that you used the assistant.']];
+  let o=`<h3 style="margin-top:20px">Study Assistant</h3><p class="sg-meta">Optional help. Your group stays the main place to learn.</p><div class="sg-row" style="margin-top:12px;align-items:stretch;flex-wrap:nowrap" role="group" aria-label="Who can see this">${M.map(m=>`<button class="sg-card" style="flex:1;margin:0;text-align:left;${sg.am===m[0]?'border-color:var(--green);background:var(--green-wash)':''}" data-x="am" data-m="${m[0]}" aria-pressed="${sg.am===m[0]}"><strong>${m[1]}</strong><div class="sg-meta" style="margin-top:4px">${m[2]}</div></button>`).join('')}</div>
+  <div class="chips">${Object.keys(AA).map(k=>`<button class="chip ${sg.aa===k?'sent':''}" data-x="aa" data-k="${k}" aria-pressed="${sg.aa===k}">${AA[k][0]}</button>`).join('')}</div>
+  <form id="asForm"><label for="asIn">${AA[sg.aa][1]}</label><textarea id="asIn" class="sg-in" rows="3" placeholder="e.g. Atomic physics: electrons sit at fixed energy levels">${esc(sg.ain)}</textarea>${err()}<button class="btn btn-primary btn-block">${sg.am==='public'?'Ask in the group':'Ask privately'}</button></form><p class="sg-note">Simulated replies for this preview. No AI service is connected.</p>`;
+  if(g.priv.length)o+=`<div class="priv"><strong>Private to you</strong><p class="sg-meta">Not shown in the group discussion, notes or activity.</p>${g.priv.map(p=>`<div style="margin-top:12px"><span class="kind">${AA[p.action][0]} · ${p.t}</span><p><em>${esc(p.q)}</em></p><p style="white-space:pre-wrap;margin-top:6px">${esc(p.a)}</p></div>`).join('')}</div>`;
+  o+=`<h3 style="margin-top:28px">Assistant activity</h3><div class="sg-card">${g.act.slice().reverse().map(a=>`<p style="margin:6px 0">${esc(nm(a.who))} used the Study Assistant ${a.mode==='private'?'privately':'in the group'}${a.action?' · '+esc(a.action):''} <span class="sg-meta">· ${a.t}</span></p>`).join('')}</div><p class="sg-note">Preview: this notice isn’t sent to anyone. Private use never shows what was asked.</p>`;
+  return o;
+}
+function simA(a,text){const t=(text||'').split(/[.\n]/)[0].trim().slice(0,70)||'this topic';
+  if(a==='suggest')return 'Questions to discuss on '+t+':\n'+[0,1,4,6].map(i=>'• '+FRAMES[i](t)).join('\n');
+  if(a==='clarify')return /atom|electron|energy level/i.test(text)?'Think of an electron like a guitar string: only certain notes fit, which are the energy levels. It jumps up by absorbing exactly the right energy and gives it back as light when it drops.\nTry explaining to your group why in-between energies aren’t allowed.':'A simple way into '+t+': say the core idea in one sentence, tie it to a familiar example, then say what it is not. Then explain it to a friend.\n(Demo reply: a real assistant would explain it fully.)';
+  const pts=text.split(/(?<=[.!?])\s+|\n/).map(s=>s.trim()).filter(Boolean).slice(0,3);
+  return 'Revision summary:\n'+pts.map(q=>'• '+q).join('\n')+'\nCheck yourself: '+FRAMES[0](t)}
+
+sp.addEventListener('input',e=>{const t=e.target,d=t.dataset;
+  if(d.cf)sg.cd[d.cf]=t.value;
+  else if(d.cq){const k=d.cq.split('.');sg.cd.qs[+k[0]][k[1]]=t.value}
+  else if(d.an!==undefined)(sg.ans[sg.ch]=sg.ans[sg.ch]||[])[+d.an]=t.value;
+  else if(d.nf)sg.nd[d.nf]=t.value;
+  else if(t.id==='ns'){sg.nq=t.value;$('#nList').innerHTML=nList(grp())}
+  else if(t.id==='asIn')sg.ain=t.value});
+sp.addEventListener('click',e=>{const b=e.target.closest('[data-x]');if(!b)return;const x=b.dataset.x,g=grp(),i=+b.dataset.i;sg.xerr='';
+  if(x==='cf')sg.cf=!sg.cf;
+  else if(x==='addq')sg.cd.qs.push({q:'',exp:''});
+  else if(x==='rmq')sg.cd.qs.splice(i,1);
+  else if(x==='sugq'){const t=sg.cd.topic.trim()||'this topic';sg.cd.qs=[0,1,2,4].map(k=>({q:FRAMES[k](t),exp:''}));toast('Simulated suggestions. Edit freely.')}
+  else if(x==='chopen'){sg.ch=b.dataset.id;sg.cm=g.chals.find(c=>c.id===sg.ch).resp.me?'review':'answer'}
+  else if(x==='chback')sg.ch=null;
+  else if(x==='disc'){const c=g.chals.find(c=>c.id===sg.ch);g.msgs.push({who:'me',kind:'Question',t:nowT(),text:`From “${c.title}”, question ${i+1}: ${c.qs[i].q} How did you each think about it?`});sg.tab='chat';sg.justDone=null}
+  else if(x==='nnew'){sg.note='new';sg.ne=true;sg.nd={title:'',topic:'',body:''}}
+  else if(x==='nopen'){sg.note=b.dataset.id;sg.ne=false}
+  else if(x==='nedit'){sg.nd={...g.notes.find(n=>n.id===sg.note)};sg.ne=true}
+  else if(x==='nback'){sg.note=null;sg.ne=false}
+  else if(x==='tonote'){const m=g.msgs[i];sg.nd={title:m.text.slice(0,40),topic:'',body:m.text};sg.note='new';sg.ne=true;sg.tab='notes'}
+  else if(x==='am')sg.am=b.dataset.m;
+  else if(x==='aa')sg.aa=b.dataset.k;
+  else if(x==='mkch'){sg.tab='chal';sg.cf=true;sg.ch=null;sg.cd.topic=sg.justDone.topic}
+  else if(x==='mknote'){sg.tab='notes';sg.note='new';sg.ne=true;sg.nd={title:sg.justDone.topic,topic:sg.justDone.subject,body:''}}
+  sgRender()});
+sp.addEventListener('submit',e=>{const id=e.target.id,g=grp();
+  if(id==='chForm'){const d=sg.cd,qs=d.qs.filter(q=>q.q.trim());if(!d.title.trim()||!d.topic.trim()||!qs.length){sg.xerr='Add a title, a topic and at least one question.';sgRender();return}
+    g.chals.unshift({id:'q'+Date.now(),title:d.title.trim(),topic:d.topic.trim(),by:'me',inst:d.inst.trim(),qs:qs.map(q=>({q:q.q.trim(),exp:q.exp.trim()})),resp:{}});sg.cd={title:'',topic:'',inst:'',qs:[{q:'',exp:''},{q:'',exp:''}]};sg.cf=false;sgRender();toast('Challenge created (demo)')}
+  if(id==='anForm'){const c=g.chals.find(c=>c.id===sg.ch),a=sg.ans[c.id]||[];if(!c.qs.every((q,i)=>(a[i]||'').trim())){sg.xerr='Answer every question. “Not sure” is fine, so friends can help.';sgRender();return}
+    c.resp.me=c.qs.map((q,i)=>a[i].trim());sg.cm='review';sgRender();toast('Answers submitted (demo)')}
+  if(id==='noteForm'){const d=sg.nd;if(!(d.title||'').trim()||!(d.body||'').trim()){sg.xerr='A note needs a title and some text.';sgRender();return}
+    if(sg.note==='new'){const n={id:'n'+Date.now(),title:d.title.trim(),topic:(d.topic||'').trim(),by:'me',t:'Just now',body:d.body.trim()};g.notes.unshift(n);sg.note=n.id}
+    else{const n=g.notes.find(n=>n.id===sg.note);Object.assign(n,{title:d.title.trim(),topic:(d.topic||'').trim(),body:d.body.trim()})}
+    sg.ne=false;sgRender();toast('Note saved on this screen (demo)')}
+  if(id==='asForm'){const v=sg.ain.trim();if(!v){sg.xerr='Type a topic or some notes first.';sgRender();return}
+    const r=simA(sg.aa,v),t=nowT();
+    if(sg.am==='public'){g.msgs.push({who:'me',kind:'Asked the assistant',t,text:AA[sg.aa][0]+': '+v},{who:'Study Assistant',kind:'Assistant · simulated',t,text:r});g.act.push({who:'me',mode:'public',action:AA[sg.aa][0],t:'Just now'});sg.tab='chat';sg.ain='';sgRender();toast('Added to the group discussion (demo)')}
+    else{g.priv.push({action:sg.aa,q:v,a:r,t});g.act.push({who:'me',mode:'private',t:'Just now'});sg.ain='';sgRender();toast('Reply is private to you')}}
+});
+
+$('#studyDot').style.display='';
+
+if(S.user)enter();else setMode('signup');
+})();
+</script>
+<script>
+(function(){
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const CK='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg>';
+// scroll reveals (content stays visible if IntersectionObserver is missing)
+if('IntersectionObserver' in window){document.documentElement.classList.add('lp-js');const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});$$('.rv').forEach(el=>io.observe(el))}
+$('#lpHow').addEventListener('click',()=>$('#lpHowSec').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'}));
+// hero demo: simulated, local only
+const T=[['Morning run','6:30 AM',0],['Finish the budget review','11:00 AM',0],['Read 20 pages','9:00 PM',0]];let locked=false;
+function hv(){const d=T.filter(t=>t[2]).length,nx=T.findIndex(t=>!t[2]);
+  $('#hvT').textContent=locked?(d===3?'All three done':d+' of 3 done'):'Plan your day';
+  $('#hvL').innerHTML=T.map((t,i)=>`<button class="tk ${t[2]?'done':''} ${locked&&i===nx?'next':''}" data-i="${i}" ${locked?'':'disabled'} aria-pressed="${!!t[2]}"><span class="cb">${t[2]?CK:''}</span><span class="t">${t[0]}</span><span class="tm">${t[1]}</span></button>`).join('');
+  $('#hvB').hidden=locked;if(locked)$('#hvH').textContent=d===3?'Day complete. Your partner would see this.':'Locked in. Tasks can’t be added or removed now. Tick one off.'}
+$('#hvB').addEventListener('click',()=>{locked=true;hv()});
+$('#hvL').addEventListener('click',e=>{const b=e.target.closest('.tk');if(!b||!locked)return;T[+b.dataset.i][2]^=1;hv()});hv();
+// partner chips
+$('#pvC').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;$$('#pvC .chip').forEach(x=>x.classList.toggle('sent',x===c));$('#pvH').textContent='“'+c.textContent+'” sent to Maya (preview)'});
+// study tabs
+function tab(i){$$('#sv [role=tab]').forEach(b=>b.setAttribute('aria-selected',b.dataset.p==i));$$('#sv [data-pn]').forEach(p=>p.hidden=p.dataset.pn!=i);if(i==2)$('#svDot').style.display='none'}
+$$('#sv [role=tab]').forEach(b=>b.addEventListener('click',()=>tab(b.dataset.p)));
+$('#svSave').addEventListener('click',e=>{e.target.textContent='Saved. See Notes';$('#svNote').hidden=false;$('#svDot').style.display='inline-block'});
+$('#svRev').addEventListener('click',e=>{const x=$('#svExp');x.hidden=!x.hidden;e.target.textContent=x.hidden?'Show creator’s expected answer':'Hide expected answer'});
+$('#svM').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;$$('#svM .chip').forEach(x=>x.classList.toggle('sent',x===c));$('#svMH').textContent=c.dataset.m==='0'?'The question and reply appear in the group discussion.':'Only you see this. The group sees that you used the assistant, not what you asked.'});
+$('#svSug').addEventListener('click',()=>{$('#svQ').hidden=false});
+})();
+</script>
+</body>
+</html>
