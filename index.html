@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Daily pledge</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkRhaWx5IFBsZWRnZSBmYXZpY29uIiB4bWxuczpjMnBhPSJodHRwOi8vYzJwYS5vcmcvbWFuaWZlc3QiPjx0aXRsZT5EYWlseSBQbGVkZ2UgZmF2aWNvbjwvdGl0bGU+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMyNTYzRUIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0LjQgNC45KSBzY2FsZSguODQpIj48ZGVmcz48bWFzayBpZD0iZjEiIG1hc2tVbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjAiIHk9IjAiIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTIxIDMzIEwzMCA0MiBMNTQgMTEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9tYXNrPjwvZGVmcz48cGF0aCBkPSJNMTEgMTIgSDI5IEEyMCAyMCAwIDAgMSAyOSA1MiBIMTEgWiIgbWFzaz0idXJsKCNmMSkiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSI4LjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNMjEgMzMgTDMwIDQyIEw1NCAxMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNUVFQUQ0IiBzdHJva2Utd2lkdGg9IjguNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9nPjwvc3ZnPgo=">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#2563EB">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
@@ -281,47 +285,74 @@ img{max-width:100%;height:auto}
 .lp-nav .brand,.lp-nav .lp-btn{white-space:nowrap}
 @media(max-width:400px){.lp-nav .brand{font-size:18px}.lp-nav .lp-btn{padding:0 10px;font-size:14px}.lp-nav .lp-btn.p{height:40px!important}}
 @media(max-width:360px){.lp-nav .brand{font-size:17px}.lp-nav .lp-btn{padding:0 8px}}
+summary{cursor:pointer;color:var(--green);font-weight:600;margin-top:22px}
+.wl{display:flex;gap:12px;align-items:center;width:100%;text-align:left;padding:14px;border:1.5px solid var(--line);border-radius:16px;margin-top:10px;background:var(--white)}
+.wl b{flex:none;width:28px;height:28px;border-radius:50%;background:var(--orange-wash);color:var(--orange);display:grid;place-items:center;font-size:14px}
+.wl span{min-width:0}.wl small{display:block;color:var(--mute);font-size:14px}
+
+/* homepage v2: product-led */
+.win{background:var(--white);border:1.5px solid var(--line);border-radius:24px;box-shadow:0 28px 56px -28px rgba(7,61,39,.35),0 2px 6px rgba(7,61,39,.06);overflow:hidden;min-width:0;max-width:100%}
+.wbar{display:flex;gap:6px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--mute)}.wbar i{width:10px;height:10px;border-radius:50%;background:var(--line)}.wbar span{margin-left:8px}
+.wbody{padding:18px 18px 8px}.wdots{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;padding:6px 14px 16px}
+.wdots button{font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;border:1.5px solid var(--line);color:var(--mute);transition:all .2s}.wdots button[aria-current=true]{border-color:var(--green);color:var(--green);background:var(--green-wash)}
+.win .tk{cursor:default}.win .tk .cb svg{opacity:0}.win .tk.done .cb svg{opacity:1}
+.win .tk .t{display:grid;gap:4px;justify-items:start;min-width:0}.win .tk.done .t{text-decoration:none}.win .tk.done .t b{text-decoration:line-through;color:var(--mute)}
+.win .pill{display:inline-block}.pill.pop{animation:pop .35s ease}
+@keyframes pop{0%{transform:scale(.88);opacity:.4}100%{transform:none;opacity:1}}
+.win .bar i{transition:width .7s ease}.win .bb{margin-top:10px}
+.lp-sec{padding:96px 0}.lp-copy h2{max-width:16ch}.lp-copy .sub{max-width:32ch}
+.lp-hero{padding:72px 0 96px}.lp-hero h1{max-width:12ch}
+.lp-tag{font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px}
+.mrow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line)}.mrow:first-of-type{border-top:0}.mrow>span:first-child{display:flex;align-items:center;gap:10px;min-width:0}
+.wf{list-style:none;margin-top:44px;display:grid;gap:22px}.wf-i{display:grid;gap:12px;grid-template-columns:minmax(0,1fr);align-items:center}
+.wf-n{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:700;font-size:20px}.wf-n b{width:34px;height:34px;border-radius:50%;background:var(--orange-wash);color:var(--orange);display:grid;place-items:center;font-size:15px;flex:none}
+.wf-u{border:1.5px solid var(--line);border-radius:18px;padding:14px 16px;background:var(--white);min-width:0}.wf-u .bb{margin:0}
+html.lp-js .wf-i{opacity:.3;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}html.lp-js .wf-i.on{opacity:1;transform:none}
+html.lp-js .at1,html.lp-js .at2,html.lp-js .at3,html.lp-js .at4{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+html.lp-js .demo.s1 .at1,html.lp-js .demo.s2 .at2,html.lp-js .demo.s3 .at3,html.lp-js .demo.s4 .at4{opacity:1;transform:none}
+.demo.prv .only-pub,.demo:not(.prv) .only-prv{display:none}
+@media(min-width:860px){.wf-i{grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:28px}.lp-hero{padding:96px 0 120px}.lp-sec{padding:120px 0}}
+@media(max-width:640px){.lp-sec{padding:64px 0}.lp-hero{padding:36px 0 56px}.wbody{padding:14px 14px 6px}}
+@media(prefers-reduced-motion:reduce){.pill.pop{animation:none}html.lp-js .at1,html.lp-js .at2,html.lp-js .at3,html.lp-js .at4,html.lp-js .wf-i{opacity:1;transform:none;transition:none}.win .bar i,.wdots button{transition:none}}
+.win .pill{white-space:nowrap;flex:none}.wdots button{text-decoration:none}
+.lp-footer{border-top:1px solid var(--line);margin-top:8px}
+.lp-footer-in{display:flex;flex-direction:column;gap:20px;padding-top:36px;padding-bottom:44px;color:var(--mute);font-size:15px}
+.lp-fb .brand{font-size:20px}.lp-fb p{margin-top:6px}
+.lp-fm{display:grid;gap:4px;min-width:0}.lp-fp{color:var(--ink)}
+@media(min-width:760px){.lp-footer-in{flex-direction:row;justify-content:space-between;align-items:flex-start;padding-top:44px;padding-bottom:52px}.lp-fm{text-align:right}}
+.brand{gap:0}.brand .lg{display:block;height:32px;width:auto;max-width:100%}
+:root{--lg-d:#2563EB;--lg-c:#0D9488;--lg-t:#0B1F3A}
+@media(prefers-color-scheme:dark){:root{--lg-d:#FFFFFF;--lg-c:#2DD4BF;--lg-t:#FFFFFF}}
+.lp-fb .lg{height:28px}
+@media(max-width:400px){.lp-nav .lg{height:26px}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="dp-logo" viewBox="16 16 304.9 64"><g transform="translate(8.5 16)"><defs><mask id="dp-m" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="#fff"/><path d="M21 33 L30 42 L54 11" fill="none" stroke="#000" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/></mask></defs><path d="M11 12 H29 A20 20 0 0 1 29 52 H11 Z" mask="url(#dp-m)" fill="none" style="stroke:var(--lg-d)" stroke-width="7" stroke-linejoin="round"/><path d="M21 33 L30 42 L54 11" fill="none" style="stroke:var(--lg-c)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></g><path d="M110.334 47.961999999999996Q110.334 51.876 108.605 54.916Q106.876 57.955999999999996 103.703 59.628Q100.53 61.3 96.35 61.3H86.356V34.623999999999995H96.35Q100.568 34.623999999999995 103.72200000000001 36.29599999999999Q106.876 37.967999999999996 108.605 40.989Q110.334 44.01 110.334 47.961999999999996ZM103.722 47.961999999999996Q103.722 44.275999999999996 101.66999999999999 42.224Q99.618 40.172 95.932 40.172H92.854V55.675999999999995H95.932Q99.618 55.675999999999995 101.66999999999999 53.66199999999999Q103.722 51.647999999999996 103.722 47.961999999999996ZM121.638 39.792Q123.88 39.792 125.571 40.704Q127.262 41.616 128.174 43.098V40.096H134.672V61.3H128.174V58.297999999999995Q127.224 59.779999999999994 125.533 60.69199999999999Q123.842 61.604 121.6 61.604Q119.016 61.604 116.888 60.254999999999995Q114.76 58.906 113.525 56.417Q112.28999999999999 53.928 112.28999999999999 50.66Q112.28999999999999 47.391999999999996 113.525 44.922Q114.76 42.452 116.888 41.122Q119.016 39.792 121.638 39.792ZM123.538 45.45399999999999Q121.6 45.45399999999999 120.251 46.840999999999994Q118.902 48.227999999999994 118.902 50.66Q118.902 53.092 120.251 54.516999999999996Q121.6 55.942 123.538 55.942Q125.476 55.942 126.825 54.536Q128.174 53.129999999999995 128.174 50.69799999999999Q128.174 48.266 126.825 46.86Q125.476 45.45399999999999 123.538 45.45399999999999ZM138.37599999999998 34.396Q138.37599999999998 32.876 139.45899999999997 31.869Q140.54199999999997 30.862 142.25199999999998 30.862Q143.92399999999998 30.862 145.00699999999998 31.869Q146.08999999999997 32.876 146.08999999999997 34.396Q146.08999999999997 35.878 145.00699999999998 36.885Q143.92399999999998 37.891999999999996 142.25199999999998 37.891999999999996Q140.54199999999997 37.891999999999996 139.45899999999997 36.885Q138.37599999999998 35.878 138.37599999999998 34.396ZM145.48199999999997 40.096V61.3H138.98399999999998V40.096ZM156.29199999999997 33.17999999999999V61.3H149.79399999999998V33.17999999999999ZM182.26399999999998 40.096 168.964 71.37H161.97199999999998L166.83599999999998 60.577999999999996L158.20999999999998 40.096H165.468L170.37 53.358L175.23399999999998 40.096ZM202.402 51.724H198.37399999999997V61.3H191.87599999999998V34.623999999999995H202.402Q205.594 34.623999999999995 207.798 35.726Q210.00199999999998 36.828 211.10399999999998 38.766Q212.206 40.70399999999999 212.206 43.211999999999996Q212.206 45.53 211.142 47.449Q210.07799999999997 49.367999999999995 207.87399999999997 50.54599999999999Q205.67 51.724 202.402 51.724ZM205.594 43.211999999999996Q205.594 41.616 204.682 40.742Q203.76999999999998 39.867999999999995 201.908 39.867999999999995H198.37399999999997V46.556H201.908Q203.76999999999998 46.556 204.682 45.681999999999995Q205.594 44.80799999999999 205.594 43.211999999999996ZM221.68599999999998 33.17999999999999V61.3H215.188V33.17999999999999ZM245.87199999999999 52.256H231.166Q231.31799999999998 54.232 232.439 55.277Q233.56 56.321999999999996 235.194 56.321999999999996Q237.626 56.321999999999996 238.576 54.269999999999996H245.492Q244.95999999999998 56.36 243.57299999999998 58.032Q242.186 59.704 240.096 60.653999999999996Q238.006 61.604 235.422 61.604Q232.30599999999998 61.604 229.874 60.274Q227.442 58.943999999999996 226.074 56.474Q224.706 54.004 224.706 50.69799999999999Q224.706 47.391999999999996 226.055 44.922Q227.404 42.452 229.836 41.122Q232.268 39.792 235.422 39.792Q238.5 39.792 240.894 41.084Q243.288 42.376 244.637 44.769999999999996Q245.986 47.164 245.986 50.355999999999995Q245.986 51.268 245.87199999999999 52.256ZM239.33599999999998 48.646Q239.33599999999998 46.974 238.19599999999997 45.986Q237.05599999999998 44.998 235.346 44.998Q233.712 44.998 232.591 45.94799999999999Q231.47 46.897999999999996 231.204 48.646ZM257.062 39.792Q259.152 39.792 260.881 40.666Q262.61 41.54 263.598 43.022V33.17999999999999H270.096V61.3H263.598V58.26Q262.68600000000004 59.779999999999994 260.995 60.69199999999999Q259.30400000000003 61.604 257.062 61.604Q254.44 61.604 252.312 60.254999999999995Q250.184 58.906 248.949 56.417Q247.714 53.928 247.714 50.66Q247.714 47.391999999999996 248.949 44.922Q250.184 42.452 252.312 41.122Q254.44 39.792 257.062 39.792ZM258.962 45.45399999999999Q257.024 45.45399999999999 255.675 46.840999999999994Q254.326 48.227999999999994 254.326 50.66Q254.326 53.092 255.675 54.516999999999996Q257.024 55.942 258.962 55.942Q260.9 55.942 262.249 54.536Q263.598 53.129999999999995 263.598 50.69799999999999Q263.598 48.266 262.249 46.86Q260.9 45.45399999999999 258.962 45.45399999999999ZM289.0 43.098V40.096H295.49800000000005V61.262Q295.49800000000005 64.188 294.33900000000006 66.563Q293.18 68.938 290.805 70.344Q288.43 71.75 284.896 71.75Q280.184 71.75 277.25800000000004 69.527Q274.332 67.304 273.91400000000004 63.504H280.336Q280.64000000000004 64.72 281.78000000000003 65.423Q282.92 66.12599999999999 284.59200000000004 66.12599999999999Q286.606 66.12599999999999 287.803 64.967Q289.0 63.808 289.0 61.262V58.26Q288.05 59.742 286.37800000000004 60.673Q284.706 61.604 282.464 61.604Q279.84200000000004 61.604 277.71400000000006 60.254999999999995Q275.586 58.906 274.351 56.417Q273.11600000000004 53.928 273.11600000000004 50.66Q273.11600000000004 47.391999999999996 274.351 44.922Q275.586 42.452 277.71400000000006 41.122Q279.84200000000004 39.792 282.464 39.792Q284.706 39.792 286.39700000000005 40.704Q288.088 41.616 289.0 43.098ZM284.36400000000003 45.45399999999999Q282.42600000000004 45.45399999999999 281.077 46.840999999999994Q279.728 48.227999999999994 279.728 50.66Q279.728 53.092 281.077 54.516999999999996Q282.42600000000004 55.942 284.36400000000003 55.942Q286.302 55.942 287.651 54.536Q289.0 53.129999999999995 289.0 50.69799999999999Q289.0 48.266 287.651 46.86Q286.302 45.45399999999999 284.36400000000003 45.45399999999999ZM319.684 52.256H304.978Q305.13 54.232 306.251 55.277Q307.372 56.321999999999996 309.00600000000003 56.321999999999996Q311.438 56.321999999999996 312.38800000000003 54.269999999999996H319.30400000000003Q318.772 56.36 317.385 58.032Q315.998 59.704 313.908 60.653999999999996Q311.818 61.604 309.234 61.604Q306.118 61.604 303.68600000000004 60.274Q301.254 58.943999999999996 299.886 56.474Q298.51800000000003 54.004 298.51800000000003 50.69799999999999Q298.51800000000003 47.391999999999996 299.867 44.922Q301.216 42.452 303.648 41.122Q306.08 39.792 309.234 39.792Q312.312 39.792 314.706 41.084Q317.1 42.376 318.449 44.769999999999996Q319.798 47.164 319.798 50.355999999999995Q319.798 51.268 319.684 52.256ZM313.148 48.646Q313.148 46.974 312.00800000000004 45.986Q310.868 44.998 309.158 44.998Q307.524 44.998 306.403 45.94799999999999Q305.282 46.897999999999996 305.016 48.646Z" style="fill:var(--lg-t)"/></symbol></svg>
+
 
 <!-- LANDING -->
 <section class="screen on" id="landing">
-  <header class="lp-nav"><div class="lp"><div class="brand"><i></i>Daily pledge</div><div style="display:flex;gap:8px"><button class="lp-btn q" data-go="login">Log in</button><button class="lp-btn p" data-go="signup" style="height:44px">Sign up</button></div></div></header>
+  <header class="lp-nav"><div class="lp"><div class="brand" role="img" aria-label="Daily pledge"><svg class="lg" viewBox="0 0 304.9 64" width="152.45" height="32" aria-hidden="true"><use href="#dp-logo"/></svg></div><div style="display:flex;gap:8px"><button class="lp-btn q" data-go="login">Log in</button><button class="lp-btn p" data-go="signup" style="height:44px">Sign up</button></div></div></header>
   <main class="lp">
     <section class="lp-hero">
-      <div class="rv"><h1>Say what you'll do. Someone sees if you did.</h1><p class="sub">Pick up to three tasks each morning and lock them in. One partner sees how your day goes, and you see theirs.</p>
-        <div class="lp-cta"><button class="lp-btn p" data-go="signup">Create an account</button><button class="lp-btn o" id="lpHow">See how it works</button></div></div>
-      <div class="pv float rv" id="hv"><div class="lp-meta">Today</div><h3 id="hvT">Plan your day</h3><div id="hvL"></div><button class="lp-btn p" id="hvB" style="width:100%;margin-top:16px">Lock in my day</button><p class="lp-hint" id="hvH" aria-live="polite">Try it: lock in your day, then tick things off. This is a preview.</p></div>
+      <div class="rv"><h1>Study together. Stay accountable.</h1><p class="sub">Plan your day, study with friends, and see who shows up.</p>
+        <div class="lp-cta"><button class="lp-btn p" data-go="signup">Get started</button><button class="lp-btn o" id="lpHow">See how it works</button></div></div>
+      <div class="win demo rv" data-n="4" data-labels="Lock in|Done|Study|Discuss"><div class="wbar"><i></i><i></i><i></i><span>Daily pledge</span></div><div class="wbody"><div class="lp-meta">Today</div><div class="mrow" style="border:0;padding:4px 0 0"><h3 data-txt="0 of 2 done|0 of 2 done|1 of 2 done|1 of 2 done|1 of 2 done">0 of 2 done</h3><span class="pill p-done at1">Locked in</span></div><div class="bar"><i data-bar="0 0 50 50 50" style="width:0"></i></div><div class="tk" data-st="wwccc"><span class="cb"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg></span><span class="t"><b>Read Chapter 3</b><small class="pill"></small></span><span class="tm">9:00 AM</span></div><div class="tk" data-st="wwwww"><span class="cb"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg></span><span class="t"><b>Gym</b><small class="pill"></small></span><span class="tm">6:00 PM</span></div><div class="mrow at2" style="border:0"><span><span class="av a1">S</span><span class="sg-meta">Sarah: Proud of you</span></span></div><div class="sg-card at3" style="margin-top:10px;padding:14px"><div class="mrow" style="border:0;padding:0"><strong>Physics · Atomic physics</strong><span class="pill " data-st="pppsc"></span></div><div class="bb at4"><b>Victor</b>Electrons sit at fixed energy levels.</div></div></div></div>
     </section>
-
-    <section class="lp-sec"><div class="lp-grid">
-      <div class="lp-copy rv"><div class="lp-meta">Accountability partner</div><h2>A friend who sees your day</h2><p class="sub">Your partner sees what you committed to and how it went. You see theirs, and can cheer them on.</p>
-        <ul class="lp-list"><li>Tasks lock in once your day starts, so plans stay honest.</li><li>An end-of-day check-in: what got done, what got in the way.</li><li>A 7-day streak strip you both can read at a glance.</li></ul></div>
-      <div class="pv rv" id="pv"><div class="lp-meta">Maya's day</div><h3>2 of 3 done</h3><div class="st" aria-label="Last 7 days"><span></span><span></span><span class="h"></span><span></span><span></span><span></span><span class="t"></span></div>
-        <div class="tk done" style="cursor:default"><span class="cb"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg></span><span class="t">Morning run</span><span class="tm">6:30 AM</span></div>
-        <div class="tk next" style="cursor:default"><span class="cb"></span><span class="t">Finish the budget review</span><span class="tm">11:00 AM</span></div>
-        <div class="lp-meta" style="margin-top:16px">Send encouragement</div><div class="chips" id="pvC"><button class="chip">You've got this</button><button class="chip">Proud of you</button><button class="chip">Keep going</button></div><p class="lp-hint" id="pvH" aria-live="polite"></p></div>
-    </div></section>
-
-    <section class="lp-sec"><div class="lp-grid rev">
-      <div class="lp-copy rv"><div class="lp-meta">Study groups</div><h2>Learn it together, in your own words</h2><p class="sub">Commit to a topic, explain it to your group, test each other, and keep the explanations worth revisiting.</p>
-        <ul class="lp-list"><li>Commitments are separate from your daily tasks.</li><li>Challenges let friends quiz each other, with or without expected answers.</li><li>The Study Assistant is optional: share it with the group, or keep it just yours.</li></ul></div>
-      <div class="pv rv" id="sv"><div class="lp-meta">Physics finals crew</div>
-        <div class="lp-tabs" role="tablist" aria-label="Study group features"><button role="tab" aria-selected="true" data-p="0">Discussion</button><button role="tab" aria-selected="false" data-p="1">Challenge</button><button role="tab" aria-selected="false" data-p="2">Notes<span class="dot" id="svDot" style="display:none;display:none"></span></button><button role="tab" aria-selected="false" data-p="3">Assistant</button></div>
-        <div data-pn="0"><div class="bb"><b>Maya · Explanation</b>Electrons sit at fixed energy levels. They jump between levels by absorbing or emitting a photon.</div><button class="lp-link" id="svSave">Save as note</button><div class="bb"><b>Tomás · Question</b>Why can't an electron sit between two levels?</div></div>
-        <div data-pn="1" hidden><div class="bb"><b>Atomic structure check · 2 of 4 answered</b>Why can an electron only have certain energies?</div><button class="lp-link" id="svRev">Show creator's expected answer</button><div class="bb" id="svExp" hidden><b>Expected answer</b>Only certain standing-wave patterns fit around the nucleus, so only certain energies are allowed.</div></div>
-        <div data-pn="2" hidden><div class="bb"><b>Maya · Atomic physics</b>Energy levels in one paragraph</div><div class="bb" id="svNote" hidden style="border:1.5px solid var(--green)"><b>You · just now</b>Electrons sit at fixed energy levels. They jump between levels by absorbing or emitting a photon.</div></div>
-        <div data-pn="3" hidden><div class="chips" id="svM"><button class="chip sent" data-m="0">Share with group</button><button class="chip" data-m="1">Just me</button></div><p class="lp-hint" id="svMH">The question and reply appear in the group discussion.</p><button class="lp-btn o" id="svSug" style="margin-top:8px;height:44px">Suggest questions</button><div class="bb" id="svQ" hidden><b>Simulated reply</b>How does absorption differ from emission? Can you give an example of an electron changing levels?</div></div>
-      </div>
-    </div></section>
-
-    <section class="lp-sec" id="lpHowSec"><div class="rv"><div class="lp-meta">How it works</div><h2>Three steps, every day</h2></div>
-      <div class="lp-steps"><div class="stp rv"><i>1</i><h3>Pick up to three</h3><p>Choose what matters today and give each task a time if you like.</p></div><div class="stp rv"><i>2</i><h3>Lock it in</h3><p>Once locked, tasks can't be added or removed. Then see it through.</p></div><div class="stp rv"><i>3</i><h3>Check in</h3><p>Close your day with what got done and what got in the way. Your partner sees it.</p></div></div></section>
-
-    <section class="lp-end rv"><h2>Make a pledge today</h2><p>Create an account, plan your day, and invite a partner.</p><button class="lp-btn p" data-go="signup">Create an account</button></section>
-    <p class="lp-foot">Previews on this page are simulated. Nothing you try here is saved or sent.</p>
+    <section class="lp-sec" id="lpDaily"><div class="lp-grid"><div class="lp-copy rv"><div class="lp-tag">Daily accountability</div><h2>Say it. Do it. A friend sees.</h2><p class="sub">Lock in up to three tasks. Your partner sees how the day went.</p></div><div class="win demo rv" data-n="3" data-labels="Lock in|Done|Checked in"><div class="wbar"><i></i><i></i><i></i><span>Victor’s day · Sarah’s view</span></div><div class="wbody"><div class="mrow" style="border:0;padding:0"><span><span class="av a0">V</span><strong>Victor</strong></span><span class="pill p-done at1">Locked in</span></div><div class="tk" data-st="wwcc"><span class="cb"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg></span><span class="t"><b>Read Chapter 3</b><small class="pill"></small></span><span class="tm">9:00 AM</span></div><div class="bb at3"><b>Check-in</b>Done: finished the chapter. In the way: nothing.</div><div class="mrow at3" style="border:0"><span><span class="av a1">S</span><span class="sg-meta">Sarah checked in on your day</span></span></div></div></div></div></section>
+    <section class="lp-sec"><div class="lp-grid rev"><div class="lp-copy rv"><div class="lp-tag">Study groups</div><h2>Study with people who notice you show up.</h2><p class="sub">Commit to a topic, study it, then explain it to the group.</p></div><div class="win demo rv" data-n="3" data-labels="Study|Complete|Discuss"><div class="wbar"><i></i><i></i><i></i><span>Physics Study Group</span></div><div class="wbody"><div class="mrow" style="border:0;padding:0"><h3>Physics Study Group</h3><span class="avs"><span class="av a0">V</span><span class="av a1">S</span><span class="av a2">D</span><span class="av a3">M</span></span></div><p class="sg-meta" style="margin-top:4px">Today: Atomic physics</p><div style="margin-top:8px"><div class="mrow"><span><span class="av a0">V</span><strong>Victor</strong></span><span class="pill " data-st="pscc"></span></div><div class="mrow"><span><span class="av a1">S</span><strong>Sarah</strong></span><span class="pill " data-st="ppsc"></span></div><div class="mrow"><span><span class="av a2">D</span><strong>Daniel</strong></span><span class="pill " data-st="ppss"></span></div><div class="mrow"><span><span class="av a3">M</span><strong>Michael</strong></span><span class="pill " data-st="pppp"></span></div></div><div class="bb at3"><b>Victor</b>Electrons only sit at fixed energy levels.</div><div class="bb at3"><b>Sarah</b>So why can’t they sit in between?</div></div></div></div></section>
+    <section class="lp-sec"><div class="lp-grid"><div class="lp-copy rv"><div class="lp-tag">Question challenges</div><h2>Test each other, not just yourself.</h2><p class="sub">Friends write questions, answer, and talk it through.</p></div><div class="win demo rv" data-n="4" data-labels="Sarah|Daniel|Michael|Discuss"><div class="wbar"><i></i><i></i><i></i><span>Atomic Physics Challenge</span></div><div class="wbody"><div class="mrow" style="border:0;padding:0"><span class="lp-meta">Question 1 of 3</span><span class="sg-meta" data-txt="0 of 4 answered|1 of 4 answered|2 of 4 answered|3 of 4 answered|3 of 4 answered">0 of 4 answered</span></div><div class="bar"><i data-bar="0 25 50 75 75" style="width:0"></i></div><div class="bb"><b>Question</b>What happens when an electron moves between energy levels?</div><div class="bb at1"><b>Sarah</b>It absorbs or emits a photon.</div><div class="bb at2"><b>Daniel</b>It jumps to a new energy level.</div><div class="bb at3"><b>Michael</b>The energy difference leaves as light.</div><div class="mrow at4" style="border:0"><span class="sg-meta">Compare answers and talk it through</span><span class="pill p-studying">Discuss</span></div></div></div></div></section>
+    <section class="lp-sec"><div class="lp-grid rev"><div class="lp-copy rv"><div class="lp-tag">Knowledge notes</div><h2>Keep what your group figured out.</h2><p class="sub">Save a good explanation. Find it when you revise.</p></div><div class="win demo rv" data-n="2" data-labels="Save|Revise"><div class="wbar"><i></i><i></i><i></i><span>Physics Study Notes</span></div><div class="wbody"><div class="bb" style="margin-top:0"><b>Sarah · in discussion</b>An electron can only gain or lose exact amounts of energy, so it jumps between levels.</div><button class="lp-btn o" data-go-step="1" data-txt="Save to Knowledge|Saved to notes|Saved to notes" style="height:42px;margin-top:10px">Save to Knowledge</button><div class="mrow" style="margin-top:14px"><span class="lp-meta">Physics Study Notes</span><span class="sg-meta" data-txt="2 notes|3 notes|3 notes">2 notes</span></div><div class="bb"><b>Energy levels</b>Why electrons sit at fixed energies.</div><div class="bb"><b>Photons</b>Light from an electron dropping a level.</div><div class="bb at1" style="border:1.5px solid var(--green)"><b>Atomic structure · saved from discussion</b>Electrons jump between exact energy levels.</div><div class="mrow at2" style="border:0"><span class="pill p-done">Ready to revise later</span></div></div></div></div></section>
+    <section class="lp-sec"><div class="lp-grid"><div class="lp-copy rv"><div class="lp-tag">Study assistant</div><h2>Help when you’re stuck. Not instead of friends.</h2><p class="sub">Ask in the group, or privately. The group only sees that you used it.</p></div><div class="win demo rv" data-n="3" data-labels="Ask|Suggest|Result"><div class="wbar"><i></i><i></i><i></i><span>Study Assistant</span></div><div class="wbody"><div class="chips" style="margin-top:0"><button class="chip sent" data-mode-btn="pub" aria-pressed="true">Share with group</button><button class="chip" data-mode-btn="prv" aria-pressed="false">Just me</button></div><div class="bb at1"><b>You</b>Suggest questions about atomic physics.</div><div class="sug at2"><strong>Question prompts</strong><p class="sg-meta">Ideas to discuss, not answers.</p><ul style="padding:0;margin-top:6px"><li>Explain the main idea in your own words.</li><li>Why can’t an electron sit between energy levels?</li><li>How might this appear in an exam?</li></ul></div><div class="at3 only-pub" style="margin-top:12px"><span class="pill p-done">Posted in the group discussion</span> <span class="sg-meta">Everyone can reply</span></div><div class="at3 only-prv"><div class="priv"><strong>Only you can see this</strong></div><div class="mrow" style="border:0"><span><span class="av a0">V</span><span class="sg-meta">The group sees: Victor used the Study Assistant today</span></span></div></div></div></div></div></section>
+    <section class="lp-sec" id="lpFlow"><div class="rv"><div class="lp-tag">The whole journey</div><h2 style="font-size:clamp(28px,5vw,40px);color:var(--green-deep);max-width:16ch">From promise to understanding</h2></div><ol class="wf"><li class="wf-i"><div class="wf-n"><b>1</b><span>Commit</span></div><div class="wf-u"><span class="pill p-planned">Planned</span> Atomic physics · Ch. 3</div></li><li class="wf-i"><div class="wf-n"><b>2</b><span>Study</span></div><div class="wf-u"><span class="pill p-studying">Studying</span> Chapter 3, pp. 20–35</div></li><li class="wf-i"><div class="wf-n"><b>3</b><span>Share</span></div><div class="wf-u"><div class="bb"><b>Victor</b>Electrons sit at fixed energy levels.</div></div></li><li class="wf-i"><div class="wf-n"><b>4</b><span>Discuss</span></div><div class="wf-u"><div class="bb"><b>Sarah</b>Why can’t they sit in between?</div></div></li><li class="wf-i"><div class="wf-n"><b>5</b><span>Challenge</span></div><div class="wf-u">Atomic Physics Challenge · 3 of 4 answered<div class="bar"><i style="width:75%"></i></div></div></li><li class="wf-i"><div class="wf-n"><b>6</b><span>Save</span></div><div class="wf-u"><span class="pill p-done">Saved</span> Atomic structure → Physics Study Notes</div></li><li class="wf-i"><div class="wf-n"><b>7</b><span>Improve</span></div><div class="wf-u">5 notes · 2 challenges · revise together</div></li></ol></section>
+    <section class="lp-end rv"><h2>Study together. Stay accountable. Understand more.</h2><p>Plan today, invite a friend, and begin.</p><button class="lp-btn p" data-go="signup">Get started</button></section>
+    <p class="lp-foot">Everything shown here is a simulated preview. Nothing you try on this page is saved.</p>
   </main>
+  <footer class="lp-footer"><div class="lp lp-footer-in">
+    <div class="lp-fb"><div class="brand" role="img" aria-label="Daily pledge"><svg class="lg" viewBox="0 0 304.9 64" width="152.45" height="32" aria-hidden="true"><use href="#dp-logo"/></svg></div><p>A product by DRHEMA INC.</p></div>
+    <div class="lp-fm"><p>© 2026 DRHEMA INC. All rights reserved.</p><p class="lp-fp">Phone: [Phone Number]</p></div>
+  </div></footer>
 </section>
 
 <!-- AUTH -->
@@ -344,7 +375,7 @@ img{max-width:100%;height:auto}
 <section class="screen" id="app">
   <div class="wrap">
     <div class="top">
-      <div class="brand"><i></i>Daily pledge</div>
+      <div class="brand" role="img" aria-label="Daily pledge"><svg class="lg" viewBox="0 0 304.9 64" width="152.45" height="32" aria-hidden="true"><use href="#dp-logo"/></svg></div>
       <button class="out" id="signout">Sign out</button>
     </div>
     <div class="tabs" role="tablist">
@@ -361,6 +392,7 @@ img{max-width:100%;height:auto}
 
       <div class="nudge" id="nudge" hidden><small id="nudgeFrom"></small><p id="nudgeText"></p></div>
 
+      <div id="welcome" class="sg-card" hidden></div>
       <div class="tasks" id="tasks"></div>
 
       <form class="add" id="addForm">
@@ -431,21 +463,24 @@ img{max-width:100%;height:auto}
 
       <div id="partnerEmpty" hidden>
         <div class="date">Your partner</div>
-        <h1>Invite one person</h1>
+        <h1>Invite a friend</h1>
         <p class="lede">You'll see each other's days. Nobody else will.</p>
-        <div class="invite-box">
-          <p>Your invite link</p>
-          <code>dailypledge.app/invite/k3x9-mq2v</code>
-          <button class="btn btn-primary" id="copyInvite">Copy link</button>
-        </div>
-        <div class="demo">This is a prototype with demo data. <button id="demoLink">Link a demo partner</button> to see the Partner screen.</div>
+        <button class="btn btn-primary" id="shareInvite" style="width:100%">Share invitation</button>
+        <p class="meta" style="margin-top:12px;color:var(--mute);font-size:14px">Send it by WhatsApp, text or email. When your friend opens the link, they just tap Accept.</p>
+        <details><summary>Got a friend's code instead?</summary>
+          <form id="codeForm" style="margin-top:12px"><div class="field"><label for="partnerCode">Friend's code</label><input id="partnerCode" autocomplete="off" autocapitalize="characters" placeholder="e.g. K3X9MQ2V"></div><button class="btn btn-primary" type="submit" style="width:100%;margin-top:12px">Link partner</button></form>
+        </details>
+        <div class="demo" id="demoRow">Just trying it out? <button id="demoLink" type="button">Link a demo partner</button> to see the Partner screen.</div>
       </div>
     </div>
   </div>
 </section>
 
+<section class="screen" id="invite"><div class="wrap"><div class="top"><div class="brand" role="img" aria-label="Daily pledge"><svg class="lg" viewBox="0 0 304.9 64" width="152.45" height="32" aria-hidden="true"><use href="#dp-logo"/></svg></div></div><div id="inviteBody" class="sg" style="padding-top:24px"></div></div></section>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script>
 (function(){
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
@@ -472,7 +507,8 @@ function demoPartner(){
 }
 function fresh(){return {user:null,days:{},partner:null,inbox:[],sent:[]}}
 let S;try{S=JSON.parse(localStorage.getItem(KEY))||fresh()}catch(e){S=fresh()}
-const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+let cloud=false,sb=null;
+const save=()=>{if(cloud)return;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
 
 function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),2200)}
 function show(id){$$('.screen').forEach(s=>s.classList.toggle('on',s.id===id));window.scrollTo(0,0)}
@@ -491,6 +527,41 @@ function renderStrip(el,days){
     div.innerHTML='<span></span>'+lab;el.appendChild(div)}
 }
 
+// ---------- CLOUD (Supabase) ----------
+const SB_URL='https://vlojuhqzifzmkeaondcm.supabase.co',SB_KEY='sb_publishable_8yrhdG5L8JRcn0qKSSYf_A_fimvPHnZ';
+try{if(window.supabase)sb=window.supabase.createClient(SB_URL,SB_KEY)}catch(e){sb=null}
+const netErr=e=>!e||/fetch|network|load failed/i.test(String(e.message||e));
+async function pull(uid){
+  const from=shift(today,-6);
+  const [me,days,tasks,cheers]=await Promise.all([
+    sb.from('profiles').select('id,display_name,invite_code,partner_id').eq('id',uid).single(),
+    sb.from('days').select('*').gte('day',from),
+    sb.from('tasks').select('*').gte('day',from).order('position').order('created_at'),
+    sb.from('cheers').select('message,created_at').eq('to_user',uid).order('created_at',{ascending:false}).limit(5)]);
+  if(me.error)throw me.error;if(days.error)throw days.error;if(tasks.error)throw tasks.error;
+  const build=id=>{const o={};
+    (days.data||[]).filter(x=>x.user_id===id).forEach(r=>{o[r.day]={locked:r.locked,closed:r.checked_in,tasks:[],done:r.done_note||'',block:r.blocked_note||''}});
+    (tasks.data||[]).filter(t=>t.user_id===id).forEach(t=>{(o[t.day]=o[t.day]||{locked:false,closed:false,tasks:[],done:'',block:''}).tasks.push([t.title,t.at_time||'',t.done?1:0,t.id])});
+    return o};
+  S.me=uid;S.invite=me.data.invite_code;S.user=S.user||{name:'',email:''};S.user.name=me.data.display_name;S.days=build(uid);S.partner=null;
+  if(me.data.partner_id){const pr=await sb.from('profiles').select('display_name').eq('id',me.data.partner_id).single();
+    S.partner={id:me.data.partner_id,name:(pr.data&&pr.data.display_name)||'Partner',days:build(me.data.partner_id)}}
+  S.inbox=(cheers.data||[]).map(c=>c.message).reverse();S.sent=[];
+}
+async function persist(fn){try{const r=await fn();if(r&&r.error)throw r.error}catch(e){
+  toast(netErr(e)?'Couldn\u2019t reach the server. Check your connection.':(e.message||'Couldn\u2019t save that'));
+  if(cloud&&S.me){try{await pull(S.me);render();renderPartner()}catch(x){}try{await sgPull(true);sgRender()}catch(x){}}}}
+const withId=async(t,fn)=>{if(t[4])await t[4];if(t[3])return fn(t[3])};
+function cloudAdd(t,v){if(!cloud)return;t[4]=persist(async()=>{const r=await sb.from('tasks').insert({user_id:S.me,day:today,title:v,at_time:t[1]||null,position:ensure().tasks.length}).select('id').single();if(r.data)t[3]=r.data.id;return r})}
+function cloudDone(t){if(cloud)persist(()=>withId(t,id=>sb.from('tasks').update({done:!!t[2]}).eq('id',id)))}
+function cloudRemove(t){if(cloud&&t)persist(()=>withId(t,id=>sb.from('tasks').delete().eq('id',id)))}
+function cloudLock(d){if(cloud)persist(async()=>{await Promise.all(d.tasks.map(t=>t[4]).filter(Boolean));return sb.from('days').upsert({user_id:S.me,day:today,locked:true})})}
+function cloudClose(d){if(cloud)persist(()=>sb.from('days').upsert({user_id:S.me,day:today,locked:true,checked_in:true,done_note:d.done||null,blocked_note:d.block||null}))}
+function cloudCheer(m){if(cloud&&S.partner&&S.partner.id)persist(()=>sb.from('cheers').insert({from_user:S.me,to_user:S.partner.id,message:m.slice(0,200)}))}
+function cloudUnlink(){if(cloud)persist(()=>sb.rpc('unlink_partner'))}
+function cloudRefresh(){if(cloud&&S.me)pull(S.me).then(()=>{render();if(!$('#partnerPage').hidden)renderPartner()}).catch(()=>{})}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)cloudRefresh()});
+
 // ---------- AUTH ----------
 let mode='signup';
 function setMode(m){mode=m;const su=m==='signup';
@@ -502,19 +573,28 @@ function setMode(m){mode=m;const su=m==='signup';
   $('#pw').autocomplete=su?'new-password':'current-password'}
 $$('[data-go]').forEach(b=>b.addEventListener('click',()=>{const g=b.dataset.go;if(g==='landing')return show('landing');setMode(g);show('auth')}));
 $('#authSwitch').addEventListener('click',()=>setMode(mode==='signup'?'login':'signup'));
-$('#authForm').addEventListener('submit',e=>{e.preventDefault();
+$('#authForm').addEventListener('submit',async e=>{e.preventDefault();
   const email=$('#email').value.trim();if(!email){toast('Add your email to continue');$('#email').focus();return}
-  if($('#pw').value.length<6){toast('Use at least 6 characters');$('#pw').focus();return}
-  const nm=$('#name').value.trim()||email.split('@')[0];
+  const pw=$('#pw').value;if(pw.length<6){toast('Use at least 6 characters');$('#pw').focus();return}
+  const nm=$('#name').value.trim()||email.split('@')[0],btn=$('#authBtn');
+  if(sb){btn.disabled=true;
+    try{
+      const res=mode==='signup'?await sb.auth.signUp({email,password:pw,options:{data:{name:nm}}}):await sb.auth.signInWithPassword({email,password:pw});
+      if(res.error)throw res.error;
+      if(!res.data.session){toast('Check your email to confirm your account, then log in.');setMode('login');return}
+      cloud=true;S=fresh();S.user={name:nm,email};await pull(res.data.user.id);sg.data={groups:[]};sgHash='';await sgPull(true).catch(()=>{});enter();return;
+    }catch(err){cloud=false;if(!netErr(err)){toast(err.message||'Something went wrong');return}toast('Can\u2019t reach the server here, so this runs as an offline demo.')}
+    finally{btn.disabled=false}
+  }
   S.user=S.user||{name:nm,email};if(mode==='signup'&&$('#name').value.trim())S.user.name=nm;
   save();enter()});
-$('#signout').addEventListener('click',()=>{S.user=null;save();show('landing')});
+$('#signout').addEventListener('click',()=>{if(cloud&&sb){sb.auth.signOut();cloud=false;S=fresh();sg.data=STUDY_MOCK();sgHash='';sg.view='list';sg.gid=null;try{localStorage.removeItem(KEY)}catch(e){}}else{S.user=null;save()}show('landing')});
 
-function enter(){show('app');switchTab('today');render()}
+function enter(){const p=getPend();if(p){showInvite(p);return}show('app');switchTab('today');render()}
 
 // ---------- TABS ----------
 function switchTab(t){$$('.tab').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));
-  $('#todayPage').hidden=t!=='today';$('#partnerPage').hidden=t!=='partner';$('#studyPage').hidden=t!=='study';window.scrollTo(0,0);if(t==='partner')renderPartner();if(t==='study'){$('#studyDot').style.display='none';sgRender()}}
+  $('#todayPage').hidden=t!=='today';$('#partnerPage').hidden=t!=='partner';$('#studyPage').hidden=t!=='study';window.scrollTo(0,0);if(t==='partner'){renderPartner();cloudRefresh()}if(t==='study'){$('#studyDot').style.display='none';sgRender()}}
 $$('.tab').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
 
 // ---------- TODAY ----------
@@ -532,11 +612,12 @@ function render(){
   const n=S.inbox[S.inbox.length-1];$('#nudge').hidden=!n;
   if(n){$('#nudgeFrom').textContent='From '+S.partner.name;$('#nudgeText').textContent=n}
 
+  renderWelcome();
   // tasks
   const box=$('#tasks');box.innerHTML='';
   const list=sorted(d.tasks);
   const nextIdx=locked&&!closed?(list.find(x=>!x.t[2])||{}).i:-1;
-  if(!list.length){box.innerHTML='<div class="empty">Nothing planned yet.</div>'}
+  if(!list.length){box.innerHTML='<div class="empty">Nothing committed for today. Add up to three things below.</div>'}
   list.forEach(({t,i})=>{
     const el=document.createElement('div');
     el.className='task'+(t[2]?' done':'')+(i===nextIdx?' next':'');
@@ -545,8 +626,8 @@ function render(){
       '<div class="txt"><div class="name"></div>'+(meta?'<div class="meta">'+meta+'</div>':'')+'</div>'+
       (!locked?'<button class="rm" aria-label="Remove task">'+TRASH+'</button>':'');
     el.querySelector('.name').textContent=t[0];
-    const c=el.querySelector('.check');if(c&&!closed)c.addEventListener('click',()=>{t[2]=t[2]?0:1;save();render();if(t[2]&&list.every(x=>x.t[2]))toast('That\u2019s everything. Close out your day when you\u2019re ready.')});
-    const r=el.querySelector('.rm');if(r)r.addEventListener('click',()=>{d.tasks.splice(i,1);save();render()});
+    const c=el.querySelector('.check');if(c&&!closed)c.addEventListener('click',()=>{t[2]=t[2]?0:1;cloudDone(t);save();render();if(t[2]&&list.every(x=>x.t[2]))toast('That\u2019s everything. Close out your day when you\u2019re ready.')});
+    const r=el.querySelector('.rm');if(r)r.addEventListener('click',()=>{cloudRemove(d.tasks[i]);d.tasks.splice(i,1);save();render()});
     box.appendChild(el)});
 
   // add form
@@ -569,14 +650,14 @@ function render(){
 $('#addForm').addEventListener('submit',e=>{e.preventDefault();
   const v=$('#taskTitle').value.trim();if(!v){$('#taskTitle').focus();return}
   const d=ensure();if(d.tasks.length>=3)return;
-  d.tasks.push([v,$('#taskTime').value||'',0]);$('#taskTitle').value='';$('#taskTime').value='';save();render();$('#taskTitle').focus()});
-$('#lockBtn').addEventListener('click',()=>{const d=ensure();if(!d.tasks.length)return;d.locked=true;save();render();toast('Your day is locked in');window.scrollTo({top:0,behavior:'smooth'})});
-$('#closeBtn').addEventListener('click',()=>{const d=ensure();d.closed=true;d.done=$('#doneNote').value.trim();d.block=$('#blockNote').value.trim();save();render();toast('Day closed');window.scrollTo({top:0,behavior:'smooth'})});
+  const nt=[v,$('#taskTime').value||'',0];d.tasks.push(nt);cloudAdd(nt,v);$('#taskTitle').value='';$('#taskTime').value='';save();render();$('#taskTitle').focus()});
+$('#lockBtn').addEventListener('click',()=>{const d=ensure();if(!d.tasks.length)return;d.locked=true;cloudLock(d);save();render();toast('Your day is locked in');window.scrollTo({top:0,behavior:'smooth'})});
+$('#closeBtn').addEventListener('click',()=>{const d=ensure();d.closed=true;d.done=$('#doneNote').value.trim();d.block=$('#blockNote').value.trim();cloudClose(d);save();render();toast('Day closed');window.scrollTo({top:0,behavior:'smooth'})});
 
 // ---------- PARTNER ----------
 const QUICK=['You\u2019ve got this','Proud of you','Go finish that first task','Checking in on you'];
 function renderPartner(){
-  const linked=!!S.partner;$('#partnerLinked').hidden=!linked;$('#partnerEmpty').hidden=linked;
+  const linked=!!S.partner;$('#partnerLinked').hidden=!linked;$('#partnerEmpty').hidden=linked;$('#demoRow').hidden=cloud;
   if(!linked)return;
   const p=S.partner,days=p.days,d=days[today];
   $('#pName').textContent=p.name;
@@ -594,11 +675,15 @@ function renderPartner(){
   const ch=$('#chips');ch.innerHTML='';
   QUICK.forEach(q=>{const b=document.createElement('button');b.className='chip';b.textContent=q;b.addEventListener('click',()=>sendMsg(q,b));ch.appendChild(b)});
 }
-function sendMsg(m,btn){S.sent.push(m);save();if(btn){btn.classList.add('sent');setTimeout(()=>btn.classList.remove('sent'),1400)}toast('Sent to '+S.partner.name)}
+function sendMsg(m,btn){S.sent.push(m);cloudCheer(m);save();if(btn){btn.classList.add('sent');setTimeout(()=>btn.classList.remove('sent'),1400)}toast('Sent to '+S.partner.name)}
 $('#msgForm').addEventListener('submit',e=>{e.preventDefault();const v=$('#msg').value.trim();if(!v)return;sendMsg(v);$('#msg').value=''});
-$('#unlink').addEventListener('click',()=>{if(confirm('Stop partnering with '+S.partner.name+'?')){S.partner=null;S.inbox=[];save();render();renderPartner()}});
+$('#unlink').addEventListener('click',()=>{if(confirm('Stop partnering with '+S.partner.name+'?')){cloudUnlink();S.partner=null;S.inbox=[];save();render();renderPartner()}});
 $('#demoLink').addEventListener('click',()=>{S.partner={name:'Maya',days:demoPartner()};S.inbox=['Proud of you for locking in early. Go get it.'];save();render();renderPartner();toast('Linked with Maya (demo)')});
-$('#copyInvite').addEventListener('click',()=>{try{navigator.clipboard.writeText('dailypledge.app/invite/k3x9-mq2v')}catch(e){}toast('Invite link copied')});
+$('#shareInvite').addEventListener('click',()=>{if(!cloud){toast('Sign in with a real account to invite a friend');return}shareLink(friendUrl(),'Be my accountability partner','Join me on Daily pledge: plan your day, check in, and cheer each other on.')});
+$('#codeForm').addEventListener('submit',async e=>{e.preventDefault();if(!cloud){toast('Sign in with a real account to link a partner');return}
+  const c=$('#partnerCode').value.trim();if(!c){$('#partnerCode').focus();return}
+  try{const r=await sb.rpc('link_partner',{code:c});if(r.error)throw r.error;await pull(S.me);$('#partnerCode').value='';render();renderPartner();toast('Linked with '+S.partner.name)}
+  catch(err){toast(netErr(err)?'Couldn\u2019t reach the server.':err.message)}});
 
 
 // ---------- STUDY GROUPS (front end only: mock data, in memory, nothing is sent or saved) ----------
@@ -625,20 +710,20 @@ const nowT=()=>new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit'
 
 function sgRender(){
   const el=$('#studyPage');let o='';
-  if(sg.view==='list')o=vList();else if(sg.view==='create')o=vCreate();else o=vGroup();
+  if(sg.view==='list')o=vList();else if(sg.view==='create')o=vCreate();else if(sg.view==='created')o=vCreated();else o=vGroup();
   el.innerHTML=o;
 }
 function vList(){
   const gs=sg.data.groups;
   let o=`<div class="date">Study groups</div><h1>Learn it together</h1><p class="lede">Study your own material, then explain it to your group in your own words. Separate from your daily pledge.</p>
   <div class="sg-row" style="margin-top:24px"><button class="btn btn-primary" data-a="new">Create a group</button></div>
-  <label for="joinCode">Have an invite code?</label><div class="sg-row"><input id="joinCode" class="sg-in" style="flex:1;width:auto" placeholder="e.g. PHYS-4821" autocomplete="off"><button class="btn btn-outline" data-a="join">Join</button></div><div class="sg-err" id="joinErr">${esc(sg.err)}</div>`;
-  if(!gs.length)return o+`<div class="sg-empty"><h3>No study groups yet</h3><p>Start one with friends and hold each other accountable for learning, not just for finishing.</p></div>`;
+  <p class="sg-meta" style="margin-top:14px">Invited to a group? Open the link your friend sent you.</p>`;
+  if(!gs.length)return o+`<div class="sg-empty"><h3>Study with your friends</h3><p>Create your first study group, or open an invitation link you’ve received.</p></div>`;
   o+=`<h2 style="margin-top:36px">Your groups</h2>`;
   gs.forEach(g=>{const c=g.commits.find(x=>x.status!=='done')||g.commits[0];
     o+=`<div class="sg-card"><div class="sg-row sg-sp"><h3>${esc(g.name)}</h3>${avs(g)}</div><p class="sg-meta" style="margin-top:6px">${esc(g.desc||'')}</p><p class="sg-meta" style="margin-top:4px">${g.members.length} members</p>${c?`<div class="sg-now">Now: ${esc(c.topic)} · ${esc(nm(c.who))}</div>`:''}<button class="btn btn-primary btn-block" data-a="open" data-id="${g.id}" aria-label="Open ${esc(g.name)}">Open group</button></div>`});
   const rec=[];gs.forEach(g=>g.commits.forEach(c=>rec.push(`${nm(c.who)} ${c.status==='done'?'finished':c.status==='studying'?'is studying':'plans to study'} ${c.topic} <span class="sg-meta">· ${esc(g.name)}</span>`)));
-  return o+`<h2 style="margin-top:36px">Recent activity</h2><div class="sg-card">${rec.slice(0,4).map(r=>`<p style="margin:6px 0">${r}</p>`).join('')||'<p class="sg-meta">Nothing yet.</p>'}</div><p class="sg-note">Preview only: groups, messages and activity are demo content on this device.</p>`;
+  return o+`<h2 style="margin-top:36px">Recent activity</h2><div class="sg-card">${rec.slice(0,4).map(r=>`<p style="margin:6px 0">${r}</p>`).join('')||'<p class="sg-meta">Nothing yet.</p>'}</div>${cloud?'':'<p class="sg-note">Preview only: groups, messages and activity are demo content on this device.</p>'}`;
 }
 function vCreate(){
   const d=sg.draft;
@@ -648,14 +733,12 @@ function vCreate(){
   <label for="gs">Expected size</label><select id="gs" class="sg-in"><option>Two friends</option><option ${d.size==='Small group (up to 10)'?'selected':''}>Small group (up to 10)</option><option ${d.size==='Large group (up to 50)'?'selected':''}>Large group (up to 50)</option></select>
   <button class="btn btn-primary btn-block" data-a="review">Review</button>`;
   return `<button class="sg-back" data-a="back1">← Edit details</button><h2>Review your group</h2><div class="sg-card"><h3>${esc(d.name)}</h3><p class="sg-meta" style="margin-top:6px">${esc(d.desc||'No description')}</p><p class="sg-meta" style="margin-top:6px">${esc(d.size)}</p></div>
-  <h3 style="margin-top:28px">Invite people</h3><p class="sg-meta">Preview: nothing is sent and no one will actually join.</p>
-  <div class="chips">${['Maya','Tomás','Ife','Sam'].map(n=>`<button class="chip" data-a="inv" data-n="${n}" aria-pressed="${(d.inv||[]).includes(n)}">${(d.inv||[]).includes(n)?'✓ ':''}${n}</button>`).join('')}</div>
-  <div class="sg-row" style="margin-top:16px"><input class="sg-in" style="flex:1;width:auto" readonly aria-label="Invite link" value="dailypledge.app/study/PHYS-4821"><button class="btn btn-outline" data-a="copy">Copy</button></div>
+  <p class="sg-note">Next, you’ll get a link to invite friends.</p>
   <button class="btn btn-primary btn-block" data-a="make">Create group</button>`;
 }
 function vGroup(){
   const g=grp(),T=[['chat','Discussion'],['commit','Commitments'],['chal','Challenges'],['notes','Notes'],['asst','Assistant'],['mem','Members']];
-  let o=`<button class="sg-back" data-a="home">← Study groups</button><div class="sg-row sg-sp"><h2>${esc(g.name)}</h2><div id="callSlot"></div></div><p class="sg-meta" style="margin-top:6px">${esc(g.desc||'')}</p><div class="sg-row" style="margin-top:12px">${avs(g)}<span class="sg-meta">${g.members.length} members</span></div>
+  let o=`<button class="sg-back" data-a="home">← Study groups</button><div class="sg-row sg-sp"><h2>${esc(g.name)}</h2><div id="callSlot"></div></div><p class="sg-meta" style="margin-top:6px">${esc(g.desc||'')}</p><div class="sg-row sg-sp" style="margin-top:12px"><div class="sg-row">${avs(g)}<span class="sg-meta">${g.members.length} members</span></div><button class="btn btn-outline" style="height:40px;padding:0 16px" data-x="share">Invite friends</button></div>
   <div class="sg-tabs" role="tablist">${T.map(t=>`<button role="tab" data-a="tab" data-t="${t[0]}" aria-selected="${sg.tab===t[0]}">${t[1]}</button>`).join('')}</div>`;
   if(sg.tab==='chat')o+=vChat(g);else if(sg.tab==='commit')o+=vCommit(g);else if(sg.tab==='chal')o+=vChal(g);else if(sg.tab==='notes')o+=vNotes(g);else if(sg.tab==='asst')o+=vAsst(g);else o+=vMem(g);
   return o;
@@ -668,7 +751,7 @@ function vChat(g){
   <label for="sgMsg" style="margin-top:12px">Your message</label><textarea id="sgMsg" class="sg-in" rows="3" placeholder="${sg.kind==='Explanation'?'What did you learn? Put it in your own words…':sg.kind==='Question'?'What would you like them to explain?':'Respond to what was said…'}">${esc(sg.comp)}</textarea>
   <div class="sg-row sg-sp" style="margin-top:12px"><button type="button" class="btn btn-outline" data-a="sug">Suggest questions</button><button class="btn btn-primary" type="submit">Send</button></div></form>`;
   if(sg.sug)o+=vSug();
-  return o+`<p class="sg-note">Preview: messages stay on this screen and aren’t delivered to anyone.</p>`;
+  return o+`${cloud?'':'<p class="sg-note">Preview: messages stay on this screen and aren’t delivered to anyone.</p>'}`;
 }
 function vSug(){
   const t=(sg.sugText||'').split(/[.\n]/)[0].trim().slice(0,70),has=!!t,topic=has?t:'this topic';
@@ -694,9 +777,9 @@ function vMem(g){return `<div style="margin-top:12px">${g.members.map(n=>{const 
 const sp=$('#studyPage');
 sp.addEventListener('input',e=>{if(e.target.id==='sgMsg')sg.comp=e.target.value;if(e.target.id==='sugT')sg.sugText=e.target.value});
 sp.addEventListener('submit',e=>{e.preventDefault();const g=grp();
-  if(e.target.id==='sgForm'){const v=sg.comp.trim();if(!v){toast('Write a message first');return}g.msgs.push({who:'me',kind:sg.kind,t:nowT(),text:v});sg.comp='';sg.justDone=null;sgRender();const l=sp.querySelector('.msg:last-of-type');if(l)l.scrollIntoView({block:'center'})}
+  if(e.target.id==='sgForm'){const v=sg.comp.trim();if(!v){toast('Write a message first');return}pushMsg(g,{who:'me',kind:sg.kind,t:nowT(),text:v});sg.comp='';sg.justDone=null;sgRender();const l=sp.querySelector('.msg:last-of-type');if(l)l.scrollIntoView({block:'center'})}
   if(e.target.id==='cForm'){const s=$('#cs').value.trim(),t=$('#ct').value.trim();if(!s||!t){sg.err='Subject and topic are required.';sgRender();return}
-    g.commits.unshift({id:'c'+Date.now(),who:'me',subject:s,topic:t,material:$('#cm').value.trim(),goal:$('#cg').value.trim(),due:$('#cd').value||'',status:'planned'});sg.form=false;sg.err='';sgRender();toast('Commitment added (demo)')}
+    const cm={id:nid('c'),who:'me',subject:s,topic:t,material:$('#cm').value.trim(),goal:$('#cg').value.trim(),due:$('#cd').value||'',status:'planned'};g.commits.unshift(cm);cloudCommit(g,cm);sg.form=false;sg.err='';sgRender();toast('Commitment added'+dm())}
 });
 sp.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,g=sg.gid?grp():null;sg.err='';
   if(a==='new'){sg.view='create';sg.step=1;sg.draft={}}
@@ -708,7 +791,7 @@ sp.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)retur
   else if(a==='back1')sg.step=1;
   else if(a==='inv'){const i=sg.draft.inv,n=b.dataset.n;i.includes(n)?i.splice(i.indexOf(n),1):i.push(n)}
   else if(a==='copy'){try{navigator.clipboard.writeText('dailypledge.app/study/PHYS-4821')}catch(x){}toast('Link copied (demo link)');return}
-  else if(a==='make'){const id='g'+Date.now();sg.data.groups.unshift({id,name:sg.draft.name,desc:sg.draft.desc,members:['me'],commits:[],msgs:[]});sg.gid=id;sg.view='group';sg.tab='chat';toast('Group created (demo)')}
+  else if(a==='make'){const id=nid('g');sg.data.groups.unshift({id,name:sg.draft.name,desc:sg.draft.desc,by:(S.user&&S.user.name)||'A friend',members:['me'],commits:[],msgs:[]});sg.gid=id;sg.view='created';sg.tab='chat';toast('Group created');cloudGroup(id,sg.draft.name,sg.draft.desc)}
   else if(a==='tab'){sg.tab=b.dataset.t;sg.form=false}
   else if(a==='kind')sg.kind=b.dataset.k;
   else if(a==='sug')sg.sug=!sg.sug;
@@ -716,8 +799,8 @@ sp.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)retur
   else if(a==='more')sg.page++;
   else if(a==='use'){sg.comp=b.dataset.q;sg.kind='Question';sg.sug=false;sgRender();const m=$('#sgMsg');m.focus();toast('Edit it however you like');return}
   else if(a==='addc')sg.form=!sg.form;
-  else if(a==='start')g.commits.find(c=>c.id===b.dataset.id).status='studying';
-  else if(a==='finish'){const c=g.commits.find(c=>c.id===b.dataset.id);c.status='done';sg.justDone=c;sg.tab='chat';sg.kind='Explanation'}
+  else if(a==='start'){const c=g.commits.find(c=>c.id===b.dataset.id);c.status='studying';cloudStatus(c)}
+  else if(a==='finish'){const c=g.commits.find(c=>c.id===b.dataset.id);c.status='done';cloudStatus(c);sg.justDone=c;sg.tab='chat';sg.kind='Explanation'}
   sgRender();
 });
 
@@ -736,7 +819,7 @@ function vChal(g){
   const c=sg.ch&&g.chals.find(x=>x.id===sg.ch);if(c)return sg.cm==='review'?vRev(g,c):vAns(g,c);
   let o=`<div class="sg-row sg-sp" style="margin-top:20px"><span class="sg-meta">${g.chals.length} challenges</span><button class="btn btn-primary" data-x="cf">${sg.cf?'Cancel':'New challenge'}</button></div>`;
   if(sg.cf)o+=vCF();
-  if(!g.chals.length&&!sg.cf)return o+empty('No challenges yet','Test your friends with a few questions on what you’re all studying.');
+  if(!g.chals.length&&!sg.cf)return o+empty('No challenges yet','Create one from what you’re studying.');
   g.chals.forEach(c=>{const n=Object.keys(c.resp).length,st=chStatus(c);
     o+=`<div class="sg-card"><div class="sg-row sg-sp"><h3>${esc(c.title)}</h3><span class="pill ${st[1]}">${st[0]}</span></div><p class="sg-meta" style="margin-top:6px">by ${esc(nm(c.by))} · ${esc(c.topic)} · ${c.qs.length} questions</p><div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="${g.members.length}" aria-valuenow="${n}"><i style="width:${Math.round(n/g.members.length*100)}%"></i></div><p class="sg-meta" style="margin-top:6px">${n} of ${g.members.length} have answered</p><button class="btn ${c.resp.me?'btn-outline':'btn-primary'} btn-block" data-x="chopen" data-id="${c.id}">${c.resp.me?'Review answers':'Open challenge'}</button></div>`});
   return o;
@@ -746,17 +829,17 @@ function vCF(){const d=sg.cd;
   ${d.qs.map((q,i)=>`<div class="sg-card" style="margin-top:14px"><div class="sg-row sg-sp"><strong>Question ${i+1}</strong>${d.qs.length>1?`<button type="button" class="sg-meta" data-x="rmq" data-i="${i}">Remove</button>`:''}</div><label for="cq${i}">Question</label><textarea id="cq${i}" class="sg-in" rows="2" data-cq="${i}.q">${esc(q.q)}</textarea><label for="ce${i}">Expected answer <span class="sg-meta">(optional, shown after members answer)</span></label><textarea id="ce${i}" class="sg-in" rows="2" data-cq="${i}.exp">${esc(q.exp)}</textarea></div>`).join('')}
   <div class="sg-row" style="margin-top:14px"><button type="button" class="btn btn-outline" data-x="addq">Add question</button><button type="button" class="btn btn-outline" data-x="sugq">Suggest with assistant</button></div><p class="sg-note">Suggestions are simulated prompts based on your topic. Edit them freely.</p>${err()}<button class="btn btn-primary btn-block">Create challenge</button></form>`}
 function vAns(g,c){const a=sg.ans[c.id]||[],n=c.qs.filter((q,i)=>(a[i]||'').trim()).length;
-  return `<button class="sg-back" data-x="chback" style="margin-top:18px">← All challenges</button><h2>${esc(c.title)}</h2><p class="sg-meta" style="margin-top:6px">by ${esc(nm(c.by))} · ${esc(c.topic)}</p>${c.inst?`<p style="margin-top:10px">${esc(c.inst)}</p>`:''}<p class="sg-meta" style="margin-top:10px">${n} of ${c.qs.length} answered. Your draft stays if you switch tabs.</p>
+  return (sg.newCh===c.id?`<div class="sg-card" style="border-color:var(--green);margin-top:18px"><h3>Your challenge is ready</h3><p class="sg-meta" style="margin-top:6px">Friends can answer it from the Challenges tab. Post it to the discussion so they see it.</p><button class="btn btn-primary btn-block" data-x="postch">Post to discussion</button></div>`:'')+`<button class="sg-back" data-x="chback" style="margin-top:18px">← All challenges</button><h2>${esc(c.title)}</h2><p class="sg-meta" style="margin-top:6px">by ${esc(nm(c.by))} · ${esc(c.topic)}</p>${c.inst?`<p style="margin-top:10px">${esc(c.inst)}</p>`:''}<p class="sg-meta" style="margin-top:10px">${n} of ${c.qs.length} answered. Your draft stays if you switch tabs.</p>
   <form id="anForm">${c.qs.map((q,i)=>`<label for="an${i}">${i+1}. ${esc(q.q)}</label><textarea id="an${i}" class="sg-in" rows="3" data-an="${i}" placeholder="In your own words. “Not sure” is a fine answer.">${esc(a[i]||'')}</textarea>`).join('')}${err()}<button class="btn btn-primary btn-block">Submit answers</button></form>`}
 function vRev(g,c){const others=Object.entries(c.resp).filter(e=>e[0]!=='me'),mine=c.resp.me||[];
   return `<button class="sg-back" data-x="chback" style="margin-top:18px">← All challenges</button><h2>${esc(c.title)}: review</h2><p class="sg-meta" style="margin-top:6px">${Object.keys(c.resp).length} of ${g.members.length} have answered</p>
   ${c.qs.map((q,i)=>`<div class="sg-card"><strong>${i+1}. ${esc(q.q)}</strong><p class="sg-meta" style="margin-top:10px">Your answer</p><p>${esc(mine[i]||'')}</p>${q.exp?`<div class="sg-now"><strong>Creator’s expected answer</strong><br>${esc(q.exp)}</div>`:`<div class="sg-now" style="background:var(--orange-wash);color:var(--ink)">No expected answer here. Compare answers and discuss rather than score.</div>`}
   ${others.map(o=>`<div class="sg-row" style="margin-top:10px;align-items:flex-start">${av(g,o[0])}<div><strong>${esc(nm(o[0]))}</strong><p>${esc(o[1][i]||'')}</p></div></div>`).join('')}<button class="btn btn-outline" style="margin-top:12px" data-x="disc" data-i="${i}">Discuss in the group</button></div>`).join('')}`}
 function nList(g){const q=sg.nq.toLowerCase(),l=g.notes.filter(n=>(n.title+' '+n.topic+' '+n.body).toLowerCase().includes(q));
-  return l.length?l.map(n=>`<div class="sg-card"><h3>${esc(n.title)}</h3><p class="sg-meta" style="margin-top:4px">${esc(n.topic||'General')} · ${esc(nm(n.by))} · ${esc(n.t)}</p><p style="margin-top:8px">${esc(n.body.slice(0,110))}${n.body.length>110?'…':''}</p><button class="btn btn-outline btn-block" data-x="nopen" data-id="${n.id}">Open note</button></div>`).join(''):empty(g.notes.length?'No matching notes':'No notes yet','Save a good explanation from the discussion, or write one yourself.')}
+  return l.length?l.map(n=>`<div class="sg-card"><h3>${esc(n.title)}</h3><p class="sg-meta" style="margin-top:4px">${esc(n.topic||'General')} · ${esc(nm(n.by))} · ${esc(n.t)}</p><p style="margin-top:8px">${esc(n.body.slice(0,110))}${n.body.length>110?'…':''}</p><button class="btn btn-outline btn-block" data-x="nopen" data-id="${n.id}">Open note</button></div>`).join(''):empty(g.notes.length?'No matching notes':'No notes yet','Save useful explanations from your study discussions so your group can revisit them later.')}
 function vNotes(g){
   if(sg.note){const n=g.notes.find(x=>x.id===sg.note);
-    if(sg.ne)return `<button class="sg-back" data-x="nback" style="margin-top:18px">← All notes</button><form id="noteForm"><label for="nft" style="margin-top:0">Title</label><input id="nft" class="sg-in" data-nf="title" value="${esc(sg.nd.title||'')}"><label for="nfp">Subject or topic</label><input id="nfp" class="sg-in" data-nf="topic" value="${esc(sg.nd.topic||'')}"><label for="nfb">Note</label><textarea id="nfb" class="sg-in" rows="7" data-nf="body">${esc(sg.nd.body||'')}</textarea>${err()}<button class="btn btn-primary btn-block">Save note</button></form><p class="sg-note">Preview: notes live on this screen only.</p>`;
+    if(sg.ne)return `<button class="sg-back" data-x="nback" style="margin-top:18px">← All notes</button><form id="noteForm"><label for="nft" style="margin-top:0">Title</label><input id="nft" class="sg-in" data-nf="title" value="${esc(sg.nd.title||'')}"><label for="nfp">Subject or topic</label><input id="nfp" class="sg-in" data-nf="topic" value="${esc(sg.nd.topic||'')}"><label for="nfb">Note</label><textarea id="nfb" class="sg-in" rows="7" data-nf="body">${esc(sg.nd.body||'')}</textarea>${err()}<button class="btn btn-primary btn-block">Save note</button></form>${cloud?'':'<p class="sg-note">Preview: notes live on this screen only.</p>'}`;
     if(n)return `<button class="sg-back" data-x="nback" style="margin-top:18px">← All notes</button><h2>${esc(n.title)}</h2><p class="sg-meta" style="margin-top:6px">${esc(n.topic||'General')} · ${esc(nm(n.by))} · ${esc(n.t)}</p><p style="margin-top:16px;white-space:pre-wrap">${esc(n.body)}</p>${n.by==='me'?`<button class="btn btn-outline btn-block" data-x="nedit">Edit note</button>`:''}`}
   return `<div class="sg-row sg-sp" style="margin-top:20px;flex-wrap:nowrap"><input id="ns" type="search" class="sg-in" style="flex:1;width:auto" placeholder="Search notes" aria-label="Search notes" value="${esc(sg.nq)}"><button class="btn btn-primary" data-x="nnew">New note</button></div><div id="nList">${nList(g)}</div>`}
 function vAsst(g){
@@ -765,7 +848,7 @@ function vAsst(g){
   <div class="chips">${Object.keys(AA).map(k=>`<button class="chip ${sg.aa===k?'sent':''}" data-x="aa" data-k="${k}" aria-pressed="${sg.aa===k}">${AA[k][0]}</button>`).join('')}</div>
   <form id="asForm"><label for="asIn">${AA[sg.aa][1]}</label><textarea id="asIn" class="sg-in" rows="3" placeholder="e.g. Atomic physics: electrons sit at fixed energy levels">${esc(sg.ain)}</textarea>${err()}<button class="btn btn-primary btn-block">${sg.am==='public'?'Ask in the group':'Ask privately'}</button></form><p class="sg-note">Simulated replies for this preview. No AI service is connected.</p>`;
   if(g.priv.length)o+=`<div class="priv"><strong>Private to you</strong><p class="sg-meta">Not shown in the group discussion, notes or activity.</p>${g.priv.map(p=>`<div style="margin-top:12px"><span class="kind">${AA[p.action][0]} · ${p.t}</span><p><em>${esc(p.q)}</em></p><p style="white-space:pre-wrap;margin-top:6px">${esc(p.a)}</p></div>`).join('')}</div>`;
-  o+=`<h3 style="margin-top:28px">Assistant activity</h3><div class="sg-card">${g.act.slice().reverse().map(a=>`<p style="margin:6px 0">${esc(nm(a.who))} used the Study Assistant ${a.mode==='private'?'privately':'in the group'}${a.action?' · '+esc(a.action):''} <span class="sg-meta">· ${a.t}</span></p>`).join('')}</div><p class="sg-note">Preview: this notice isn’t sent to anyone. Private use never shows what was asked.</p>`;
+  o+=`<h3 style="margin-top:28px">Assistant activity</h3><div class="sg-card">${g.act.slice().reverse().map(a=>`<p style="margin:6px 0">${esc(nm(a.who))} used the Study Assistant ${a.mode==='private'?'privately':'in the group'}${a.action?' · '+esc(a.action):''} <span class="sg-meta">· ${a.t}</span></p>`).join('')}</div><p class="sg-note">${cloud?'':'Preview: this notice isn’t sent to anyone. '}Private use never shows what was asked.</p>`;
   return o;
 }
 function simA(a,text){const t=(text||'').split(/[.\n]/)[0].trim().slice(0,70)||'this topic';
@@ -782,13 +865,16 @@ sp.addEventListener('input',e=>{const t=e.target,d=t.dataset;
   else if(t.id==='ns'){sg.nq=t.value;$('#nList').innerHTML=nList(grp())}
   else if(t.id==='asIn')sg.ain=t.value});
 sp.addEventListener('click',e=>{const b=e.target.closest('[data-x]');if(!b)return;const x=b.dataset.x,g=grp(),i=+b.dataset.i;sg.xerr='';
-  if(x==='cf')sg.cf=!sg.cf;
+  if(x==='share'){const gg=grp();if(cloud&&!gg.code){toast('One moment, setting up your invitation…');return}shareLink(groupUrl(gg),'Join '+gg.name,'Join my study group “'+gg.name+'” on Daily pledge.');return}
+  else if(x==='gopen'){sg.view='group';sg.tab='chat'}
+  else if(x==='postch'){const c=g.chals.find(c=>c.id===sg.ch);pushMsg(g,{who:'me',kind:'Question',t:nowT(),text:'New challenge “'+c.title+'” ('+c.qs.length+' questions). Open the Challenges tab to answer it.'});sg.newCh=null;sg.tab='chat';toast('Posted to the discussion')}
+  else if(x==='cf')sg.cf=!sg.cf;
   else if(x==='addq')sg.cd.qs.push({q:'',exp:''});
   else if(x==='rmq')sg.cd.qs.splice(i,1);
   else if(x==='sugq'){const t=sg.cd.topic.trim()||'this topic';sg.cd.qs=[0,1,2,4].map(k=>({q:FRAMES[k](t),exp:''}));toast('Simulated suggestions. Edit freely.')}
   else if(x==='chopen'){sg.ch=b.dataset.id;sg.cm=g.chals.find(c=>c.id===sg.ch).resp.me?'review':'answer'}
   else if(x==='chback')sg.ch=null;
-  else if(x==='disc'){const c=g.chals.find(c=>c.id===sg.ch);g.msgs.push({who:'me',kind:'Question',t:nowT(),text:`From “${c.title}”, question ${i+1}: ${c.qs[i].q} How did you each think about it?`});sg.tab='chat';sg.justDone=null}
+  else if(x==='disc'){const c=g.chals.find(c=>c.id===sg.ch);pushMsg(g,{who:'me',kind:'Question',t:nowT(),text:`From “${c.title}”, question ${i+1}: ${c.qs[i].q} How did you each think about it?`});sg.tab='chat';sg.justDone=null}
   else if(x==='nnew'){sg.note='new';sg.ne=true;sg.nd={title:'',topic:'',body:''}}
   else if(x==='nopen'){sg.note=b.dataset.id;sg.ne=false}
   else if(x==='nedit'){sg.nd={...g.notes.find(n=>n.id===sg.note)};sg.ne=true}
@@ -801,48 +887,187 @@ sp.addEventListener('click',e=>{const b=e.target.closest('[data-x]');if(!b)retur
   sgRender()});
 sp.addEventListener('submit',e=>{const id=e.target.id,g=grp();
   if(id==='chForm'){const d=sg.cd,qs=d.qs.filter(q=>q.q.trim());if(!d.title.trim()||!d.topic.trim()||!qs.length){sg.xerr='Add a title, a topic and at least one question.';sgRender();return}
-    g.chals.unshift({id:'q'+Date.now(),title:d.title.trim(),topic:d.topic.trim(),by:'me',inst:d.inst.trim(),qs:qs.map(q=>({q:q.q.trim(),exp:q.exp.trim()})),resp:{}});sg.cd={title:'',topic:'',inst:'',qs:[{q:'',exp:''},{q:'',exp:''}]};sg.cf=false;sgRender();toast('Challenge created (demo)')}
+    const nc=({id:(sg.newCh=nid('q')),title:d.title.trim(),topic:d.topic.trim(),by:'me',inst:d.inst.trim(),qs:qs.map(q=>({q:q.q.trim(),exp:q.exp.trim()})),resp:{}});g.chals.unshift(nc);cloudChal(g,nc);sg.cd={title:'',topic:'',inst:'',qs:[{q:'',exp:''},{q:'',exp:''}]};sg.cf=false;sg.ch=sg.newCh;sg.cm='answer';sgRender();toast('Challenge created')}
   if(id==='anForm'){const c=g.chals.find(c=>c.id===sg.ch),a=sg.ans[c.id]||[];if(!c.qs.every((q,i)=>(a[i]||'').trim())){sg.xerr='Answer every question. “Not sure” is fine, so friends can help.';sgRender();return}
-    c.resp.me=c.qs.map((q,i)=>a[i].trim());sg.cm='review';sgRender();toast('Answers submitted (demo)')}
+    c.resp.me=c.qs.map((q,i)=>a[i].trim());cloudAns(g,c);sg.cm='review';sgRender();toast('Answers submitted'+dm())}
   if(id==='noteForm'){const d=sg.nd;if(!(d.title||'').trim()||!(d.body||'').trim()){sg.xerr='A note needs a title and some text.';sgRender();return}
-    if(sg.note==='new'){const n={id:'n'+Date.now(),title:d.title.trim(),topic:(d.topic||'').trim(),by:'me',t:'Just now',body:d.body.trim()};g.notes.unshift(n);sg.note=n.id}
-    else{const n=g.notes.find(n=>n.id===sg.note);Object.assign(n,{title:d.title.trim(),topic:(d.topic||'').trim(),body:d.body.trim()})}
-    sg.ne=false;sgRender();toast('Note saved on this screen (demo)')}
+    if(sg.note==='new'){const n={id:nid('n'),title:d.title.trim(),topic:(d.topic||'').trim(),by:'me',t:'Just now',body:d.body.trim()};g.notes.unshift(n);cloudNote(g,n,true);sg.note=n.id}
+    else{const n=g.notes.find(n=>n.id===sg.note);Object.assign(n,{title:d.title.trim(),topic:(d.topic||'').trim(),body:d.body.trim()});cloudNote(g,n,false)}
+    sg.ne=false;sgRender();toast(cloud?'Note saved':'Note saved on this screen (demo)')}
   if(id==='asForm'){const v=sg.ain.trim();if(!v){sg.xerr='Type a topic or some notes first.';sgRender();return}
     const r=simA(sg.aa,v),t=nowT();
-    if(sg.am==='public'){g.msgs.push({who:'me',kind:'Asked the assistant',t,text:AA[sg.aa][0]+': '+v},{who:'Study Assistant',kind:'Assistant · simulated',t,text:r});g.act.push({who:'me',mode:'public',action:AA[sg.aa][0],t:'Just now'});sg.tab='chat';sg.ain='';sgRender();toast('Added to the group discussion (demo)')}
-    else{g.priv.push({action:sg.aa,q:v,a:r,t});g.act.push({who:'me',mode:'private',t:'Just now'});sg.ain='';sgRender();toast('Reply is private to you')}}
+    if(sg.am==='public'){pushMsg(g,{who:'me',kind:'Asked the assistant',t,text:AA[sg.aa][0]+': '+v},{who:'Study Assistant',kind:'Assistant · simulated',t,text:r});g.act.push({who:'me',mode:'public',action:AA[sg.aa][0],t:'Just now'});cloudAct(g,'public',AA[sg.aa][0]);sg.tab='chat';sg.ain='';sgRender();toast('Added to the group discussion (demo)')}
+    else{g.priv.push({action:sg.aa,q:v,a:r,t});g.act.push({who:'me',mode:'private',t:'Just now'});cloudAct(g,'private',null);sg.ain='';sgRender();toast('Reply is private to you')}}
 });
 
+
+
+// ---------- STUDY GROUPS (shared, Supabase) ----------
+const nid=p=>(cloud&&window.crypto&&crypto.randomUUID)?crypto.randomUUID():p+Date.now();
+const nn=v=>v?v:null;
+const dm=()=>cloud?'':' (demo)';
+const fmtWhen=ts=>{const d=new Date(ts),n=new Date();return d.toDateString()===n.toDateString()?d.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'}):d.toLocaleDateString([],{month:'short',day:'numeric'})};
+let sgHash='',sgBusy=0;
+async function sgPull(force){
+  const t=n=>sb.from(n).select('*');
+  const R=await Promise.all([t('study_groups'),t('study_members'),t('study_commitments'),t('study_messages'),t('study_challenges'),t('study_responses'),t('study_notes'),t('study_activity'),sb.from('profiles').select('id,display_name')]);
+  R.forEach(r=>{if(r.error)throw r.error});
+  const [gs,ms,cs,msg,chs,rs,ns,ac,pr]=R.map(r=>r.data||[]);
+  const nameOf={};pr.forEach(x=>nameOf[x.id]=x.display_name||'Friend');
+  const prev={};sg.data.groups.forEach(g=>prev[g.id]=g.priv||[]);
+  const asc=(a,b)=>String(a.created_at).localeCompare(String(b.created_at)),desc=(a,b)=>asc(b,a);
+  const groups=gs.slice().sort(desc).map(g=>{
+    const mem=ms.filter(m=>m.group_id===g.id).sort((a,b)=>String(a.joined_at).localeCompare(String(b.joined_at)));
+    const used={},lab={};mem.forEach(m=>{if(m.user_id===S.me){lab[m.user_id]='me';return}const n=nameOf[m.user_id]||'Friend';used[n]=(used[n]||0)+1;lab[m.user_id]=used[n]>1?n+' ('+used[n]+')':n});
+    const L=u=>lab[u]||nameOf[u]||'Friend';
+    return {id:g.id,name:g.name,desc:g.description||'',code:g.invite_code,by:L(g.created_by),members:['me'].concat(mem.filter(m=>m.user_id!==S.me).map(m=>lab[m.user_id])),
+      commits:cs.filter(c=>c.group_id===g.id).sort(asc).map(c=>({id:c.id,who:L(c.user_id),subject:c.subject,topic:c.topic,material:c.material||'',goal:c.goal||'',due:c.due||'',status:c.status})),
+      msgs:msg.filter(m=>m.group_id===g.id).sort(asc).map(m=>({who:m.is_assistant?'Study Assistant':L(m.user_id),kind:m.kind||'Message',t:fmtWhen(m.created_at),text:m.body})),
+      chals:chs.filter(c=>c.group_id===g.id).sort(desc).map(c=>({id:c.id,title:c.title,topic:c.topic,by:L(c.created_by),inst:c.instructions||'',qs:c.questions,resp:Object.fromEntries(rs.filter(r=>r.challenge_id===c.id).map(r=>[L(r.user_id),r.answers]))})),
+      notes:ns.filter(n=>n.group_id===g.id).sort(desc).map(n=>({id:n.id,title:n.title,topic:n.topic||'',by:L(n.user_id),t:fmtWhen(n.created_at),body:n.body})),
+      act:ac.filter(a=>a.group_id===g.id).sort(asc).map(a=>({who:L(a.user_id),mode:a.mode,action:a.action||'',t:fmtWhen(a.created_at)})),
+      priv:prev[g.id]||[]}});
+  const sig=JSON.stringify(groups.map(g=>Object.assign({},g,{priv:0})));
+  const changed=!!force||sig!==sgHash;sgHash=sig;
+  if(changed){sg.data={groups};if(sg.gid&&!groups.some(g=>g.id===sg.gid)){sg.view='list';sg.gid=null}}
+  return changed}
+async function sgw(fn){sgBusy++;try{await persist(fn)}finally{sgBusy--}}
+function pushMsg(g,...ms){ms.forEach((m,k)=>{m.ts=new Date(Date.now()+k*5).toISOString();g.msgs.push(m);cloudMsg(g,m)})}
+function cloudGroup(id,name,desc){if(cloud)sgw(async()=>{const r=await sb.rpc('create_study_group',{p_id:id,p_name:name,p_desc:desc||''});if(r.error)return r;await sgPull(true);if(sg.view==='created')sgRender()})}
+function cloudCommit(g,c){if(cloud)sgw(()=>sb.from('study_commitments').insert({id:c.id,group_id:g.id,user_id:S.me,subject:c.subject,topic:c.topic,material:nn(c.material),goal:nn(c.goal),due:nn(c.due)}))}
+function cloudStatus(c){if(cloud)sgw(()=>sb.from('study_commitments').update({status:c.status}).eq('id',c.id))}
+function cloudMsg(g,m){if(cloud)sgw(()=>sb.from('study_messages').insert({group_id:g.id,user_id:S.me,is_assistant:m.who==='Study Assistant',kind:m.kind,body:m.text.slice(0,2000),created_at:m.ts}))}
+function cloudChal(g,c){if(cloud)sgw(()=>sb.from('study_challenges').insert({id:c.id,group_id:g.id,created_by:S.me,title:c.title,topic:c.topic,instructions:nn(c.inst),questions:c.qs}))}
+function cloudAns(g,c){if(cloud)sgw(()=>sb.from('study_responses').insert({challenge_id:c.id,group_id:g.id,user_id:S.me,answers:c.resp.me}))}
+function cloudNote(g,n,isNew){if(cloud)sgw(()=>isNew?sb.from('study_notes').insert({id:n.id,group_id:g.id,user_id:S.me,title:n.title,topic:nn(n.topic),body:n.body}):sb.from('study_notes').update({title:n.title,topic:nn(n.topic),body:n.body,updated_at:new Date().toISOString()}).eq('id',n.id))}
+function cloudAct(g,mode,action){if(cloud)sgw(()=>sb.from('study_activity').insert({group_id:g.id,user_id:S.me,mode,action:nn(action)}))}
+setInterval(async()=>{if(!cloud||document.hidden||!S.me||sgBusy)return;
+  try{const ch=await sgPull();if(!ch)return;const onStudy=$('#app').classList.contains('on')&&!$('#studyPage').hidden,ae=document.activeElement,typing=ae&&$('#studyPage').contains(ae)&&/INPUT|TEXTAREA|SELECT/.test(ae.tagName);
+    if(onStudy&&!typing)sgRender();else if(!onStudy)$('#studyDot').style.display=''}catch(e){}},10000);
+
+// ---------- INVITATIONS, SHARING & DEEP LINKS ----------
+const PEND='dp-pending';let pendMem=null,curInv=null;
+const baseUrl=()=>location.href.split('#')[0].split('?')[0];
+const b64e=o=>btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+const b64d=s=>JSON.parse(decodeURIComponent(escape(atob(s.replace(/-/g,'+').replace(/_/g,'/')))));
+function readIntent(){const hs=location.hash.replace(/^#/,''),q=new URLSearchParams(location.search);let m=hs.match(/^invite-([A-Za-z0-9]{4,16})$/);
+  if(m)return{type:'friend',code:m[1].toUpperCase()};m=hs.match(/^group-([A-Za-z0-9_-]+)$/);if(m){if(/^[A-Z0-9]{10}$/.test(m[1]))return{type:'cgroup',code:m[1]};return{type:'group',tok:m[1]}}if(/^group-/.test(hs))return{type:'group',tok:'!'};if(/^invite-/.test(hs))return{type:'friend',code:'!'};
+  if(q.get('invite'))return{type:'friend',code:q.get('invite').toUpperCase()};if(q.get('group'))return{type:'group',tok:q.get('group')};return null}
+const setPend=i=>{pendMem=i;try{localStorage.setItem(PEND,JSON.stringify({i,t:Date.now()}))}catch(e){}};
+const getPend=()=>{if(pendMem)return pendMem;try{const o=JSON.parse(localStorage.getItem(PEND));return o&&Date.now()-o.t<36e5?o.i:null}catch(e){return null}};
+const clearPend=()=>{pendMem=null;try{localStorage.removeItem(PEND)}catch(e){}try{history.replaceState(null,'',baseUrl())}catch(e){}};
+async function shareLink(url,title,text){
+  if(navigator.share){try{await navigator.share({title,text,url});return}catch(e){if(e&&e.name==='AbortError')return}}
+  try{await navigator.clipboard.writeText(url);toast('Invitation link copied')}catch(e){window.prompt('Copy this invitation link',url)}}
+const friendUrl=()=>baseUrl()+'#invite-'+S.invite;
+const groupUrl=g=>(cloud&&g.code)?baseUrl()+'#group-'+g.code:baseUrl()+'#group-'+b64e({n:g.name,d:g.desc||'',c:g.by||(S.user&&S.user.name)||'A friend',m:g.members.length,e:Date.now()+14*864e5});
+
+function invHTML(t,p,btns,card){return '<h1>'+t+'</h1>'+(p?'<p class="lede">'+p+'</p>':'')+(card||'')+btns.map(b=>'<button class="btn '+(b[2]?'btn-primary':'btn-outline')+' btn-block" data-ia="'+b[1]+'"'+(b[3]?' disabled':'')+'>'+b[0]+'</button>').join('')}
+function setInv(state){curInv.state=state;renderInv()}
+function renderInv(){
+  const {intent:i,state:s}=curInv,out=!S.user,isG=i.type==='group'||i.type==='cgroup';
+  const back=[['Back to Daily pledge','home']];
+  if(i.type==='group'&&!curInv.g&&!curInv.bad){try{curInv.g=b64d(i.tok);if(!curInv.g.n)throw 0}catch(e){curInv.bad=true}}
+  const g=curInv.g;let st=s;
+  if(st==='ok'&&i.type==='group'){if(curInv.bad)st='invalid';else if(g.e&&g.e<Date.now())st='expired';else if(sg.data.groups.some(x=>x.name===g.n&&x.by===g.c))st='member'}
+  let o;
+  if(st==='loading'||st==='busy')o=invHTML(st==='busy'?'Joining…':'Opening your invitation…','One moment.',[]);
+  else if(st==='invalid')o=invHTML('This invitation link isn’t valid','It may have been copied incorrectly. Ask your friend to send it again.',back);
+  else if(st==='expired')o=invHTML('This invitation has expired','Ask '+esc(g.c)+' to send you a new link.',back);
+  else if(st==='full')o=invHTML('This group is full','Groups hold up to 50 people. Ask the creator to make room.',back);
+  else if(st==='own')o=invHTML('This is your own invitation','Send this link to a friend so they can join you.',[['Share my invitation','shareown',1],['Back to Daily pledge','home']]);
+  else if(st==='taken')o=invHTML('You already have a partner','You can have one accountability partner at a time. Unlink your current partner first if you want to switch.',[['Open my partner','topartner',1],['Back to Daily pledge','home']]);
+  else if(st==='offline')o=invHTML('Can’t reach the server','Check your connection and try again.',[['Try again','retry',1],['Back to Daily pledge','home']]);
+  else if(st==='member')o=invHTML('You’re already in '+esc(g.n),'Open it to pick up where you left off.',out?[['Log in to open it','login',1]]:[['Open group','opengrp',1]]);
+  else if(!isG)o=invHTML(curInv.fname?esc(curInv.fname)+' invited you to be accountability partners':'You’re invited to be accountability partners','Plan your day, check in, and see how each other is doing. '+(out?'Create a free account to accept.':'Accept to start seeing each other’s days.'),out?[['Create account to accept','signup',1],['I already have an account','login']]:[['Accept invitation','accept',1],['Not now','decline']]);
+  else{const card='<div class="sg-card"><div style="font-size:13px;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:.06em">Study group</div><h2 style="margin-top:6px">'+esc(g.n)+'</h2>'+(g.d?'<p style="margin-top:8px">'+esc(g.d)+'</p>':'')+'<p class="sg-meta" style="margin-top:10px">Created by '+esc(g.c)+' · '+g.m+(g.m===1?' member':' members')+'</p></div>';
+    o=invHTML('You’re invited to join','',out?[['Create account to join','signup',1],['I already have an account','login']]:[['Join group','join',1],['Decline','decline']],card)+(i.type==='group'?'<p class="sg-note">Preview: study groups aren’t shared between devices yet, so you’ll join your own copy.</p>':'')}
+  $('#inviteBody').innerHTML=o;
+}
+async function showInvite(intent){curInv={intent,state:'ok'};show('invite');
+  if(sb&&((intent.type==='friend'&&intent.code!=='!')||intent.type==='cgroup')){curInv.state='loading';renderInv();
+    try{
+      if(intent.type==='friend'){const r=await sb.rpc('invite_info',{p_code:intent.code});if(r.error)throw r.error;
+        if(!r.data)curInv.state='invalid';else{curInv.fname=r.data;curInv.state=(cloud&&S.invite===intent.code)?'own':'ok'}}
+      else{const r=await sb.rpc('group_invite_info',{p_code:intent.code});if(r.error)throw r.error;
+        if(!r.data)curInv.state='invalid';else{const d=r.data;curInv.g={n:d.name,d:d.description||'',c:d.creator,m:d.members};curInv.state=d.is_member?'member':'ok'}}
+    }catch(e){curInv.state=netErr(e)?'offline':'invalid'}
+  }else if(intent.type==='cgroup')curInv.state='offline';
+  renderInv()}
+const leaveInv=()=>{clearPend();S.user?enter():show('landing')};
+$('#inviteBody').addEventListener('click',async e=>{const b=e.target.closest('[data-ia]');if(!b)return;const a=b.dataset.ia,i=curInv.intent;
+  if(a==='signup'||a==='login'){setMode(a);show('auth')}
+  else if(a==='home'||a==='decline')leaveInv();
+  else if(a==='shareown')shareLink(friendUrl(),'Be my accountability partner','Join me on Daily pledge.');
+  else if(a==='topartner'){clearPend();show('app');switchTab('partner')}
+  else if(a==='retry')showInvite(i);
+  else if(a==='accept'){if(i.code==='!'){setInv('invalid');return}if(!cloud){setInv('offline');return}setInv('busy');
+    try{const r=await sb.rpc('link_partner',{code:i.code});if(r.error)throw r.error;await pull(S.me);clearPend();show('app');switchTab('partner');render();toast('You and '+S.partner.name+' are now partners')}
+    catch(err){const m=String(err.message||'');setInv(netErr(err)?'offline':/own code/i.test(m)?'own':/already has a partner/i.test(m)?'taken':'invalid')}}
+  else if(a==='join'&&i.type==='cgroup'){if(!cloud){setInv('offline');return}setInv('busy');
+    try{const r=await sb.rpc('join_study_group',{p_code:i.code});if(r.error)throw r.error;await sgPull(true);const x=sg.data.groups.find(x=>x.id===r.data);clearPend();show('app');sg.view=x?'group':'list';sg.gid=x?x.id:null;sg.tab='chat';switchTab('study');toast('You joined '+(x?x.name:'the group'))}
+    catch(err){const m=String(err.message||'');setInv(netErr(err)?'offline':/full/i.test(m)?'full':'invalid')}}
+  else if(a==='opengrp'&&i.type==='cgroup'){try{await sgPull(true)}catch(x){}const x=sg.data.groups.find(x=>x.code===i.code);clearPend();show('app');sg.view=x?'group':'list';sg.gid=x?x.id:null;sg.tab='chat';switchTab('study')}
+  else if(a==='join'||a==='opengrp'){const g=curInv.g;let x=sg.data.groups.find(x=>x.name===g.n&&x.by===g.c);
+    if(!x){x={id:'g'+Date.now(),name:g.n,desc:g.d,by:g.c,members:['me',g.c],commits:[],msgs:[]};sg.data.groups.unshift(x)}
+    clearPend();show('app');sg.view='group';sg.gid=x.id;sg.tab='chat';switchTab('study');toast(a==='join'?'You joined '+g.n:'Welcome back')}
+});
+function vCreated(){const g=grp();return `<div class="sg-empty"><h3>${esc(g.name)} is ready</h3><p>Invite friends so you can study together.</p></div><button class="btn btn-primary btn-block" data-x="share">Invite friends</button><button class="btn btn-outline btn-block" data-x="gopen">Go to the group</button><p class="sg-note">Friends open your link, see this group, and tap Join.${cloud?'':' (Preview: members aren’t shared across devices in demo mode.)'}</p>`}
+// ---------- WELCOME (first-run guidance) ----------
+function renderWelcome(){const el=$('#welcome');let gone=false;try{gone=localStorage.getItem('dp-welcome')==='1'}catch(e){}
+  const fresh=!Object.keys(S.days).some(k=>S.days[k].tasks&&S.days[k].tasks.length);
+  el.hidden=gone||!fresh||!S.user;if(el.hidden)return;
+  el.innerHTML='<h3>Welcome'+(S.user.name?', '+esc(S.user.name):'')+'</h3><p class="sg-meta" style="margin-top:6px">Here’s how to get started.</p>'+
+   '<button class="wl" data-w="plan"><b>1</b><span>Plan today<small>Pick up to three things, then lock them in.</small></span></button>'+
+   '<button class="wl" data-w="partner"><b>2</b><span>Invite a friend<small>Share a link so you can see each other’s days.</small></span></button>'+
+   '<button class="wl" data-w="study"><b>3</b><span>Try a study group<small>Learn together and explain things in your own words.</small></span></button>'+
+   '<button class="sg-meta" data-w="hide" style="margin-top:12px;text-decoration:underline">Got it, hide this</button>'}
+$('#welcome').addEventListener('click',e=>{const b=e.target.closest('[data-w]');if(!b)return;const w=b.dataset.w;
+  if(w==='plan')$('#taskTitle').focus();else if(w==='partner')switchTab('partner');else if(w==='study')switchTab('study');
+  else{try{localStorage.setItem('dp-welcome','1')}catch(x){}renderWelcome()}});
+
+window.addEventListener('hashchange',()=>{const i=readIntent();if(i){setPend(i);showInvite(i)}});
 $('#studyDot').style.display='';
 
+const intent0=readIntent();if(intent0)setPend(intent0);
+const sbReady=sb?sb.auth.getSession().then(async r=>{const s=r&&r.data&&r.data.session;if(!s)return;try{cloud=true;S=fresh();S.me=s.user.id;S.user={name:'',email:s.user.email};await pull(S.me);sg.data={groups:[]};sgHash='';await sgPull(true).catch(()=>{});enter()}catch(e){cloud=false;S=fresh()}}).catch(()=>{}):Promise.resolve();
 if(S.user)enter();else setMode('signup');
+if(getPend())sbReady.then(()=>{if(!$('#app').classList.contains('on')&&!$('#invite').classList.contains('on'))showInvite(getPend())});
 })();
 </script>
 <script>
 (function(){
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const CK='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg>';
-// scroll reveals (content stays visible if IntersectionObserver is missing)
-if('IntersectionObserver' in window){document.documentElement.classList.add('lp-js');const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.15});$$('.rv').forEach(el=>io.observe(el))}
-$('#lpHow').addEventListener('click',()=>$('#lpHowSec').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'}));
-// hero demo: simulated, local only
-const T=[['Morning run','6:30 AM',0],['Finish the budget review','11:00 AM',0],['Read 20 pages','9:00 PM',0]];let locked=false;
-function hv(){const d=T.filter(t=>t[2]).length,nx=T.findIndex(t=>!t[2]);
-  $('#hvT').textContent=locked?(d===3?'All three done':d+' of 3 done'):'Plan your day';
-  $('#hvL').innerHTML=T.map((t,i)=>`<button class="tk ${t[2]?'done':''} ${locked&&i===nx?'next':''}" data-i="${i}" ${locked?'':'disabled'} aria-pressed="${!!t[2]}"><span class="cb">${t[2]?CK:''}</span><span class="t">${t[0]}</span><span class="tm">${t[1]}</span></button>`).join('');
-  $('#hvB').hidden=locked;if(locked)$('#hvH').textContent=d===3?'Day complete. Your partner would see this.':'Locked in. Tasks can’t be added or removed now. Tick one off.'}
-$('#hvB').addEventListener('click',()=>{locked=true;hv()});
-$('#hvL').addEventListener('click',e=>{const b=e.target.closest('.tk');if(!b||!locked)return;T[+b.dataset.i][2]^=1;hv()});hv();
-// partner chips
-$('#pvC').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;$$('#pvC .chip').forEach(x=>x.classList.toggle('sent',x===c));$('#pvH').textContent='“'+c.textContent+'” sent to Maya (preview)'});
-// study tabs
-function tab(i){$$('#sv [role=tab]').forEach(b=>b.setAttribute('aria-selected',b.dataset.p==i));$$('#sv [data-pn]').forEach(p=>p.hidden=p.dataset.pn!=i);if(i==2)$('#svDot').style.display='none'}
-$$('#sv [role=tab]').forEach(b=>b.addEventListener('click',()=>tab(b.dataset.p)));
-$('#svSave').addEventListener('click',e=>{e.target.textContent='Saved. See Notes';$('#svNote').hidden=false;$('#svDot').style.display='inline-block'});
-$('#svRev').addEventListener('click',e=>{const x=$('#svExp');x.hidden=!x.hidden;e.target.textContent=x.hidden?'Show creator’s expected answer':'Hide expected answer'});
-$('#svM').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;$$('#svM .chip').forEach(x=>x.classList.toggle('sent',x===c));$('#svMH').textContent=c.dataset.m==='0'?'The question and reply appear in the group discussion.':'Only you see this. The group sees that you used the assistant, not what you asked.'});
-$('#svSug').addEventListener('click',()=>{$('#svQ').hidden=false});
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const IO='IntersectionObserver' in window;
+if(IO){document.documentElement.classList.add('lp-js');const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});$$('.rv').forEach(el=>io.observe(el));
+  const fo=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');fo.unobserve(x.target)}}),{threshold:.6});$$('.wf-i').forEach(el=>fo.observe(el))}
+$('#lpHow').addEventListener('click',()=>$('#lpDaily').scrollIntoView({behavior:reduce?'auto':'smooth'}));
+const ST={p:['Planned','p-planned'],s:['Studying','p-studying'],c:['Completed','p-done'],w:['Pending','p-planned']};
+$$('.demo').forEach(d=>{
+  const n=+d.dataset.n,labels=(d.dataset.labels||'').split('|');let k=0,tm=null,manual=false,seen=false;
+  const dots=document.createElement('div');dots.className='wdots';
+  labels.forEach((l,i)=>{const b=document.createElement('button');b.type='button';b.textContent=l;b.setAttribute('aria-label','Show step '+(i+1)+': '+l);b.onclick=()=>set(i+1,true);dots.appendChild(b)});
+  const r=document.createElement('button');r.type='button';r.textContent='Replay';r.setAttribute('aria-label','Replay the demo');r.onclick=()=>replay();dots.appendChild(r);d.appendChild(dots);
+  function apply(){
+    for(let j=1;j<=n;j++)d.classList.toggle('s'+j,j<=k);
+    [...dots.children].forEach((b,i)=>{if(i<n)b.setAttribute('aria-current',i+1===k)});
+    d.querySelectorAll('[data-st]').forEach(e=>{const s=e.dataset.st,c=s[Math.min(k,s.length-1)],v=ST[c];
+      if(e.classList.contains('tk')){e.classList.toggle('done',c==='c');const sp=e.querySelector('.pill');if(sp&&sp.dataset.c!==c){sp.dataset.c=c;sp.textContent=v[0];sp.className='pill '+v[1]+(seen&&!reduce?' pop':'')}return}
+      if(e.dataset.c!==c){e.dataset.c=c;e.textContent=v[0];e.className='pill '+v[1]+(seen&&!reduce?' pop':'')}});
+    d.querySelectorAll('[data-bar]').forEach(e=>{const a=e.dataset.bar.split(' ');e.style.width=a[Math.min(k,a.length-1)]+'%'});
+    d.querySelectorAll('[data-txt]').forEach(e=>{const a=e.dataset.txt.split('|');e.textContent=a[Math.min(k,a.length-1)]});
+    seen=true}
+  function tick(){if(manual)return;k=k>=n?0:k+1;apply();tm=setTimeout(tick,k>=n?3800:2300)}
+  function play(){clearTimeout(tm);if(!reduce&&!manual)tm=setTimeout(tick,1000)}
+  function set(x,man){if(man){manual=true;clearTimeout(tm)}k=x;apply()}
+  function replay(){manual=false;k=0;apply();play()}
+  d._replay=replay;d._set=set;
+  d.addEventListener('click',e=>{const g=e.target.closest('[data-go-step]');if(g)set(+g.dataset.goStep,true);const m=e.target.closest('[data-mode-btn]');
+    if(m){d.classList.toggle('prv',m.dataset.modeBtn==='prv');d.querySelectorAll('[data-mode-btn]').forEach(b=>{const on=b===m;b.classList.toggle('sent',on);b.setAttribute('aria-pressed',on)});replay()}});
+  apply();if(reduce)set(n,true);
+  if(IO&&!reduce){new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){if(!manual&&!tm)play()}else{clearTimeout(tm);tm=null}}),{threshold:.4}).observe(d)}
+});
 })();
 </script>
 </body>
