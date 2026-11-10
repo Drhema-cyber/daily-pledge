@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>try{var __s=JSON.parse(localStorage.getItem("dp-settings")||"{}");if(__s.theme==="light"||__s.theme==="dark")document.documentElement.setAttribute("data-theme",__s.theme)}catch(e){}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Daily pledge</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IkRhaWx5IFBsZWRnZSBmYXZpY29uIiB4bWxuczpjMnBhPSJodHRwOi8vYzJwYS5vcmcvbWFuaWZlc3QiPjx0aXRsZT5EYWlseSBQbGVkZ2UgZmF2aWNvbjwvdGl0bGU+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMyNTYzRUIiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0LjQgNC45KSBzY2FsZSguODQpIj48ZGVmcz48bWFzayBpZD0iZjEiIG1hc2tVbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjAiIHk9IjAiIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTIxIDMzIEwzMCA0MiBMNTQgMTEiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLXdpZHRoPSIxNiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9tYXNrPjwvZGVmcz48cGF0aCBkPSJNMTEgMTIgSDI5IEEyMCAyMCAwIDAgMSAyOSA1MiBIMTEgWiIgbWFzaz0idXJsKCNmMSkiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0ZGRkZGRiIgc3Ryb2tlLXdpZHRoPSI4LjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNMjEgMzMgTDMwIDQyIEw1NCAxMSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNUVFQUQ0IiBzdHJva2Utd2lkdGg9IjguNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9nPjwvc3ZnPgo=">
@@ -176,21 +177,15 @@ h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-0.02em;line-
 .invite-box p{font-size:14px;color:var(--mute)}
 .invite-box code{display:block;margin-top:8px;font-family:var(--body);font-weight:600;font-size:16px;word-break:break-all;color:var(--green-deep)}
 .invite-box .btn{margin-top:16px;height:48px;font-size:16px}
-.demo{margin-top:40px;font-size:14px;color:var(--mute);padding:16px 18px;border-radius:16px;border:1.5px dashed var(--line)}
-.demo button{color:var(--green);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.demo-note{margin-top:40px;font-size:14px;color:var(--mute);padding:16px 18px;border-radius:14px;background:var(--sunk)}
+.demo-note button{color:var(--green);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 
 /* toast */
 .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,24px);background:var(--green-deep);color:#fff;padding:14px 22px;border-radius:999px;font-weight:500;font-size:15px;opacity:0;pointer-events:none;transition:all .25s;z-index:10;max-width:90vw}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-@media (prefers-color-scheme:dark){
-  :root{--white:#0C1511;--paper:#142019;--ink:#EAF2ED;--mute:#97A89F;--line:#25352C;--green:#3FBF86;--green-deep:#8FE0B8;--green-wash:#14291F;--orange:#FF8A3D;--orange-wash:#2B1B10}
-  .btn-primary{color:#05160E}.btn-primary:hover{background:#6AD3A3}
-  .check{color:#05160E}.chip.sent{color:#05160E}
-  .task.next .meta,.nudge small{color:#FFB27F}
-  .week span.today{background:var(--white)}
-}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--white:#0C1511;--paper:#142019;--ink:#EAF2ED;--mute:#97A89F;--line:#25352C;--green:#3FBF86;--green-deep:#8FE0B8;--green-wash:#14291F;--orange:#FF8A3D;--orange-wash:#2B1B10}:root:not([data-theme=light]) .btn-primary{color:#05160E}:root:not([data-theme=light]) .btn-primary:hover{background:#6AD3A3}:root:not([data-theme=light]) .check{color:#05160E}:root:not([data-theme=light]) .chip.sent{color:#05160E}:root:not([data-theme=light]) .task.next .meta,:root:not([data-theme=light]) .nudge small{color:#FFB27F}:root:not([data-theme=light]) .week span.today{background:var(--white)}}:root[data-theme=dark]{--white:#0C1511;--paper:#142019;--ink:#EAF2ED;--mute:#97A89F;--line:#25352C;--green:#3FBF86;--green-deep:#8FE0B8;--green-wash:#14291F;--orange:#FF8A3D;--orange-wash:#2B1B10}:root[data-theme=dark] .btn-primary{color:#05160E}:root[data-theme=dark] .btn-primary:hover{background:#6AD3A3}:root[data-theme=dark] .check{color:#05160E}:root[data-theme=dark] .chip.sent{color:#05160E}:root[data-theme=dark] .task.next .meta,:root[data-theme=dark] .nudge small{color:#FFB27F}:root[data-theme=dark] .week span.today{background:var(--white)}
 
 /* study groups (separate feature) */
 .sg h2{font-size:24px;color:var(--green-deep)}
@@ -322,9 +317,185 @@ html.lp-js .demo.s1 .at1,html.lp-js .demo.s2 .at2,html.lp-js .demo.s3 .at3,html.
 @media(min-width:760px){.lp-footer-in{flex-direction:row;justify-content:space-between;align-items:flex-start;padding-top:44px;padding-bottom:52px}.lp-fm{text-align:right}}
 .brand{gap:0}.brand .lg{display:block;height:32px;width:auto;max-width:100%}
 :root{--lg-d:#2563EB;--lg-c:#0D9488;--lg-t:#0B1F3A}
-@media(prefers-color-scheme:dark){:root{--lg-d:#FFFFFF;--lg-c:#2DD4BF;--lg-t:#FFFFFF}}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--lg-d:#FFFFFF;--lg-c:#2DD4BF;--lg-t:#FFFFFF}}:root[data-theme=dark]{--lg-d:#FFFFFF;--lg-c:#2DD4BF;--lg-t:#FFFFFF}
 .lp-fb .lg{height:28px}
 @media(max-width:400px){.lp-nav .lg{height:26px}}
+.lp-hero{grid-template-columns:minmax(0,1fr)}.lp-hero h1{max-width:none;font-size:clamp(34px,9vw,56px);text-wrap:balance}
+.hero-art{position:relative;min-width:0}.hero-svg{display:block;width:100%;height:auto}
+.hero-card{position:absolute;right:2%;bottom:-6px;display:flex;align-items:center;gap:10px;background:var(--white);border:1.5px solid var(--line);border-radius:999px;padding:8px 16px 8px 8px;box-shadow:0 14px 30px -14px rgba(7,61,39,.4);font-size:15px;max-width:94%}
+.hc{opacity:0;animation:hcin .6s ease forwards}@keyframes hcin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.hero-card{animation:hcin .6s ease 1.8s both}
+@media(min-width:860px){.lp-hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.lp-hero h1{font-size:clamp(36px,3.8vw,52px)}}
+@media(prefers-reduced-motion:reduce){.hc,.hero-card{animation:none;opacity:1}}
+.hs{position:relative;min-width:0}.hs-view{overflow:hidden;padding:4px 0 44px;margin:-4px 0 -22px}.hs .win{box-shadow:0 18px 30px -18px rgba(7,61,39,.38)}
+.hs-track{display:flex;align-items:center;transition:transform .7s cubic-bezier(.22,.7,.2,1)}.hs-slide{flex:0 0 100%;min-width:0;padding:0 12px;box-sizing:border-box}
+.hs-ctl{display:flex;align-items:center;justify-content:center;gap:12px}
+.hs-dot{position:relative;width:10px;height:10px;padding:0;border-radius:999px;background:var(--line);transition:width .3s,background .3s}.hs-dot::after{content:"";position:absolute;inset:-14px -6px}.hs-dot[aria-current=true]{width:28px;background:var(--green)}
+
+@media(prefers-reduced-motion:reduce){.hs-track,.hs-dot{transition:none}}
+.hero-stage{position:relative}.hero-key{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin-top:30px;color:var(--mute);font-size:14px}
+.hero-key li{display:flex;align-items:center;gap:7px}.hero-key i{display:inline-block;width:16px;height:16px;border-radius:50%;flex:none}.kd{background:var(--green)}.ks{background:var(--orange-wash);border:3px solid var(--orange)}
+@media(max-width:640px){.hero-card{font-size:13px;padding:5px 14px 5px 5px;bottom:-18px;right:0;gap:8px}.hero-card .av{width:26px;height:26px;font-size:12px}.hero-key{margin-top:34px}}
+
+/* ===== refinement: tonal surfaces + soft elevation instead of outlines and divider lines ===== */
+:root{--bg:#F6F8F6;--card:#FFFFFF;--sunk:#EFF3F0;--paper:#EFF3F0;--field-line:#D3DCD6;
+  --sh-card:0 1px 2px rgba(16,35,27,.04),0 8px 24px -12px rgba(16,35,27,.12);
+  --sh-float:0 2px 6px rgba(16,35,27,.04),0 28px 56px -28px rgba(16,35,27,.22);
+  --sh-pop:0 2px 4px rgba(16,35,27,.06),0 12px 24px -12px rgba(16,35,27,.24);
+  --sh-nav:0 6px 14px -12px rgba(16,35,27,.10);--svg-sh:rgba(16,35,27,.14);
+  --i-paper:#FFFFFF;--i-lid:#E7EEEA;--i-lidbase:#B9C8C1}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#09110D;--card:#111B16;--sunk:#18251E;--paper:#18251E;--field-line:#2E4036;
+  --sh-card:inset 0 1px 0 rgba(255,255,255,.04),0 10px 24px -16px rgba(0,0,0,.6);
+  --sh-float:inset 0 1px 0 rgba(255,255,255,.05),0 30px 50px -30px rgba(0,0,0,.75);
+  --sh-pop:inset 0 1px 0 rgba(255,255,255,.06),0 12px 24px -12px rgba(0,0,0,.65);
+  --sh-nav:0 8px 20px -14px rgba(0,0,0,.7);--svg-sh:rgba(0,0,0,.45);
+  --i-paper:#CFDBD4;--i-lid:#2A3A32;--i-lidbase:#1F2D26}}:root[data-theme=dark]{--bg:#09110D;--card:#111B16;--sunk:#18251E;--paper:#18251E;--field-line:#2E4036;
+  --sh-card:inset 0 1px 0 rgba(255,255,255,.04),0 10px 24px -16px rgba(0,0,0,.6);
+  --sh-float:inset 0 1px 0 rgba(255,255,255,.05),0 30px 50px -30px rgba(0,0,0,.75);
+  --sh-pop:inset 0 1px 0 rgba(255,255,255,.06),0 12px 24px -12px rgba(0,0,0,.65);
+  --sh-nav:0 8px 20px -14px rgba(0,0,0,.7);--svg-sh:rgba(0,0,0,.45);
+  --i-paper:#CFDBD4;--i-lid:#2A3A32;--i-lidbase:#1F2D26}
+body{background:var(--bg)}
+/* containers: a lighter surface and a soft shadow, no outline */
+.sg-card,.pv,.win,.wf-u,.stp{border:0;background:var(--card);box-shadow:var(--sh-card)}
+.sg-card,.wf-u,.stp{border-radius:16px}
+.sg-card .sg-card{box-shadow:none;background:var(--sunk)}
+.pv,.win,.hs .win{border-radius:18px;box-shadow:var(--sh-float)}
+.hero-card{border:0;background:var(--card);box-shadow:var(--sh-pop)}
+.lp-end{border:0;background:var(--green-wash);border-radius:24px}
+.nudge,.invite-box{border-radius:16px}.invite-box{background:var(--sunk)}
+.sug,.priv{border:0;border-radius:14px}
+.wl{border:0;background:var(--sunk);border-radius:14px}
+.toast{box-shadow:var(--sh-pop)}
+/* rows and nested surfaces: tonal fill, no outline */
+.tk{border:0;background:var(--sunk);border-radius:12px}.tk.next{background:var(--orange-wash)}
+.tk .cb{border-color:var(--field-line)}.tk.done .cb{border-color:var(--green)}
+.bb,.bubble{background:var(--sunk)}.msg.me .bubble{background:var(--green-wash)}
+.wbar{border:0;background:var(--sunk)}.wbar i{background:var(--field-line)}
+.wdots button{border:0;background:var(--sunk)}.wdots button[aria-current=true]{background:var(--green-wash);color:var(--green)}
+.avs .av{border-color:var(--card)}
+/* dividers removed: separation through spacing, surface and hierarchy */
+.mrow,.task,.task:first-child,.empty,.tabs,.sg-tabs,.lp-tabs,.lp-nav,.lp-sec{border:0}
+.tab.on::after{bottom:0}
+.task{padding:18px 0}.task + .task{margin-top:2px}.task.next{border-radius:16px}
+.empty{background:var(--sunk);border-radius:16px;padding:32px 24px}
+.lp-nav{background:var(--bg);box-shadow:var(--sh-nav)}
+.lp-footer{border:0;background:var(--sunk);margin-top:56px}
+/* controls: secondary buttons and chips are tonal, inputs keep one quiet boundary */
+.btn-outline,.lp-btn.o{border:0;background:var(--sunk);color:var(--ink)}
+.btn-outline:hover,.lp-btn.o:hover{background:var(--green-wash)}
+.chip{border:0;background:var(--sunk)}.chip:hover{background:var(--green-wash);color:var(--green)}.chip.sent{background:var(--green)}
+.field input,.add input[type=text],.add input[type=time],.checkin textarea,.send input,.sg-in{border:1px solid var(--field-line);border-radius:12px}
+.strip span{background:var(--sunk);box-shadow:none}.strip .part span{background:var(--green-wash);box-shadow:none}.strip .now span{box-shadow:inset 0 0 0 2px var(--orange)}
+.week span.half{box-shadow:none}
+/* illustration follows the theme */
+.chip-bg{fill:var(--card)}.chip-tx{fill:var(--ink)}.i-paper{fill:var(--i-paper)}.i-lid{fill:var(--i-lid)}.i-lidbase{fill:var(--i-lidbase)}
+.hc{filter:drop-shadow(0 6px 10px var(--svg-sh))}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .chip.sent{color:#05160E}}:root[data-theme=dark] .chip.sent{color:#05160E}
+
+/* ===== forms: theme-aware field surface and text (fixes white-on-white typing in dark mode) ===== */
+:root{color-scheme:light dark;--field-bg:#FFFFFF;--field-text:#10231B;--ph:#68776F;--danger:#B3261E}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--field-bg:#1C2822;--field-text:#EAF2ED;--ph:#93A59B;--danger:#FF9B8F}}:root[data-theme=dark]{--field-bg:#1C2822;--field-text:#EAF2ED;--ph:#93A59B;--danger:#FF9B8F}
+input,textarea,select{background:var(--field-bg);color:var(--field-text);-webkit-text-fill-color:var(--field-text);caret-color:var(--green)}
+input::placeholder,textarea::placeholder{color:var(--ph);-webkit-text-fill-color:var(--ph);opacity:1}
+input[type=time],input[type=date]{color:var(--field-text)}
+input:-webkit-autofill,textarea:-webkit-autofill{-webkit-text-fill-color:var(--field-text);caret-color:var(--field-text);box-shadow:0 0 0 100px var(--field-bg) inset}
+input:disabled,textarea:disabled,select:disabled{background:var(--sunk);color:var(--ph);-webkit-text-fill-color:var(--ph);opacity:1;cursor:not-allowed}
+button:disabled{opacity:.55;cursor:not-allowed}
+.field input,.add input[type=text],.add input[type=time],.checkin textarea,.send input,.sg-in{background:var(--field-bg);color:var(--field-text)}
+.sg-err{color:var(--danger)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .toast{color:#05160E}}:root[data-theme=dark] .toast{color:#05160E}
+
+.grp-list{display:grid;gap:10px;margin-top:6px}
+.grp{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:14px 16px;border-radius:16px;background:var(--card);box-shadow:var(--sh-card);transition:background .15s}
+.grp:hover{background:var(--sunk)}
+.grp-av{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:17px}
+.grp-tx{min-width:0;flex:1;display:grid;gap:2px}.grp-tx b{font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.grp-tx small{color:var(--mute);font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.grp-meta{flex:none;display:grid;gap:4px;justify-items:end;font-size:13px;color:var(--mute)}.grp-meta em{font-style:normal;font-weight:600;color:var(--green)}
+.sk{height:76px;border-radius:16px;background:var(--sunk);animation:skp 1.4s ease-in-out infinite}.sk+.sk{margin-top:10px}
+@keyframes skp{50%{opacity:.55}}
+.sg-ok{text-align:center;padding:34px 8px 10px}.sg-ok-i{display:inline-grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--green-wash);color:var(--green)}.sg-ok h2{margin-top:14px}.sg-ok p{color:var(--mute);margin-top:6px}
+.sg-banner{display:flex;gap:12px;align-items:center;justify-content:space-between;background:var(--orange-wash);color:var(--ink);border-radius:14px;padding:12px 16px;margin-top:12px;font-size:15px}
+@media(prefers-reduced-motion:reduce){.sk{animation:none}}
+
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+.av{position:relative;overflow:hidden}.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%}
+.acct{position:relative}.acct-btn{display:block;border-radius:50%;padding:0}.acct-btn .av{width:38px;height:38px;font-size:15px}
+.acct-btn:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.acct-menu{position:absolute;right:0;top:48px;width:min(260px,calc(100vw - 32px));background:var(--card);border-radius:16px;box-shadow:var(--sh-pop);padding:6px;z-index:30}
+.acct-hd{padding:12px 14px 10px;display:grid;gap:2px;min-width:0}.acct-hd strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.acct-hd small{color:var(--mute);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.acct-menu button{display:block;width:100%;text-align:left;padding:13px 14px;border-radius:10px;font-size:16px}.acct-menu button:hover{background:var(--sunk)}
+.pf-top{display:grid;justify-items:center;gap:6px;text-align:center;padding:12px 0 8px}.av.pf-av{width:112px;height:112px;font-size:44px;border:0}.pf-top h1{margin-top:10px}
+.pf-actions{display:grid;gap:10px;margin-top:18px}.pf-actions .btn{width:100%}
+.pf-prev{background:var(--green-wash);border-radius:16px;padding:14px 16px;margin-top:16px;text-align:center}
+.pname-row{display:flex;align-items:center;gap:14px}.pname-row .av{width:52px;height:52px;font-size:20px}
+.sh{margin:30px 0 10px;font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);font-family:inherit;font-weight:700}
+.sgroup{padding:6px 0}.srow{display:flex;align-items:center;gap:14px;padding:14px 18px;min-height:64px}.stx{flex:1;min-width:0;display:grid;gap:2px}.stx small{color:var(--mute);font-size:14px;overflow-wrap:anywhere}
+.srow .av.sm{width:46px;height:46px;font-size:18px;flex:none}.sbtn{height:42px!important;padding:0 18px!important;flex:none}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--sunk);border-radius:14px;padding:5px}.seg button{padding:12px 8px;border-radius:10px;font-weight:600;color:var(--mute)}.seg button[aria-checked=true]{background:var(--card);color:var(--ink);box-shadow:var(--sh-card)}
+.tgl{flex:none;width:52px;height:32px;border-radius:999px;background:var(--field-line);position:relative;transition:background .2s}.tgl i{position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .2s}
+.tgl[aria-checked=true]{background:var(--green)}.tgl[aria-checked=true] i{transform:translateX(20px)}
+.tgl:focus-visible,.seg button:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.tgl,.tgl i{transition:none}}
+
+.sg-tabs{position:relative;scrollbar-width:none}.sg-tabs::-webkit-scrollbar{display:none}
+.gh{display:flex;gap:14px;align-items:center;margin-top:6px}.gh .grp-av{width:54px;height:54px;font-size:20px;border-radius:16px}.gh h2{font-size:24px}
+.ov-now{background:var(--card);box-shadow:var(--sh-card);border-radius:20px;padding:22px;margin-top:20px}.ov-now h2{font-size:30px;margin-top:6px;overflow-wrap:anywhere}
+.ov-next{background:var(--green-wash);border-radius:14px;padding:14px 16px;margin-top:16px;display:grid;gap:10px}.ov-next p{color:var(--ink);font-size:15px}.ov-next .btn{width:100%}
+.ov-prog{margin-top:18px}.ov-prog strong{font-size:15px}
+.ov-h{margin-top:34px}.ov-h h3{font-size:19px}
+.feed{display:grid;gap:2px;margin-top:8px}.fr{display:flex;gap:12px;align-items:center;width:100%;text-align:left;padding:10px 8px;border-radius:12px;margin:0 -8px;width:calc(100% + 16px)}.fr:hover{background:var(--sunk)}
+.ft{min-width:0;flex:1;display:grid;gap:2px;font-size:15px}.ft small{color:var(--mute);font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.fr time{flex:none;color:var(--mute);font-size:13px}
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.tool{display:grid;gap:6px;align-content:start;text-align:left;background:var(--sunk);border-radius:16px;padding:16px;min-width:0}.tool:hover{background:var(--green-wash)}
+.tool svg{width:24px;height:24px;color:var(--green)}.tool b{font-size:16px}.tool small{color:var(--mute);font-size:14px;line-height:1.35}.tool em{font-style:normal;color:var(--green);font-weight:600;font-size:14px;margin-top:4px}
+.inv-p{background:var(--card);box-shadow:var(--sh-card);border-radius:18px;padding:20px;margin-top:16px}.inv-p h3{font-size:19px;overflow-wrap:anywhere}
+.inv-link input{margin-top:14px;font-size:14px;text-overflow:ellipsis}.inv-btns{display:grid;gap:10px;margin-top:14px}.inv-btns .btn{width:100%}
+.inv-qr{display:grid;justify-items:center;gap:8px;margin-top:18px;text-align:center}.qr-box{width:min(220px,100%);background:#fff;border-radius:14px;padding:6px;box-shadow:var(--sh-card)}.qr-box svg{display:block;width:100%;height:auto}
+.inv-code{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px;background:var(--sunk);border-radius:12px;padding:12px 14px}.inv-code strong{letter-spacing:.08em;font-size:17px;overflow-wrap:anywhere}
+details.jc summary{margin-top:14px}
+
+/* guided tours */
+:root{--tour-dim:rgba(11,31,22,.34)}@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--tour-dim:rgba(0,0,0,.5)}}:root[data-theme=dark]{--tour-dim:rgba(0,0,0,.5)}
+#tourBlock{position:fixed;inset:0;z-index:90;background:transparent}
+#tourHole{position:fixed;z-index:91;border-radius:14px;pointer-events:none;box-shadow:0 0 0 9999px var(--tour-dim),0 0 0 3px var(--orange);transition:top .3s ease,left .3s ease,width .3s ease,height .3s ease}
+#tourTip{position:fixed;z-index:92;background:var(--card);color:var(--ink);border-radius:16px;box-shadow:var(--sh-pop);padding:16px 16px 14px;box-sizing:border-box;max-width:calc(100vw - 24px);transition:top .3s ease,left .3s ease}
+#tourTip::before{content:"";position:absolute;left:var(--ca,50%);width:14px;height:14px;background:var(--card);transform:translateX(-50%) rotate(45deg)}
+#tourTip[data-pos=down]::before{top:-6px}#tourTip[data-pos=up]::before{bottom:-6px}#tourTip[data-pos=pin]::before{display:none}
+.tt-s{font-size:13px;font-weight:700;color:var(--mute);letter-spacing:.04em}#tourTip h3{font-size:19px;margin-top:4px}#tourTip p{margin-top:6px;font-size:15px;line-height:1.45;color:var(--ink)}
+.tt-c{display:flex;align-items:center;gap:8px;margin-top:14px}.tt-skip{color:var(--mute);font-size:14px;text-decoration:underline;text-underline-offset:3px}
+#tourTip .btn,#tourOffer .btn{width:auto;height:40px;padding:0 18px;font-size:15px}
+#tourTip:focus{outline:none}
+#tourOffer{position:fixed;z-index:70;left:50%;bottom:16px;transform:translateX(-50%);width:min(420px,calc(100vw - 24px));box-sizing:border-box;background:var(--card);box-shadow:var(--sh-pop);border-radius:16px;padding:16px;animation:tofr .35s ease}
+#tourOffer p{font-size:15px;color:var(--mute);margin-top:4px;line-height:1.4}
+@keyframes tofr{from{opacity:0;transform:translate(-50%,10px)}to{opacity:1;transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){#tourHole,#tourTip{transition:none}#tourOffer{animation:none}}
+
+/* legal pages */
+.lp-footer-in{flex-wrap:wrap}.lp-flinks{flex:1 1 100%;display:flex;flex-wrap:wrap;gap:6px 22px;order:3}
+.lp-flinks a{color:var(--mute);font-size:14px;text-decoration:none;padding:6px 0}.lp-flinks a:hover{color:var(--green);text-decoration:underline}
+#authLegal a,.legal a{color:var(--green);font-weight:600}
+.legal{max-width:760px;margin:0 auto;padding:32px 20px 56px;min-width:0}.legal:focus{outline:none}
+.legal h1{font-size:clamp(30px,6.5vw,44px)}.legal h2{font-size:21px;margin:36px 0 10px}.legal h3{font-size:17px;margin:20px 0 6px}
+.legal p,.legal li{line-height:1.65;overflow-wrap:break-word}.legal p{margin-top:10px}.legal ul{padding-left:22px;display:grid;gap:8px;margin:10px 0}
+.legal .meta{color:var(--mute);font-size:14px}
+.ph{background:var(--orange-wash);color:var(--ink);padding:1px 6px;border-radius:6px;font-weight:600;overflow-wrap:anywhere}
+.lr{display:inline-block;background:var(--sunk);color:var(--mute);font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;margin-left:6px;letter-spacing:.05em;vertical-align:middle;white-space:nowrap}
+.legal-draft{background:var(--orange-wash);border-radius:14px;padding:14px 16px;margin-top:18px;font-size:15px;line-height:1.5}
+.tbl{overflow-x:auto;margin:12px 0}.legal table{width:100%;border-collapse:collapse;font-size:15px;min-width:520px}.legal th,.legal td{text-align:left;padding:10px 12px;vertical-align:top}
+.legal th{color:var(--mute);font-size:12px;letter-spacing:.05em;text-transform:uppercase}.legal tbody tr:nth-child(odd){background:var(--sunk)}.legal td:first-child{border-radius:10px 0 0 10px}.legal td:last-child{border-radius:0 10px 10px 0}
+.legal .card{background:var(--card);box-shadow:var(--sh-card);border-radius:16px;padding:18px 20px;margin-top:14px}.legal .card p:first-child{margin-top:0}
+#legal .lp-footer{margin-top:0}
+@media(max-width:640px){.legal table{min-width:0}.legal thead{display:none}.legal tr{display:block;padding:12px 14px;border-radius:12px;margin-bottom:10px}.legal tbody tr:nth-child(odd){background:var(--sunk)}.legal td{display:block;padding:4px 0;border-radius:0!important}.legal td::before{content:attr(data-label);display:block;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--mute)}.legal td:first-child{font-weight:700}}
+
+.rm-btn{color:var(--danger);font-weight:600;font-size:14px;padding:6px 4px}.rm-btn:disabled{opacity:.5}
+.btn.danger{color:var(--danger);margin-top:22px}.btn-danger{background:var(--danger);color:#fff}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .btn-danger{color:#05160E}}:root[data-theme=dark] .btn-danger{color:#05160E}
+#dlg .dlg-b{position:fixed;inset:0;z-index:95;background:var(--tour-dim)}
+#dlg .dlg{position:fixed;z-index:96;left:50%;top:50%;transform:translate(-50%,-50%);width:min(380px,calc(100vw - 32px));box-sizing:border-box;background:var(--card);color:var(--ink);border-radius:18px;box-shadow:var(--sh-pop);padding:22px}
+#dlg .dlg:focus{outline:none}#dlg h3{font-size:20px}#dlg p{margin-top:8px;line-height:1.5;color:var(--ink)}#dlg .btn{width:auto;height:44px;padding:0 20px;font-size:15px}
+.legal ol{padding-left:22px;display:grid;gap:8px;margin:10px 0}
 </style>
 </head>
 <body>
@@ -336,14 +507,30 @@ html.lp-js .demo.s1 .at1,html.lp-js .demo.s2 .at2,html.lp-js .demo.s3 .at3,html.
   <header class="lp-nav"><div class="lp"><div class="brand" role="img" aria-label="Daily pledge"><svg class="lg" viewBox="0 0 304.9 64" width="152.45" height="32" aria-hidden="true"><use href="#dp-logo"/></svg></div><div style="display:flex;gap:8px"><button class="lp-btn q" data-go="login">Log in</button><button class="lp-btn p" data-go="signup" style="height:44px">Sign up</button></div></div></header>
   <main class="lp">
     <section class="lp-hero">
-      <div class="rv"><h1>Study together. Stay accountable.</h1><p class="sub">Plan your day, study with friends, and see who shows up.</p>
+      <div class="rv"><h1>Study together.<br>Stay accountable.</h1><p class="sub">Plan your day, study with friends, and see who shows up.</p>
         <div class="lp-cta"><button class="lp-btn p" data-go="signup">Get started</button><button class="lp-btn o" id="lpHow">See how it works</button></div></div>
-      <div class="win demo rv" data-n="4" data-labels="Lock in|Done|Study|Discuss"><div class="wbar"><i></i><i></i><i></i><span>Daily pledge</span></div><div class="wbody"><div class="lp-meta">Today</div><div class="mrow" style="border:0;padding:4px 0 0"><h3 data-txt="0 of 2 done|0 of 2 done|1 of 2 done|1 of 2 done|1 of 2 done">0 of 2 done</h3><span class="pill p-done at1">Locked in</span></div><div class="bar"><i data-bar="0 0 50 50 50" style="width:0"></i></div><div class="tk" data-st="wwccc"><span class="cb"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg></span><span class="t"><b>Read Chapter 3</b><small class="pill"></small></span><span class="tm">9:00 AM</span></div><div class="tk" data-st="wwwww"><span class="cb"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg></span><span class="t"><b>Gym</b><small class="pill"></small></span><span class="tm">6:00 PM</span></div><div class="mrow at2" style="border:0"><span><span class="av a1">S</span><span class="sg-meta">Sarah: Proud of you</span></span></div><div class="sg-card at3" style="margin-top:10px;padding:14px"><div class="mrow" style="border:0;padding:0"><strong>Physics · Atomic physics</strong><span class="pill " data-st="pppsc"></span></div><div class="bb at4"><b>Victor</b>Electrons sit at fixed energy levels.</div></div></div></div>
+      <div class="hs rv" id="hs" role="group" aria-roledescription="carousel" aria-label="Daily Pledge preview">
+        <div class="hs-view"><div class="hs-track">
+          <div class="hs-slide" role="group" aria-roledescription="slide" aria-label="1 of 2: friends studying together"><div class="hero-art"><div class="hero-stage"><svg class="hero-svg" viewBox="0 0 600 420" role="img" aria-label="Physics Study Group: four friends study together at one desk. Victor and Sarah have finished their study task, Daniel and Michael are still studying, and everyone can see each other's progress." xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="300" cy="240" rx="292" ry="176" style="fill:var(--green-wash)"/><circle cx="556" cy="96" r="22" style="fill:var(--orange-wash)"/><circle cx="44" cy="318" r="14" style="fill:var(--orange-wash)"/><circle cx="572" cy="300" r="9" style="fill:var(--green-wash)"/>
+<path d="M300 72 Q90 66 90 87" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-dasharray="2 8" stroke-linecap="round"/><path d="M300 72 Q230 66 230 87" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-dasharray="2 8" stroke-linecap="round"/><path d="M300 72 Q370 66 370 87" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-dasharray="2 8" stroke-linecap="round"/><path d="M300 72 Q510 66 510 87" fill="none" stroke="#0D9488" stroke-width="2.5" stroke-dasharray="2 8" stroke-linecap="round"/><g class="hc" style="animation-delay:.2s"><rect x="150" y="30" width="300" height="44" rx="22" fill="#073D27"/><g transform="translate(182 52)" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M-9 -7 Q-3 -10 0 -6 Q3 -10 9 -7 V7 Q3 4 0 8 Q-3 4 -9 7 Z"/><path d="M0 -6 V8"/></g><text x="202" y="59" font-size="21" font-weight="700" fill="#fff" font-family="Figtree,system-ui,sans-serif" textLength="226" lengthAdjust="spacingAndGlyphs">Physics Study Group</text></g><path d="M32 372 V296 Q32 252 70 248 H110 Q148 252 148 296 V372 Z" fill="#0B5D3B"/><path d="M32 296 Q32 262 46 254 L50 372 H32 Z" fill="#000" opacity=".08"/><rect x="78" y="228" width="24" height="30" rx="9" fill="#F1C7A3"/><ellipse cx="90" cy="238" rx="13" ry="6" fill="#000" opacity=".14"/><path d="M73 252 Q90 272 107 252" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" opacity=".4"/><circle cx="54" cy="204" r="7" fill="#F1C7A3"/><circle cx="126" cy="204" r="7" fill="#F1C7A3"/><circle cx="90" cy="200" r="36" fill="#F1C7A3"/><path d="M52 198 C50 156 130 156 128 198 C116 180 64 180 52 198 Z" fill="#2B1D14"/><path d="M68 170 Q84 162 100 166" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".22"/><path d="M72 192 Q78 188 84 191 M96 191 Q102 188 108 192" fill="none" stroke="#2B1D14" stroke-width="2.6" stroke-linecap="round"/><circle cx="78" cy="203" r="3.4" fill="#1B1B1B"/><circle cx="102" cy="203" r="3.4" fill="#1B1B1B"/><circle cx="79" cy="202" r="1" fill="#fff"/><circle cx="103" cy="202" r="1" fill="#fff"/><path d="M90 205 Q86 212 90 213" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" opacity=".22"/><ellipse cx="69" cy="214" rx="6" ry="4" fill="#E8776A" opacity=".28"/><ellipse cx="111" cy="214" rx="6" ry="4" fill="#E8776A" opacity=".28"/><path d="M80 215 Q90 225 100 215" fill="none" stroke="#1B1B1B" stroke-width="3" stroke-linecap="round"/><path d="M172 372 V296 Q172 252 210 248 H250 Q288 252 288 296 V372 Z" fill="#F26B1D"/><path d="M172 296 Q172 262 186 254 L190 372 H172 Z" fill="#000" opacity=".08"/><rect x="218" y="228" width="24" height="30" rx="9" fill="#B9774A"/><ellipse cx="230" cy="238" rx="13" ry="6" fill="#000" opacity=".14"/><path d="M213 252 Q230 272 247 252" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" opacity=".4"/><circle cx="194" cy="204" r="7" fill="#B9774A"/><circle cx="266" cy="204" r="7" fill="#B9774A"/><circle cx="230" cy="200" r="36" fill="#B9774A"/><circle cx="230" cy="156" r="15" fill="#16110D"/><path d="M192 198 C190 156 270 156 268 198 C256 180 204 180 192 198 Z" fill="#16110D"/><path d="M208 170 Q224 162 240 166" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".22"/><path d="M212 192 Q218 188 224 191 M236 191 Q242 188 248 192" fill="none" stroke="#16110D" stroke-width="2.6" stroke-linecap="round"/><circle cx="218" cy="203" r="3.4" fill="#1B1B1B"/><circle cx="242" cy="203" r="3.4" fill="#1B1B1B"/><circle cx="219" cy="202" r="1" fill="#fff"/><circle cx="243" cy="202" r="1" fill="#fff"/><path d="M230 205 Q226 212 230 213" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" opacity=".22"/><ellipse cx="209" cy="214" rx="6" ry="4" fill="#E8776A" opacity=".28"/><ellipse cx="251" cy="214" rx="6" ry="4" fill="#E8776A" opacity=".28"/><path d="M220 215 Q230 225 240 215" fill="none" stroke="#1B1B1B" stroke-width="3" stroke-linecap="round"/><path d="M312 372 V296 Q312 252 350 248 H390 Q428 252 428 296 V372 Z" fill="#2F7D5B"/><path d="M312 296 Q312 262 326 254 L330 372 H312 Z" fill="#000" opacity=".08"/><rect x="358" y="228" width="24" height="30" rx="9" fill="#7A4A2E"/><ellipse cx="370" cy="238" rx="13" ry="6" fill="#000" opacity=".14"/><path d="M353 252 Q370 272 387 252" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" opacity=".4"/><circle cx="334" cy="204" r="7" fill="#7A4A2E"/><circle cx="406" cy="204" r="7" fill="#7A4A2E"/><circle cx="370" cy="200" r="36" fill="#7A4A2E"/><circle cx="343" cy="178" r="17" fill="#0E0E0E"/><circle cx="361" cy="166" r="17" fill="#0E0E0E"/><circle cx="380" cy="166" r="17" fill="#0E0E0E"/><circle cx="398" cy="178" r="17" fill="#0E0E0E"/><path d="M332 198 C330 156 410 156 408 198 C396 180 344 180 332 198 Z" fill="#0E0E0E"/><path d="M348 170 Q364 162 380 166" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".22"/><path d="M352 192 Q358 188 364 191 M376 191 Q382 188 388 192" fill="none" stroke="#0E0E0E" stroke-width="2.6" stroke-linecap="round"/><circle cx="358" cy="203" r="3.4" fill="#1B1B1B"/><circle cx="382" cy="203" r="3.4" fill="#1B1B1B"/><circle cx="359" cy="202" r="1" fill="#fff"/><circle cx="383" cy="202" r="1" fill="#fff"/><path d="M370 205 Q366 212 370 213" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" opacity=".22"/><ellipse cx="349" cy="214" rx="6" ry="4" fill="#E8776A" opacity=".28"/><ellipse cx="391" cy="214" rx="6" ry="4" fill="#E8776A" opacity=".28"/><path d="M360 215 Q370 225 380 215" fill="none" stroke="#1B1B1B" stroke-width="3" stroke-linecap="round"/><path d="M466 200 Q462 262 474 270 H546 Q558 262 554 200 Z" fill="#4A2F20"/><path d="M452 372 V296 Q452 252 490 248 H530 Q568 252 568 296 V372 Z" fill="#073D27"/><path d="M452 296 Q452 262 466 254 L470 372 H452 Z" fill="#000" opacity=".08"/><rect x="498" y="228" width="24" height="30" rx="9" fill="#E5B08A"/><ellipse cx="510" cy="238" rx="13" ry="6" fill="#000" opacity=".14"/><path d="M493 252 Q510 272 527 252" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" opacity=".4"/><circle cx="474" cy="204" r="7" fill="#E5B08A"/><circle cx="546" cy="204" r="7" fill="#E5B08A"/><circle cx="510" cy="200" r="36" fill="#E5B08A"/><path d="M472 198 C470 156 550 156 548 198 C536 180 484 180 472 198 Z" fill="#4A2F20"/><path d="M488 170 Q504 162 520 166" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".22"/><path d="M492 192 Q498 188 504 191 M516 191 Q522 188 528 192" fill="none" stroke="#4A2F20" stroke-width="2.6" stroke-linecap="round"/><circle cx="498" cy="203" r="3.4" fill="#1B1B1B"/><circle cx="522" cy="203" r="3.4" fill="#1B1B1B"/><circle cx="499" cy="202" r="1" fill="#fff"/><circle cx="523" cy="202" r="1" fill="#fff"/><path d="M510 205 Q506 212 510 213" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" opacity=".22"/><ellipse cx="489" cy="214" rx="6" ry="4" fill="#E8776A" opacity=".28"/><ellipse cx="531" cy="214" rx="6" ry="4" fill="#E8776A" opacity=".28"/><path d="M500 215 Q510 225 520 215" fill="none" stroke="#1B1B1B" stroke-width="3" stroke-linecap="round"/>
+<rect x="24" y="334" width="552" height="46" rx="16" fill="#0B5D3B"/><rect x="24" y="334" width="552" height="11" rx="5.5" fill="#2F7D5B"/><rect x="40" y="382" width="14" height="22" rx="4" fill="#073D27"/><rect x="546" y="382" width="14" height="22" rx="4" fill="#073D27"/><ellipse cx="300" cy="410" rx="250" ry="8" fill="#073D27" opacity=".12"/>
+<rect x="36" y="322" width="44" height="17" rx="8.5" fill="#095133"/><rect x="100" y="322" width="44" height="17" rx="8.5" fill="#095133"/><circle cx="76" cy="330" r="8.5" fill="#F1C7A3"/><circle cx="104" cy="330" r="8.5" fill="#F1C7A3"/><path d="M54 338 L62 314 H126 L118 338 Z" class="i-paper"/><path d="M90 314 L86 338" stroke="#DCE5E0" stroke-width="2"/><path d="M68 324 H82 M98 324 H112" stroke="#DCE5E0" stroke-width="2" stroke-linecap="round"/><rect x="116" y="318" width="22" height="5" rx="2.5" transform="rotate(-18 116 320)" fill="#F26B1D"/><rect x="176" y="322" width="44" height="17" rx="8.5" fill="#D45E19"/><rect x="240" y="322" width="44" height="17" rx="8.5" fill="#D45E19"/><circle cx="216" cy="330" r="8.5" fill="#B9774A"/><circle cx="244" cy="330" r="8.5" fill="#B9774A"/><rect x="192" y="288" width="76" height="48" rx="8" class="i-lid"/><rect x="192" y="330" width="76" height="6" rx="3" class="i-lidbase"/><circle cx="230" cy="311" r="5.5" fill="#F26B1D"/><rect x="316" y="322" width="44" height="17" rx="8.5" fill="#296E50"/><rect x="380" y="322" width="44" height="17" rx="8.5" fill="#296E50"/><circle cx="356" cy="330" r="8.5" fill="#7A4A2E"/><circle cx="384" cy="330" r="8.5" fill="#7A4A2E"/><path d="M334 338 L342 314 H406 L398 338 Z" class="i-paper"/><path d="M370 314 L366 338" stroke="#DCE5E0" stroke-width="2"/><path d="M348 324 H362 M378 324 H392" stroke="#DCE5E0" stroke-width="2" stroke-linecap="round"/><rect x="396" y="318" width="22" height="5" rx="2.5" transform="rotate(-18 396 320)" fill="#F26B1D"/><rect x="456" y="322" width="44" height="17" rx="8.5" fill="#063522"/><rect x="520" y="322" width="44" height="17" rx="8.5" fill="#063522"/><circle cx="496" cy="330" r="8.5" fill="#E5B08A"/><circle cx="524" cy="330" r="8.5" fill="#E5B08A"/><rect x="472" y="288" width="76" height="48" rx="8" class="i-lid"/><rect x="472" y="330" width="76" height="6" rx="3" class="i-lidbase"/><circle cx="510" cy="311" r="5.5" fill="#F26B1D"/>
+<rect x="285" y="306" width="26" height="28" rx="7" class="i-paper"/><rect x="285" y="315" width="26" height="6" fill="#0D9488"/><path d="M311 312 Q324 314 311 326" fill="none" stroke="#DCE5E0" stroke-width="4"/>
+<path d="M300 306 Q295 294 300 286 M306 306 Q311 296 306 290" fill="none" stroke="#DCE5E0" stroke-width="2.4" stroke-linecap="round"/>
+<g class="hc" style="animation-delay:0.5s"><rect x="22" y="88" width="136" height="44" rx="22" class="chip-bg"/><circle cx="45" cy="110" r="13" fill="#0B5D3B"/><path d="M-5 0.5 L-1.5 4 L5.5 -4" transform="translate(45 110) scale(1.05)" fill="none" stroke="#fff" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><text x="64" y="117" font-size="21" font-weight="600" class="chip-tx" font-family="Figtree,system-ui,sans-serif" textLength="68" lengthAdjust="spacingAndGlyphs">Victor</text></g><g class="hc" style="animation-delay:0.75s"><rect x="162" y="88" width="136" height="44" rx="22" class="chip-bg"/><circle cx="185" cy="110" r="13" fill="#0B5D3B"/><path d="M-5 0.5 L-1.5 4 L5.5 -4" transform="translate(185 110) scale(1.05)" fill="none" stroke="#fff" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><text x="204" y="117" font-size="21" font-weight="600" class="chip-tx" font-family="Figtree,system-ui,sans-serif" textLength="58" lengthAdjust="spacingAndGlyphs">Sarah</text></g><g class="hc" style="animation-delay:1.0s"><rect x="302" y="88" width="136" height="44" rx="22" class="chip-bg"/><circle cx="325" cy="110" r="13" style="fill:var(--orange-wash)" stroke="#F26B1D" stroke-width="3.2"/><circle cx="325" cy="110" r="4" fill="#F26B1D"/><text x="344" y="117" font-size="21" font-weight="600" class="chip-tx" font-family="Figtree,system-ui,sans-serif" textLength="66" lengthAdjust="spacingAndGlyphs">Daniel</text></g><g class="hc" style="animation-delay:1.25s"><rect x="442" y="88" width="136" height="44" rx="22" class="chip-bg"/><circle cx="465" cy="110" r="13" style="fill:var(--orange-wash)" stroke="#F26B1D" stroke-width="3.2"/><circle cx="465" cy="110" r="4" fill="#F26B1D"/><text x="484" y="117" font-size="21" font-weight="600" class="chip-tx" font-family="Figtree,system-ui,sans-serif" textLength="80" lengthAdjust="spacingAndGlyphs">Michael</text></g>
+</svg><div class="hero-card"><span class="av a1">S</span><span><b>Sarah</b> checked in on your day</span></div></div>
+<ul class="hero-key" aria-label="Key"><li><i class="kd"></i>Finished today</li><li><i class="ks"></i>Still studying</li><li>Everyone sees everyone’s progress</li></ul></div>
+    </div>
+          <div class="hs-slide" role="group" aria-roledescription="slide" aria-label="2 of 2: the app in action"><div class="win demo" data-n="4" data-labels="Lock in|Done|Study|Discuss"><div class="wbar"><i></i><i></i><i></i><span>Daily Pledge</span></div><div class="wbody"><div class="lp-meta">Today</div><div class="mrow" style="border:0;padding:4px 0 0"><h3 data-txt="0 of 2 done|0 of 2 done|1 of 2 done|1 of 2 done|1 of 2 done">0 of 2 done</h3><span class="pill p-done at1">Locked in</span></div><div class="bar"><i data-bar="0 0 50 50 50" style="width:0"></i></div><div class="tk" data-st="wwccc"><span class="cb"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg></span><span class="t"><b>Read Chapter 3</b><small class="pill"></small></span><span class="tm">9:00 AM</span></div><div class="tk" data-st="wwwww"><span class="cb"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg></span><span class="t"><b>Gym</b><small class="pill"></small></span><span class="tm">6:00 PM</span></div><div class="mrow at2" style="border:0"><span><span class="av a1">S</span><span class="sg-meta">Sarah: Proud of you</span></span></div><div class="sg-card at3" style="margin-top:10px;padding:14px"><div class="mrow" style="border:0;padding:0"><strong>Physics · Atomic physics</strong><span class="pill" data-st="pppsc"></span></div><div class="bb at4"><b>Victor</b>Electrons sit at fixed energy levels.</div></div></div></div></div>
+        </div></div>
+        <div class="hs-ctl"><button class="hs-dot" type="button" aria-label="Show friends studying together" aria-current="true"></button><button class="hs-dot" type="button" aria-label="Show the app in action" aria-current="false"></button></div>
+      </div>
     </section>
     <section class="lp-sec" id="lpDaily"><div class="lp-grid"><div class="lp-copy rv"><div class="lp-tag">Daily accountability</div><h2>Say it. Do it. A friend sees.</h2><p class="sub">Lock in up to three tasks. Your partner sees how the day went.</p></div><div class="win demo rv" data-n="3" data-labels="Lock in|Done|Checked in"><div class="wbar"><i></i><i></i><i></i><span>Victor’s day · Sarah’s view</span></div><div class="wbody"><div class="mrow" style="border:0;padding:0"><span><span class="av a0">V</span><strong>Victor</strong></span><span class="pill p-done at1">Locked in</span></div><div class="tk" data-st="wwcc"><span class="cb"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg></span><span class="t"><b>Read Chapter 3</b><small class="pill"></small></span><span class="tm">9:00 AM</span></div><div class="bb at3"><b>Check-in</b>Done: finished the chapter. In the way: nothing.</div><div class="mrow at3" style="border:0"><span><span class="av a1">S</span><span class="sg-meta">Sarah checked in on your day</span></span></div></div></div></div></section>
     <section class="lp-sec"><div class="lp-grid rev"><div class="lp-copy rv"><div class="lp-tag">Study groups</div><h2>Study with people who notice you show up.</h2><p class="sub">Commit to a topic, study it, then explain it to the group.</p></div><div class="win demo rv" data-n="3" data-labels="Study|Complete|Discuss"><div class="wbar"><i></i><i></i><i></i><span>Physics Study Group</span></div><div class="wbody"><div class="mrow" style="border:0;padding:0"><h3>Physics Study Group</h3><span class="avs"><span class="av a0">V</span><span class="av a1">S</span><span class="av a2">D</span><span class="av a3">M</span></span></div><p class="sg-meta" style="margin-top:4px">Today: Atomic physics</p><div style="margin-top:8px"><div class="mrow"><span><span class="av a0">V</span><strong>Victor</strong></span><span class="pill " data-st="pscc"></span></div><div class="mrow"><span><span class="av a1">S</span><strong>Sarah</strong></span><span class="pill " data-st="ppsc"></span></div><div class="mrow"><span><span class="av a2">D</span><strong>Daniel</strong></span><span class="pill " data-st="ppss"></span></div><div class="mrow"><span><span class="av a3">M</span><strong>Michael</strong></span><span class="pill " data-st="pppp"></span></div></div><div class="bb at3"><b>Victor</b>Electrons only sit at fixed energy levels.</div><div class="bb at3"><b>Sarah</b>So why can’t they sit in between?</div></div></div></div></section>
     <section class="lp-sec"><div class="lp-grid"><div class="lp-copy rv"><div class="lp-tag">Question challenges</div><h2>Test each other, not just yourself.</h2><p class="sub">Friends write questions, answer, and talk it through.</p></div><div class="win demo rv" data-n="4" data-labels="Sarah|Daniel|Michael|Discuss"><div class="wbar"><i></i><i></i><i></i><span>Atomic Physics Challenge</span></div><div class="wbody"><div class="mrow" style="border:0;padding:0"><span class="lp-meta">Question 1 of 3</span><span class="sg-meta" data-txt="0 of 4 answered|1 of 4 answered|2 of 4 answered|3 of 4 answered|3 of 4 answered">0 of 4 answered</span></div><div class="bar"><i data-bar="0 25 50 75 75" style="width:0"></i></div><div class="bb"><b>Question</b>What happens when an electron moves between energy levels?</div><div class="bb at1"><b>Sarah</b>It absorbs or emits a photon.</div><div class="bb at2"><b>Daniel</b>It jumps to a new energy level.</div><div class="bb at3"><b>Michael</b>The energy difference leaves as light.</div><div class="mrow at4" style="border:0"><span class="sg-meta">Compare answers and talk it through</span><span class="pill p-studying">Discuss</span></div></div></div></div></section>
-    <section class="lp-sec"><div class="lp-grid rev"><div class="lp-copy rv"><div class="lp-tag">Knowledge notes</div><h2>Keep what your group figured out.</h2><p class="sub">Save a good explanation. Find it when you revise.</p></div><div class="win demo rv" data-n="2" data-labels="Save|Revise"><div class="wbar"><i></i><i></i><i></i><span>Physics Study Notes</span></div><div class="wbody"><div class="bb" style="margin-top:0"><b>Sarah · in discussion</b>An electron can only gain or lose exact amounts of energy, so it jumps between levels.</div><button class="lp-btn o" data-go-step="1" data-txt="Save to Knowledge|Saved to notes|Saved to notes" style="height:42px;margin-top:10px">Save to Knowledge</button><div class="mrow" style="margin-top:14px"><span class="lp-meta">Physics Study Notes</span><span class="sg-meta" data-txt="2 notes|3 notes|3 notes">2 notes</span></div><div class="bb"><b>Energy levels</b>Why electrons sit at fixed energies.</div><div class="bb"><b>Photons</b>Light from an electron dropping a level.</div><div class="bb at1" style="border:1.5px solid var(--green)"><b>Atomic structure · saved from discussion</b>Electrons jump between exact energy levels.</div><div class="mrow at2" style="border:0"><span class="pill p-done">Ready to revise later</span></div></div></div></div></section>
+    <section class="lp-sec"><div class="lp-grid rev"><div class="lp-copy rv"><div class="lp-tag">Knowledge notes</div><h2>Keep what your group figured out.</h2><p class="sub">Save a good explanation. Find it when you revise.</p></div><div class="win demo rv" data-n="2" data-labels="Save|Revise"><div class="wbar"><i></i><i></i><i></i><span>Physics Study Notes</span></div><div class="wbody"><div class="bb" style="margin-top:0"><b>Sarah · in discussion</b>An electron can only gain or lose exact amounts of energy, so it jumps between levels.</div><button class="lp-btn o" data-go-step="1" data-txt="Save to Knowledge|Saved to notes|Saved to notes" style="height:42px;margin-top:10px">Save to Knowledge</button><div class="mrow" style="margin-top:14px"><span class="lp-meta">Physics Study Notes</span><span class="sg-meta" data-txt="2 notes|3 notes|3 notes">2 notes</span></div><div class="bb"><b>Energy levels</b>Why electrons sit at fixed energies.</div><div class="bb"><b>Photons</b>Light from an electron dropping a level.</div><div class="bb at1" style="background:var(--green-wash)"><b>Atomic structure · saved from discussion</b>Electrons jump between exact energy levels.</div><div class="mrow at2" style="border:0"><span class="pill p-done">Ready to revise later</span></div></div></div></div></section>
     <section class="lp-sec"><div class="lp-grid"><div class="lp-copy rv"><div class="lp-tag">Study assistant</div><h2>Help when you’re stuck. Not instead of friends.</h2><p class="sub">Ask in the group, or privately. The group only sees that you used it.</p></div><div class="win demo rv" data-n="3" data-labels="Ask|Suggest|Result"><div class="wbar"><i></i><i></i><i></i><span>Study Assistant</span></div><div class="wbody"><div class="chips" style="margin-top:0"><button class="chip sent" data-mode-btn="pub" aria-pressed="true">Share with group</button><button class="chip" data-mode-btn="prv" aria-pressed="false">Just me</button></div><div class="bb at1"><b>You</b>Suggest questions about atomic physics.</div><div class="sug at2"><strong>Question prompts</strong><p class="sg-meta">Ideas to discuss, not answers.</p><ul style="padding:0;margin-top:6px"><li>Explain the main idea in your own words.</li><li>Why can’t an electron sit between energy levels?</li><li>How might this appear in an exam?</li></ul></div><div class="at3 only-pub" style="margin-top:12px"><span class="pill p-done">Posted in the group discussion</span> <span class="sg-meta">Everyone can reply</span></div><div class="at3 only-prv"><div class="priv"><strong>Only you can see this</strong></div><div class="mrow" style="border:0"><span><span class="av a0">V</span><span class="sg-meta">The group sees: Victor used the Study Assistant today</span></span></div></div></div></div></div></section>
     <section class="lp-sec" id="lpFlow"><div class="rv"><div class="lp-tag">The whole journey</div><h2 style="font-size:clamp(28px,5vw,40px);color:var(--green-deep);max-width:16ch">From promise to understanding</h2></div><ol class="wf"><li class="wf-i"><div class="wf-n"><b>1</b><span>Commit</span></div><div class="wf-u"><span class="pill p-planned">Planned</span> Atomic physics · Ch. 3</div></li><li class="wf-i"><div class="wf-n"><b>2</b><span>Study</span></div><div class="wf-u"><span class="pill p-studying">Studying</span> Chapter 3, pp. 20–35</div></li><li class="wf-i"><div class="wf-n"><b>3</b><span>Share</span></div><div class="wf-u"><div class="bb"><b>Victor</b>Electrons sit at fixed energy levels.</div></div></li><li class="wf-i"><div class="wf-n"><b>4</b><span>Discuss</span></div><div class="wf-u"><div class="bb"><b>Sarah</b>Why can’t they sit in between?</div></div></li><li class="wf-i"><div class="wf-n"><b>5</b><span>Challenge</span></div><div class="wf-u">Atomic Physics Challenge · 3 of 4 answered<div class="bar"><i style="width:75%"></i></div></div></li><li class="wf-i"><div class="wf-n"><b>6</b><span>Save</span></div><div class="wf-u"><span class="pill p-done">Saved</span> Atomic structure → Physics Study Notes</div></li><li class="wf-i"><div class="wf-n"><b>7</b><span>Improve</span></div><div class="wf-u">5 notes · 2 challenges · revise together</div></li></ol></section>
     <section class="lp-end rv"><h2>Study together. Stay accountable. Understand more.</h2><p>Plan today, invite a friend, and begin.</p><button class="lp-btn p" data-go="signup">Get started</button></section>
@@ -352,6 +539,7 @@ html.lp-js .demo.s1 .at1,html.lp-js .demo.s2 .at2,html.lp-js .demo.s3 .at3,html.
   <footer class="lp-footer"><div class="lp lp-footer-in">
     <div class="lp-fb"><div class="brand" role="img" aria-label="Daily pledge"><svg class="lg" viewBox="0 0 304.9 64" width="152.45" height="32" aria-hidden="true"><use href="#dp-logo"/></svg></div><p>A product by DRHEMA INC.</p></div>
     <div class="lp-fm"><p>© 2026 DRHEMA INC. All rights reserved.</p><p class="lp-fp">Phone: [Phone Number]</p></div>
+    <nav class="lp-flinks" aria-label="Legal and support"><a href="#privacy">Privacy Policy</a><a href="#terms">Terms of Service</a><a href="#cookies">Cookie Policy</a><a href="#guidelines">Community Guidelines</a><a href="#acceptable-use">Acceptable Use Policy</a><a href="#contact">Contact and Support</a></nav>
   </div></footer>
 </section>
 
@@ -367,7 +555,18 @@ html.lp-js .demo.s1 .at1,html.lp-js .demo.s2 .at2,html.lp-js .demo.s3 .at3,html.
       <div class="field"><label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password" placeholder="At least 6 characters"></div>
       <button class="btn btn-primary" type="submit" id="authBtn">Create account</button>
     </form>
+    <p class="sg-note" id="authLegal" style="text-align:center">By continuing you agree to our <a href="#terms">Terms of Service</a> and <a href="#privacy">Privacy Policy</a>.</p>
+    <button class="switch" id="forgot" type="button" hidden>Forgot your password?</button>
     <button class="switch" id="authSwitch"></button>
+    <div id="authMsg" hidden role="status"><h1 id="amT"></h1><p class="sub" id="amP"></p>
+      <button class="btn btn-primary" id="amResend" type="button">Resend email</button>
+      <button class="btn btn-outline" id="amBack" type="button" style="margin-top:12px">Use a different email</button>
+      <p class="sg-note" id="amNote"></p></div>
+    <form id="resetForm" hidden><h1>Choose a new password</h1><p class="sub">Use at least 8 characters.</p>
+      <div class="field"><label for="npw">New password</label><input id="npw" type="password" autocomplete="new-password"></div>
+      <div class="field"><label for="npw2">Confirm new password</label><input id="npw2" type="password" autocomplete="new-password"></div>
+      <div class="sg-err" id="npwErr" role="alert"></div>
+      <button class="btn btn-primary" type="submit" id="npwBtn">Update password</button></form>
   </div>
 </section>
 
@@ -376,7 +575,8 @@ html.lp-js .demo.s1 .at1,html.lp-js .demo.s2 .at2,html.lp-js .demo.s3 .at3,html.
   <div class="wrap">
     <div class="top">
       <div class="brand" role="img" aria-label="Daily pledge"><svg class="lg" viewBox="0 0 304.9 64" width="152.45" height="32" aria-hidden="true"><use href="#dp-logo"/></svg></div>
-      <button class="out" id="signout">Sign out</button>
+      <div class="acct"><button class="acct-btn" id="acctBtn" type="button" aria-haspopup="menu" aria-expanded="false" aria-label="Account menu"><span class="av a0" id="acctAv">Y</span></button>
+        <div class="acct-menu" id="acctMenu" role="menu" hidden><div class="acct-hd"><strong id="acctName"></strong><small id="acctEmail"></small></div><button role="menuitem" type="button" id="goProfile">Profile</button><button role="menuitem" type="button" id="goSettings">Settings</button><button role="menuitem" type="button" id="signout">Sign out</button></div></div>
     </div>
     <div class="tabs" role="tablist">
       <button class="tab on" role="tab" data-tab="today">Today</button>
@@ -395,7 +595,7 @@ html.lp-js .demo.s1 .at1,html.lp-js .demo.s2 .at2,html.lp-js .demo.s3 .at3,html.
       <div id="welcome" class="sg-card" hidden></div>
       <div class="tasks" id="tasks"></div>
 
-      <form class="add" id="addForm">
+      <form class="add" id="addForm" data-tour="task-add">
         <div class="row">
           <input type="text" id="taskTitle" maxlength="80" placeholder="What will you do?" aria-label="Task">
           <input type="time" id="taskTime" aria-label="Start time, optional">
@@ -433,11 +633,14 @@ html.lp-js .demo.s1 .at1,html.lp-js .demo.s2 .at2,html.lp-js .demo.s3 .at3,html.
 
     <!-- PARTNER -->
     <div class="page sg" id="studyPage" hidden></div>
+    <div class="page sg" id="profilePage" hidden></div>
+    <div class="page sg" id="settingsPage" hidden></div>
+    <input type="file" id="avFile" accept="image/jpeg,image/png,image/webp" hidden>
 
     <div class="page" id="partnerPage" hidden>
       <div id="partnerLinked">
         <div class="date">Your partner</div>
-        <h1 id="pName">Maya</h1>
+        <div class="pname-row"><span class="av a1" id="pAv">M</span><h1 id="pName">Maya</h1></div>
         <div class="status" id="pStatus"><i></i><span></span></div>
 
         <div class="tasks" id="pTasks"></div>
@@ -470,13 +673,16 @@ html.lp-js .demo.s1 .at1,html.lp-js .demo.s2 .at2,html.lp-js .demo.s3 .at3,html.
         <details><summary>Got a friend's code instead?</summary>
           <form id="codeForm" style="margin-top:12px"><div class="field"><label for="partnerCode">Friend's code</label><input id="partnerCode" autocomplete="off" autocapitalize="characters" placeholder="e.g. K3X9MQ2V"></div><button class="btn btn-primary" type="submit" style="width:100%;margin-top:12px">Link partner</button></form>
         </details>
-        <div class="demo" id="demoRow">Just trying it out? <button id="demoLink" type="button">Link a demo partner</button> to see the Partner screen.</div>
+        <div class="demo-note" id="demoRow">Just trying it out? <button id="demoLink" type="button">Link a demo partner</button> to see the Partner screen.</div>
       </div>
     </div>
   </div>
 </section>
 
 <section class="screen" id="invite"><div class="wrap"><div class="top"><div class="brand" role="img" aria-label="Daily pledge"><svg class="lg" viewBox="0 0 304.9 64" width="152.45" height="32" aria-hidden="true"><use href="#dp-logo"/></svg></div></div><div id="inviteBody" class="sg" style="padding-top:24px"></div></div></section>
+
+<section class="screen" id="legal"><header class="lp-nav"><div class="lp" style="display:flex;align-items:center;justify-content:space-between;height:64px"><span id="legalBrand"></span><button class="lp-btn q" id="legalBack" type="button">← Back</button></div></header>
+<main class="legal" id="legalBody" tabindex="-1"></main><footer class="lp-footer" id="legalFoot"></footer></section>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -507,8 +713,8 @@ function demoPartner(){
 }
 function fresh(){return {user:null,days:{},partner:null,inbox:[],sent:[]}}
 let S;try{S=JSON.parse(localStorage.getItem(KEY))||fresh()}catch(e){S=fresh()}
-let cloud=false,sb=null;
-const save=()=>{if(cloud)return;try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+let cloud=false,sb=null;try{S.avatar=localStorage.getItem('dp-avatar')||''}catch(e){}
+const save=()=>{if(cloud)return;try{localStorage.setItem(KEY,JSON.stringify(S,(k,v)=>k==='avatar'?undefined:v))}catch(e){}};
 
 function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),2200)}
 function show(id){$$('.screen').forEach(s=>s.classList.toggle('on',s.id===id));window.scrollTo(0,0)}
@@ -529,12 +735,13 @@ function renderStrip(el,days){
 
 // ---------- CLOUD (Supabase) ----------
 const SB_URL='https://vlojuhqzifzmkeaondcm.supabase.co',SB_KEY='sb_publishable_8yrhdG5L8JRcn0qKSSYf_A_fimvPHnZ';
+const URL_HASH0=location.hash;
 try{if(window.supabase)sb=window.supabase.createClient(SB_URL,SB_KEY)}catch(e){sb=null}
 const netErr=e=>!e||/fetch|network|load failed/i.test(String(e.message||e));
 async function pull(uid){
   const from=shift(today,-6);
   const [me,days,tasks,cheers]=await Promise.all([
-    sb.from('profiles').select('id,display_name,invite_code,partner_id').eq('id',uid).single(),
+    sb.from('profiles').select('id,display_name,partner_id,avatar_url').eq('id',uid).single(),
     sb.from('days').select('*').gte('day',from),
     sb.from('tasks').select('*').gte('day',from).order('position').order('created_at'),
     sb.from('cheers').select('message,created_at').eq('to_user',uid).order('created_at',{ascending:false}).limit(5)]);
@@ -543,9 +750,9 @@ async function pull(uid){
     (days.data||[]).filter(x=>x.user_id===id).forEach(r=>{o[r.day]={locked:r.locked,closed:r.checked_in,tasks:[],done:r.done_note||'',block:r.blocked_note||''}});
     (tasks.data||[]).filter(t=>t.user_id===id).forEach(t=>{(o[t.day]=o[t.day]||{locked:false,closed:false,tasks:[],done:'',block:''}).tasks.push([t.title,t.at_time||'',t.done?1:0,t.id])});
     return o};
-  S.me=uid;S.invite=me.data.invite_code;S.user=S.user||{name:'',email:''};S.user.name=me.data.display_name;S.days=build(uid);S.partner=null;
-  if(me.data.partner_id){const pr=await sb.from('profiles').select('display_name').eq('id',me.data.partner_id).single();
-    S.partner={id:me.data.partner_id,name:(pr.data&&pr.data.display_name)||'Partner',days:build(me.data.partner_id)}}
+  S.me=uid;try{const ic=await sb.rpc('my_invite_code');S.invite=(ic&&ic.data)||''}catch(e){S.invite=''}S.avatar=me.data.avatar_url||'';try{const pr2=await sb.from('user_prefs').select('prefs').eq('user_id',uid);S.prefs=(pr2.data&&pr2.data[0]&&pr2.data[0].prefs)||{}}catch(e){S.prefs=S.prefs||{}}S.user=S.user||{name:'',email:''};S.user.name=me.data.display_name;S.days=build(uid);S.partner=null;
+  if(me.data.partner_id){const pr=await sb.from('profiles').select('display_name,avatar_url').eq('id',me.data.partner_id).single();
+    S.partner={id:me.data.partner_id,name:(pr.data&&pr.data.display_name)||'Partner',avatar:(pr.data&&pr.data.avatar_url)||'',days:build(me.data.partner_id)}}
   S.inbox=(cheers.data||[]).map(c=>c.message).reverse();S.sent=[];
 }
 async function persist(fn){try{const r=await fn();if(r&&r.error)throw r.error}catch(e){
@@ -570,31 +777,66 @@ function setMode(m){mode=m;const su=m==='signup';
   $('#nameField').style.display=su?'block':'none';
   $('#authBtn').textContent=su?'Create account':'Log in';
   $('#authSwitch').innerHTML=su?'Already have an account? <b>Log in</b>':'New here? <b>Create an account</b>';
-  $('#pw').autocomplete=su?'new-password':'current-password'}
-$$('[data-go]').forEach(b=>b.addEventListener('click',()=>{const g=b.dataset.go;if(g==='landing')return show('landing');setMode(g);show('auth')}));
+  $('#forgot').hidden=su;$('#pw').autocomplete=su?'new-password':'current-password'}
+$$('[data-go]').forEach(b=>b.addEventListener('click',()=>{const g=b.dataset.go;if(g==='landing')return show('landing');setMode(g);authView('form');show('auth')}));
 $('#authSwitch').addEventListener('click',()=>setMode(mode==='signup'?'login':'signup'));
+// ---------- AUTH EMAIL FLOW ----------
+function authRedirect(){return /^https?:$/.test(location.protocol)?location.origin+location.pathname:undefined}
+const authErr=e=>/rate|too many|429|seconds/i.test(String(e&&e.message||''))?'Too many emails were requested. Please wait a minute and try again.':'Something went wrong. Please try again.';
+let amKind='',amEmail='',amTimer=null,manualOut=false;
+function authView(v){['authForm','authSwitch','forgot','authTitle','authSub'].forEach(i=>{const el=$('#'+i);if(el)el.hidden=v!=='form'});$('#authMsg').hidden=v!=='msg';$('#resetForm').hidden=v!=='reset';if(v==='form'){$('#authSwitch').hidden=false;$('#forgot').hidden=mode==='signup'}}
+function amCooldown(n){clearInterval(amTimer);const b=$('#amResend');b.disabled=true;let s=n;const tick=()=>{if(s<=0){clearInterval(amTimer);b.disabled=false;b.textContent='Resend email';return}b.textContent='Resend email in '+s+'s';s--};tick();amTimer=setInterval(tick,1000)}
+function showAuthMsg(kind,email){amKind=kind;amEmail=email;show('auth');authView('msg');
+  $('#amT').textContent='Check your email';
+  $('#amP').innerHTML=(kind==='reset'?'If an account exists for <b></b>, we’ve sent a link to choose a new password.':'We sent a confirmation link to <b></b>. Open it on this device to finish creating your account.');
+  $('#amP b').textContent=email;
+  $('#amNote').textContent=kind==='reset'?'Didn’t ask for this? You can ignore the email and your password won’t change.':'Look for an email about Daily Pledge, and check your spam folder. If you didn’t sign up, you can ignore it.';
+  amCooldown(30)}
+function showReset(){show('auth');authView('reset');$('#npwErr').textContent='';$('#npw').value=$('#npw2').value=''}
+$('#amBack').addEventListener('click',()=>{clearInterval(amTimer);authView('form');setMode(amKind==='reset'?'login':'signup')});
+$('#amResend').addEventListener('click',async()=>{if(!sb||!amEmail)return;
+  try{const r=amKind==='reset'?await sb.auth.resetPasswordForEmail(amEmail,{redirectTo:authRedirect()}):await sb.auth.resend({type:'signup',email:amEmail,options:{emailRedirectTo:authRedirect()}});if(r&&r.error)throw r.error;toast('Email sent again');amCooldown(30)}
+  catch(e){toast(netErr(e)?'Can’t reach the server. Please try again.':authErr(e))}});
+$('#forgot').addEventListener('click',async()=>{const email=$('#email').value.trim();if(!email){toast('Enter your email first, then tap Forgot your password.');$('#email').focus();return}
+  if(!sb){toast('Password reset needs a connected account.');return}
+  try{const r=await sb.auth.resetPasswordForEmail(email,{redirectTo:authRedirect()});if(r.error)throw r.error;showAuthMsg('reset',email)}
+  catch(e){toast(netErr(e)?'Can’t reach the server. Please try again.':authErr(e))}});
+$('#resetForm').addEventListener('submit',async e=>{e.preventDefault();const a=$('#npw').value,b=$('#npw2').value,er=$('#npwErr');
+  if(a.length<8){er.textContent='Use at least 8 characters.';return}if(a!==b){er.textContent='The two passwords don’t match.';return}
+  $('#npwBtn').disabled=true;
+  try{const r=await sb.auth.updateUser({password:a});if(r.error)throw r.error;const u=await sb.auth.getUser();const uid=u&&u.data&&u.data.user&&u.data.user.id;if(!uid)throw new Error('session');
+    cloud=true;S=fresh();S.user={name:'',email:u.data.user.email};await pull(uid);sg.data={groups:[]};sgHash='';sg.loaded=false;sg.loadErr='';await sgLoad(true);toast('Password updated');authView('form');enter()}
+  catch(x){er.textContent=netErr(x)?'Can’t reach the server. Please try again.':'We couldn’t update your password. The link may have expired. Request a new one from the login screen.'}
+  finally{$('#npwBtn').disabled=false}});
+function sessionEnded(){cloud=false;S=fresh();sg.data=STUDY_MOCK();sgHash='';sg.view='list';sg.gid=null;sg.loaded=true;sg.loadErr='';sg.busy=false;try{localStorage.removeItem(KEY)}catch(e){}
+  authView('form');setMode('login');show('auth');toast('Your session ended. Please sign in again.')}
+if(sb)sb.auth.onAuthStateChange((evt,session)=>{if(evt==='PASSWORD_RECOVERY')showReset();else if(evt==='SIGNED_OUT'&&cloud&&!manualOut)sessionEnded()});
 $('#authForm').addEventListener('submit',async e=>{e.preventDefault();
   const email=$('#email').value.trim();if(!email){toast('Add your email to continue');$('#email').focus();return}
   const pw=$('#pw').value;if(pw.length<6){toast('Use at least 6 characters');$('#pw').focus();return}
   const nm=$('#name').value.trim()||email.split('@')[0],btn=$('#authBtn');
   if(sb){btn.disabled=true;
     try{
-      const res=mode==='signup'?await sb.auth.signUp({email,password:pw,options:{data:{name:nm}}}):await sb.auth.signInWithPassword({email,password:pw});
+      const rd=authRedirect(),res=mode==='signup'?await sb.auth.signUp({email,password:pw,options:Object.assign({data:{name:nm}},rd?{emailRedirectTo:rd}:{})}):await sb.auth.signInWithPassword({email,password:pw});
       if(res.error)throw res.error;
-      if(!res.data.session){toast('Check your email to confirm your account, then log in.');setMode('login');return}
-      cloud=true;S=fresh();S.user={name:nm,email};await pull(res.data.user.id);sg.data={groups:[]};sgHash='';await sgPull(true).catch(()=>{});enter();return;
-    }catch(err){cloud=false;if(!netErr(err)){toast(err.message||'Something went wrong');return}toast('Can\u2019t reach the server here, so this runs as an offline demo.')}
+      if(!res.data.session){showAuthMsg('signup',email);return}
+      cloud=true;S=fresh();S.user={name:nm,email};await pull(res.data.user.id);sg.data={groups:[]};sgHash='';sg.loaded=false;sg.loadErr='';await sgLoad(true);enter();return;
+    }catch(err){cloud=false;const msg=String(err&&err.message||'');
+      if(netErr(err)){toast('Can\u2019t reach the server here, so this runs as an offline demo.')}
+      else if(/not confirmed|confirm/i.test(msg)){showAuthMsg('signup',email);return}
+      else if(/invalid login|credentials/i.test(msg)){toast('Email or password is incorrect.');return}
+      else{toast(authErr(err));return}}
     finally{btn.disabled=false}
   }
   S.user=S.user||{name:nm,email};if(mode==='signup'&&$('#name').value.trim())S.user.name=nm;
   save();enter()});
-$('#signout').addEventListener('click',()=>{if(cloud&&sb){sb.auth.signOut();cloud=false;S=fresh();sg.data=STUDY_MOCK();sgHash='';sg.view='list';sg.gid=null;try{localStorage.removeItem(KEY)}catch(e){}}else{S.user=null;save()}show('landing')});
+$('#signout').addEventListener('click',()=>{closeAcct();if(cloud&&sb){manualOut=true;sb.auth.signOut();setTimeout(()=>{manualOut=false},1500);cloud=false;S=fresh();sg.data=STUDY_MOCK();sgHash='';sg.view='list';sg.gid=null;sg.loaded=true;sg.loadErr='';sg.busy=false;try{localStorage.removeItem(KEY)}catch(e){}}else{S.user=null;save()}show('landing')});
 
-function enter(){const p=getPend();if(p){showInvite(p);return}show('app');switchTab('today');render()}
+function enter(){if($('#legal').classList.contains('on')){legalFrom='app';return}const p=getPend();if(p){showInvite(p);return}show('app');switchTab('today');render();paintMe();setTimeout(()=>maybeOffer('main'),800)}
 
 // ---------- TABS ----------
-function switchTab(t){$$('.tab').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));
-  $('#todayPage').hidden=t!=='today';$('#partnerPage').hidden=t!=='partner';$('#studyPage').hidden=t!=='study';window.scrollTo(0,0);if(t==='partner'){renderPartner();cloudRefresh()}if(t==='study'){$('#studyDot').style.display='none';sgRender()}}
+let lastTab='today';function switchTab(t){$$('.tab').forEach(b=>b.classList.toggle('on',b.dataset.tab===t));
+  $('#todayPage').hidden=t!=='today';$('#partnerPage').hidden=t!=='partner';$('#studyPage').hidden=t!=='study';$('#profilePage').hidden=t!=='profile';$('#settingsPage').hidden=t!=='settings';if(['today','partner','study'].includes(t))lastTab=t;closeAcct();syncOffer();window.scrollTo(0,0);if(t==='profile')renderProfile();if(t==='settings')renderSettings();if(t==='partner'){renderPartner();cloudRefresh()}if(t==='study'){$('#studyDot').style.display='none';sgRender();sgLoad(false,true)}}
 $$('.tab').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
 
 // ---------- TODAY ----------
@@ -660,7 +902,7 @@ function renderPartner(){
   const linked=!!S.partner;$('#partnerLinked').hidden=!linked;$('#partnerEmpty').hidden=linked;$('#demoRow').hidden=cloud;
   if(!linked)return;
   const p=S.partner,days=p.days,d=days[today];
-  $('#pName').textContent=p.name;
+  $('#pName').textContent=p.name;$('#pAv').innerHTML=esc(((p.name||'?').trim()[0]||'?').toUpperCase())+avImg(p.avatar);
   const st=$('#pStatus');const done=d?d.tasks.filter(t=>t[2]).length:0;
   const label=!d||!d.tasks.length?'Hasn\u2019t planned yet':d.closed?'Day closed':d.locked?'Locked in \u00b7 '+done+' of '+d.tasks.length+' done':'Still planning';
   st.className='status'+(!d||!d.locked?' wait':'');st.querySelector('span').textContent=label;
@@ -697,13 +939,13 @@ const STUDY_MOCK=()=>({groups:[
  {id:'g2',name:'Spanish, ten minutes a day',desc:'Two friends keeping each other honest.',members:['me','Sam'],
   commits:[{id:'c4',who:'Sam',subject:'Spanish',topic:'Past tense verbs',material:'Unit 6 workbook',goal:'Use pretérito correctly in five sentences.',due:'Thu',status:'studying'}],msgs:[]}]});
 const FRAMES=[t=>`Explain the main idea of ${t} in your own words.`,t=>`Why does this happen in ${t}?`,t=>`Can you give an example of ${t}?`,t=>`What evidence supports this explanation of ${t}?`,t=>`How does ${t} differ from a related concept?`,t=>`Which part of ${t} was most difficult to understand?`,t=>`How might ${t} appear in an examination?`];
-const sg={view:'list',gid:null,tab:'chat',step:1,draft:{},kind:'Explanation',comp:'',sug:false,sugText:'',page:0,form:false,justDone:null,err:'',data:STUDY_MOCK()};
+const sg={view:'list',gid:null,tab:'overview',inv:false,jcErr:'',step:1,draft:{},kind:'Explanation',comp:'',sug:false,sugText:'',page:0,form:false,justDone:null,err:'',data:STUDY_MOCK(),loaded:true,loadErr:'',busy:false};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const ini=n=>n==='me'?'Y':n==='Study Assistant'?'✦':n[0].toUpperCase();
+const ini=n=>n==='me'?myInitial():n==='Study Assistant'?'✦':n[0].toUpperCase();
 const nm=n=>n==='me'?'You':n;
 const ens=g=>{if(g){g.chals=g.chals||[];g.notes=g.notes||[];g.act=g.act||[];g.priv=g.priv||[]}return g};
 const grp=()=>ens(sg.data.groups.find(g=>g.id===sg.gid));
-const av=(g,n)=>`<span class="av a${n==='Study Assistant'?3:Math.max(0,g.members.indexOf(n))%4}" title="${esc(nm(n))}">${ini(n)}</span>`;
+const av=(g,n)=>`<span class="av a${n==='Study Assistant'?3:Math.max(0,g.members.indexOf(n))%4}" title="${esc(nm(n))}">${ini(n)}${avImg(avUrl(g,n))}</span>`;
 const avs=g=>`<span class="avs" aria-label="${g.members.length} members">${g.members.slice(0,5).map(n=>av(g,n)).join('')}${g.members.length>5?`<span class="av a2">+${g.members.length-5}</span>`:''}</span>`;
 const PILL={planned:['Planned','p-planned'],studying:['Studying','p-studying'],done:['Completed','p-done']};
 const nowT=()=>new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
@@ -712,19 +954,28 @@ function sgRender(){
   const el=$('#studyPage');let o='';
   if(sg.view==='list')o=vList();else if(sg.view==='create')o=vCreate();else if(sg.view==='created')o=vCreated();else o=vGroup();
   el.innerHTML=o;
+  syncOffer();if(sg.view==='group'&&sg.tab==='overview'&&!$('#studyPage').hidden)setTimeout(()=>maybeOffer('group'),700);
+  const st=el.querySelector('.sg-tabs'),at=st&&st.querySelector('[aria-selected=true]');if(at)st.scrollLeft=Math.max(0,at.offsetLeft-(st.clientWidth-at.offsetWidth)/2);
 }
+const initials=n=>n.split(/\s+/).filter(Boolean).slice(0,2).map(w=>w[0].toUpperCase()).join('')||'G';
+const ci=n=>{let x=0;for(const c of n)x=(x*31+c.charCodeAt(0))%4;return x};
+function grpRow(g){const m=g.msgs[g.msgs.length-1],when=m?(g.lastTs?fmtWhen(g.lastTs):m.t):'',txt=m?((m.who==='me'?'You':nm(m.who))+': '+m.text):(g.desc||'No messages yet'),n=g.members.length;
+  return `<button class="grp" data-a="open" data-id="${g.id}" aria-label="Open ${esc(g.name)}"><span class="grp-av a${ci(g.name)}">${esc(initials(g.name))}</span><span class="grp-tx"><b>${esc(g.name)}</b><small>${esc(txt)}</small></span><span class="grp-meta"><small>${esc(when)}</small><em>${n} ${n===1?'member':'members'}</em></span></button>`}
 function vList(){
   const gs=sg.data.groups;
   let o=`<div class="date">Study groups</div><h1>Learn it together</h1><p class="lede">Study your own material, then explain it to your group in your own words. Separate from your daily pledge.</p>
   <div class="sg-row" style="margin-top:24px"><button class="btn btn-primary" data-a="new">Create a group</button></div>
-  <p class="sg-meta" style="margin-top:14px">Invited to a group? Open the link your friend sent you.</p>`;
-  if(!gs.length)return o+`<div class="sg-empty"><h3>Study with your friends</h3><p>Create your first study group, or open an invitation link you’ve received.</p></div>`;
-  o+=`<h2 style="margin-top:36px">Your groups</h2>`;
-  gs.forEach(g=>{const c=g.commits.find(x=>x.status!=='done')||g.commits[0];
-    o+=`<div class="sg-card"><div class="sg-row sg-sp"><h3>${esc(g.name)}</h3>${avs(g)}</div><p class="sg-meta" style="margin-top:6px">${esc(g.desc||'')}</p><p class="sg-meta" style="margin-top:4px">${g.members.length} members</p>${c?`<div class="sg-now">Now: ${esc(c.topic)} · ${esc(nm(c.who))}</div>`:''}<button class="btn btn-primary btn-block" data-a="open" data-id="${g.id}" aria-label="Open ${esc(g.name)}">Open group</button></div>`});
+  <p class="sg-meta" style="margin-top:14px">Invited to a group? Open the link your friend sent you.</p><details class="jc" ${sg.jcErr?'open':''}><summary>Join with a code instead</summary><form id="jcForm" style="margin-top:12px"><label for="jcIn" style="margin-top:0">Invitation code</label><div class="sg-row" style="flex-wrap:nowrap"><input id="jcIn" class="sg-in" style="flex:1;width:auto" autocomplete="off" autocapitalize="characters" placeholder="e.g. 3F9A1C07DE"><button class="btn btn-primary" type="submit" ${sg.busy?'disabled':''}>Join</button></div><div class="sg-err" role="alert">${esc(sg.jcErr)}</div></form></details>
+  <h2 style="margin-top:36px">Your groups${gs.length?` <span class="sg-meta" style="font-size:16px;font-weight:500">${gs.length}</span>`:''}</h2>`;
+  if(sg.loadErr&&!gs.length)return o+`<div class="sg-empty"><h3>We couldn’t load your groups</h3><p>${esc(sg.loadErr)}</p><button class="btn btn-primary" data-a="retry" style="margin-top:14px">Try again</button></div>`;
+  if(!sg.loaded)return o+'<div aria-busy="true" aria-label="Loading your groups" style="margin-top:12px"><div class="sk"></div><div class="sk"></div></div>';
+  if(sg.loadErr)o+=`<div class="sg-banner" role="alert"><span>${esc(sg.loadErr)}</span><button data-a="retry" style="color:var(--green);font-weight:600">Retry</button></div>`;
+  if(!gs.length)return o+`<div class="sg-empty"><h3>No study groups yet</h3><p>Study with your friends. Create your first group, or open an invitation link someone sent you to join theirs.</p></div>`;
+  o+=`<div class="grp-list">${gs.map(grpRow).join('')}</div>`;
   const rec=[];gs.forEach(g=>g.commits.forEach(c=>rec.push(`${nm(c.who)} ${c.status==='done'?'finished':c.status==='studying'?'is studying':'plans to study'} ${c.topic} <span class="sg-meta">· ${esc(g.name)}</span>`)));
   return o+`<h2 style="margin-top:36px">Recent activity</h2><div class="sg-card">${rec.slice(0,4).map(r=>`<p style="margin:6px 0">${r}</p>`).join('')||'<p class="sg-meta">Nothing yet.</p>'}</div>${cloud?'':'<p class="sg-note">Preview only: groups, messages and activity are demo content on this device.</p>'}`;
 }
+
 function vCreate(){
   const d=sg.draft;
   if(sg.step===1)return `<button class="sg-back" data-a="home">← Study groups</button><h2>Create a study group</h2>
@@ -734,18 +985,11 @@ function vCreate(){
   <button class="btn btn-primary btn-block" data-a="review">Review</button>`;
   return `<button class="sg-back" data-a="back1">← Edit details</button><h2>Review your group</h2><div class="sg-card"><h3>${esc(d.name)}</h3><p class="sg-meta" style="margin-top:6px">${esc(d.desc||'No description')}</p><p class="sg-meta" style="margin-top:6px">${esc(d.size)}</p></div>
   <p class="sg-note">Next, you’ll get a link to invite friends.</p>
-  <button class="btn btn-primary btn-block" data-a="make">Create group</button>`;
-}
-function vGroup(){
-  const g=grp(),T=[['chat','Discussion'],['commit','Commitments'],['chal','Challenges'],['notes','Notes'],['asst','Assistant'],['mem','Members']];
-  let o=`<button class="sg-back" data-a="home">← Study groups</button><div class="sg-row sg-sp"><h2>${esc(g.name)}</h2><div id="callSlot"></div></div><p class="sg-meta" style="margin-top:6px">${esc(g.desc||'')}</p><div class="sg-row sg-sp" style="margin-top:12px"><div class="sg-row">${avs(g)}<span class="sg-meta">${g.members.length} members</span></div><button class="btn btn-outline" style="height:40px;padding:0 16px" data-x="share">Invite friends</button></div>
-  <div class="sg-tabs" role="tablist">${T.map(t=>`<button role="tab" data-a="tab" data-t="${t[0]}" aria-selected="${sg.tab===t[0]}">${t[1]}</button>`).join('')}</div>`;
-  if(sg.tab==='chat')o+=vChat(g);else if(sg.tab==='commit')o+=vCommit(g);else if(sg.tab==='chal')o+=vChal(g);else if(sg.tab==='notes')o+=vNotes(g);else if(sg.tab==='asst')o+=vAsst(g);else o+=vMem(g);
-  return o;
+  <div class="sg-err" role="alert">${esc(sg.err)}</div><button class="btn btn-primary btn-block" data-a="make" ${sg.busy?'disabled':''}>${sg.busy?'Creating…':'Create group'}</button>`;
 }
 function vChat(g){
   let o='';
-  if(sg.justDone)o+=`<div class="sg-card" style="border-color:var(--green)"><h3>You finished ${esc(sg.justDone.topic)}</h3><p class="sg-meta" style="margin-top:6px">Tell the group what stuck, in your own words. Then they can ask you follow-ups.</p><div class="sg-row" style="margin-top:12px"><button class="btn btn-outline" data-x="mkch">Make a challenge</button><button class="btn btn-outline" data-x="mknote">Write a note</button></div></div>`;
+  if(sg.justDone)o+=`<div class="sg-card" style="background:var(--green-wash)"><h3>You finished ${esc(sg.justDone.topic)}</h3><p class="sg-meta" style="margin-top:6px">Tell the group what stuck, in your own words. Then they can ask you follow-ups.</p><div class="sg-row" style="margin-top:12px"><button class="btn btn-outline" data-x="mkch">Make a challenge</button><button class="btn btn-outline" data-x="mknote">Write a note</button></div></div>`;
   o+=g.msgs.length?g.msgs.map((m,i)=>`<div class="msg ${m.who==='me'?'me':''}">${av(g,m.who)}<div class="bubble"><div class="sg-row sg-sp"><strong>${esc(nm(m.who))}</strong><span class="sg-meta">${m.t}</span></div><div class="kind">${m.kind}</div><p style="white-space:pre-wrap">${esc(m.text)}</p><button class="sg-meta" style="margin-top:6px;color:var(--green);font-weight:600" data-x="tonote" data-i="${i}">Save as note</button></div></div>`).join(''):`<div class="sg-empty"><h3>No discussion yet</h3><p>Finish a commitment, then explain it here, or ask a question to get things started.</p></div>`;
   o+=`<form id="sgForm" style="margin-top:20px"><div class="chips" role="group" aria-label="Message type">${['Explanation','Question','Reply'].map(k=>`<button type="button" class="chip ${sg.kind===k?'sent':''}" data-a="kind" data-k="${k}" aria-pressed="${sg.kind===k}">${k==='Explanation'?'Explain in my words':k==='Question'?'Ask a question':'Reply'}</button>`).join('')}</div>
   <label for="sgMsg" style="margin-top:12px">Your message</label><textarea id="sgMsg" class="sg-in" rows="3" placeholder="${sg.kind==='Explanation'?'What did you learn? Put it in your own words…':sg.kind==='Question'?'What would you like them to explain?':'Respond to what was said…'}">${esc(sg.comp)}</textarea>
@@ -772,27 +1016,35 @@ function vCommit(g){
     ${c.who==='me'&&c.status==='planned'?`<button class="btn btn-outline btn-block" data-a="start" data-id="${c.id}">Start studying</button>`:''}${c.who==='me'&&c.status==='studying'?`<button class="btn btn-primary btn-block" data-a="finish" data-id="${c.id}">Mark completed and discuss</button>`:''}</div>`});
   return o;
 }
-function vMem(g){return `<div style="margin-top:12px">${g.members.map(n=>{const c=g.commits.find(x=>x.who===n),P=c&&PILL[c.status];return `<div class="sg-card sg-row sg-sp" style="padding:14px 16px">${'<div class="sg-row">'+av(g,n)+`<div><strong>${esc(nm(n))}</strong><div class="sg-meta">${c?esc(c.topic):'No commitment yet'}</div></div></div>`}${P?`<span class="pill ${P[1]}">${P[0]}</span>`:''}</div>`}).join('')}</div>`}
+function vMem(g){
+  const info=g.minfo||g.members.map(n=>({uid:n,label:n,role:''}));
+  return `<div style="margin-top:12px">${info.map(m=>{const me=cloud?m.uid===S.me:m.uid==='me',lbl=cloud?(me?'me':m.label):m.label,c=memCommit(g,lbl),P=c&&SPILL(c.status);
+    const right=m.role==='owner'?'<span class="pill p-done">Admin</span>':(g.isAdmin&&!me?`<button class="rm-btn" data-x="rmmem" data-u="${esc(m.uid)}" ${sg.busy?'disabled':''} aria-label="Remove ${esc(m.label||'member')}">Remove</button>`:(P?`<span class="pill ${P[1]}">${P[0]}</span>`:''));
+    return `<div class="sg-card sg-row sg-sp" style="padding:14px 16px;flex-wrap:nowrap"><div class="sg-row" style="flex-wrap:nowrap;min-width:0">${av(g,lbl)}<div style="min-width:0"><strong>${esc(me?'You':nm(lbl))}</strong><div class="sg-meta" style="overflow-wrap:anywhere">${c?esc(c.topic):'No commitment yet'}</div></div></div>${right}</div>`}).join('')}</div>
+  <button class="btn btn-outline btn-block danger" data-x="exit" ${sg.busy?'disabled':''}>Exit group</button>
+  <p class="sg-note" style="text-align:center">${g.isAdmin?'You’re the admin. If you exit, admin rights pass to the member who joined earliest.':'You can rejoin later only with a new invitation.'}</p>`}
 
 const sp=$('#studyPage');
 sp.addEventListener('input',e=>{if(e.target.id==='sgMsg')sg.comp=e.target.value;if(e.target.id==='sugT')sg.sugText=e.target.value});
 sp.addEventListener('submit',e=>{e.preventDefault();const g=grp();
   if(e.target.id==='sgForm'){const v=sg.comp.trim();if(!v){toast('Write a message first');return}pushMsg(g,{who:'me',kind:sg.kind,t:nowT(),text:v});sg.comp='';sg.justDone=null;sgRender();const l=sp.querySelector('.msg:last-of-type');if(l)l.scrollIntoView({block:'center'})}
   if(e.target.id==='cForm'){const s=$('#cs').value.trim(),t=$('#ct').value.trim();if(!s||!t){sg.err='Subject and topic are required.';sgRender();return}
-    const cm={id:nid('c'),who:'me',subject:s,topic:t,material:$('#cm').value.trim(),goal:$('#cg').value.trim(),due:$('#cd').value||'',status:'planned'};g.commits.unshift(cm);cloudCommit(g,cm);sg.form=false;sg.err='';sgRender();toast('Commitment added'+dm())}
+    const cm={ts:new Date().toISOString(),id:nid('c'),who:'me',subject:s,topic:t,material:$('#cm').value.trim(),goal:$('#cg').value.trim(),due:$('#cd').value||'',status:'planned'};g.commits.unshift(cm);cloudCommit(g,cm);sg.form=false;sg.err='';sgRender();toast('Commitment added'+dm())}
 });
 sp.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,g=sg.gid?grp():null;sg.err='';
-  if(a==='new'){sg.view='create';sg.step=1;sg.draft={}}
-  else if(a==='home'){sg.view='list';sg.gid=null;sg.sug=false;sg.justDone=null}
-  else if(a==='open'){sg.view='group';sg.gid=b.dataset.id;sg.tab='chat';sg.sug=false;sg.form=false}
+  if(a==='make'&&cloud){cloudMake();return}
+  else if(a==='retry'){sg.loaded=false;sg.loadErr='';sgRender();sgLoad(true);return}
+  else if(a==='new'){sg.view='create';sg.step=1;sg.draft={}}
+  else if(a==='home'){sg.view='list';sg.gid=null;sg.inv=false;sg.sug=false;sg.justDone=null}
+  else if(a==='open'){sg.view='group';sg.gid=b.dataset.id;sg.tab='overview';sg.inv=false;sg.sug=false;sg.form=false}
   else if(a==='join'){const v=$('#joinCode').value.trim();if(!/^[A-Za-z]{2,6}-\d{3,5}$/.test(v)){sg.err='Enter a code like PHYS-4821.';sgRender();return}
     sg.data.groups.push({id:'g'+Date.now(),name:'Joined group ('+v.toUpperCase()+')',desc:'Demo group. Real invite codes need the backend.',members:['me','Maya'],commits:[],msgs:[]});toast('Joined (demo)')}
   else if(a==='review'){const n=$('#gn').value.trim();sg.draft={name:n,desc:$('#gd').value.trim(),size:$('#gs').value,inv:sg.draft.inv||[]};if(n.length<3){sg.err='Give your group a name (3+ characters).';sgRender();return}sg.step=2}
   else if(a==='back1')sg.step=1;
   else if(a==='inv'){const i=sg.draft.inv,n=b.dataset.n;i.includes(n)?i.splice(i.indexOf(n),1):i.push(n)}
   else if(a==='copy'){try{navigator.clipboard.writeText('dailypledge.app/study/PHYS-4821')}catch(x){}toast('Link copied (demo link)');return}
-  else if(a==='make'){const id=nid('g');sg.data.groups.unshift({id,name:sg.draft.name,desc:sg.draft.desc,by:(S.user&&S.user.name)||'A friend',members:['me'],commits:[],msgs:[]});sg.gid=id;sg.view='created';sg.tab='chat';toast('Group created');cloudGroup(id,sg.draft.name,sg.draft.desc)}
-  else if(a==='tab'){sg.tab=b.dataset.t;sg.form=false}
+  else if(a==='make'){const id=nid('g');sg.data.groups.unshift({id,name:sg.draft.name,desc:sg.draft.desc,by:(S.user&&S.user.name)||'A friend',members:['me'],commits:[],msgs:[]});sg.gid=id;sg.view='created';sg.tab='overview';toast('Group created');cloudGroup(id,sg.draft.name,sg.draft.desc)}
+  else if(a==='tab'){sg.tab=b.dataset.t;sg.form=false;sg.inv=false}
   else if(a==='kind')sg.kind=b.dataset.k;
   else if(a==='sug')sg.sug=!sg.sug;
   else if(a==='closesug')sg.sug=false;
@@ -829,7 +1081,7 @@ function vCF(){const d=sg.cd;
   ${d.qs.map((q,i)=>`<div class="sg-card" style="margin-top:14px"><div class="sg-row sg-sp"><strong>Question ${i+1}</strong>${d.qs.length>1?`<button type="button" class="sg-meta" data-x="rmq" data-i="${i}">Remove</button>`:''}</div><label for="cq${i}">Question</label><textarea id="cq${i}" class="sg-in" rows="2" data-cq="${i}.q">${esc(q.q)}</textarea><label for="ce${i}">Expected answer <span class="sg-meta">(optional, shown after members answer)</span></label><textarea id="ce${i}" class="sg-in" rows="2" data-cq="${i}.exp">${esc(q.exp)}</textarea></div>`).join('')}
   <div class="sg-row" style="margin-top:14px"><button type="button" class="btn btn-outline" data-x="addq">Add question</button><button type="button" class="btn btn-outline" data-x="sugq">Suggest with assistant</button></div><p class="sg-note">Suggestions are simulated prompts based on your topic. Edit them freely.</p>${err()}<button class="btn btn-primary btn-block">Create challenge</button></form>`}
 function vAns(g,c){const a=sg.ans[c.id]||[],n=c.qs.filter((q,i)=>(a[i]||'').trim()).length;
-  return (sg.newCh===c.id?`<div class="sg-card" style="border-color:var(--green);margin-top:18px"><h3>Your challenge is ready</h3><p class="sg-meta" style="margin-top:6px">Friends can answer it from the Challenges tab. Post it to the discussion so they see it.</p><button class="btn btn-primary btn-block" data-x="postch">Post to discussion</button></div>`:'')+`<button class="sg-back" data-x="chback" style="margin-top:18px">← All challenges</button><h2>${esc(c.title)}</h2><p class="sg-meta" style="margin-top:6px">by ${esc(nm(c.by))} · ${esc(c.topic)}</p>${c.inst?`<p style="margin-top:10px">${esc(c.inst)}</p>`:''}<p class="sg-meta" style="margin-top:10px">${n} of ${c.qs.length} answered. Your draft stays if you switch tabs.</p>
+  return (sg.newCh===c.id?`<div class="sg-card" style="background:var(--green-wash);margin-top:18px"><h3>Your challenge is ready</h3><p class="sg-meta" style="margin-top:6px">Friends can answer it from the Challenges tab. Post it to the discussion so they see it.</p><button class="btn btn-primary btn-block" data-x="postch">Post to discussion</button></div>`:'')+`<button class="sg-back" data-x="chback" style="margin-top:18px">← All challenges</button><h2>${esc(c.title)}</h2><p class="sg-meta" style="margin-top:6px">by ${esc(nm(c.by))} · ${esc(c.topic)}</p>${c.inst?`<p style="margin-top:10px">${esc(c.inst)}</p>`:''}<p class="sg-meta" style="margin-top:10px">${n} of ${c.qs.length} answered. Your draft stays if you switch tabs.</p>
   <form id="anForm">${c.qs.map((q,i)=>`<label for="an${i}">${i+1}. ${esc(q.q)}</label><textarea id="an${i}" class="sg-in" rows="3" data-an="${i}" placeholder="In your own words. “Not sure” is a fine answer.">${esc(a[i]||'')}</textarea>`).join('')}${err()}<button class="btn btn-primary btn-block">Submit answers</button></form>`}
 function vRev(g,c){const others=Object.entries(c.resp).filter(e=>e[0]!=='me'),mine=c.resp.me||[];
   return `<button class="sg-back" data-x="chback" style="margin-top:18px">← All challenges</button><h2>${esc(c.title)}: review</h2><p class="sg-meta" style="margin-top:6px">${Object.keys(c.resp).length} of ${g.members.length} have answered</p>
@@ -843,8 +1095,8 @@ function vNotes(g){
     if(n)return `<button class="sg-back" data-x="nback" style="margin-top:18px">← All notes</button><h2>${esc(n.title)}</h2><p class="sg-meta" style="margin-top:6px">${esc(n.topic||'General')} · ${esc(nm(n.by))} · ${esc(n.t)}</p><p style="margin-top:16px;white-space:pre-wrap">${esc(n.body)}</p>${n.by==='me'?`<button class="btn btn-outline btn-block" data-x="nedit">Edit note</button>`:''}`}
   return `<div class="sg-row sg-sp" style="margin-top:20px;flex-wrap:nowrap"><input id="ns" type="search" class="sg-in" style="flex:1;width:auto" placeholder="Search notes" aria-label="Search notes" value="${esc(sg.nq)}"><button class="btn btn-primary" data-x="nnew">New note</button></div><div id="nList">${nList(g)}</div>`}
 function vAsst(g){
-  const M=[['public','Share with group','Recommended. The question and reply appear in the group discussion so everyone can learn.'],['private','Just me','Only you see the question and reply. The group sees only that you used the assistant.']];
-  let o=`<h3 style="margin-top:20px">Study Assistant</h3><p class="sg-meta">Optional help. Your group stays the main place to learn.</p><div class="sg-row" style="margin-top:12px;align-items:stretch;flex-wrap:nowrap" role="group" aria-label="Who can see this">${M.map(m=>`<button class="sg-card" style="flex:1;margin:0;text-align:left;${sg.am===m[0]?'border-color:var(--green);background:var(--green-wash)':''}" data-x="am" data-m="${m[0]}" aria-pressed="${sg.am===m[0]}"><strong>${m[1]}</strong><div class="sg-meta" style="margin-top:4px">${m[2]}</div></button>`).join('')}</div>
+  const M=[['public','Share with group','Recommended. The question and reply appear in the group discussion so everyone can learn.'],['private','Just me',SET.notice?'Only you see the question and reply. The group sees only that you used the assistant.':'Only you see the question and reply. Your group isn’t told you used it.']];
+  let o=`<h3 style="margin-top:20px">Study Assistant</h3><p class="sg-meta">Optional help. Your group stays the main place to learn.</p><div class="sg-row" style="margin-top:12px;align-items:stretch;flex-wrap:nowrap" role="group" aria-label="Who can see this">${M.map(m=>`<button class="sg-card" style="flex:1;margin:0;text-align:left;${sg.am===m[0]?'background:var(--green-wash)':''}" data-x="am" data-m="${m[0]}" aria-pressed="${sg.am===m[0]}"><strong>${m[1]}</strong><div class="sg-meta" style="margin-top:4px">${m[2]}</div></button>`).join('')}</div>
   <div class="chips">${Object.keys(AA).map(k=>`<button class="chip ${sg.aa===k?'sent':''}" data-x="aa" data-k="${k}" aria-pressed="${sg.aa===k}">${AA[k][0]}</button>`).join('')}</div>
   <form id="asForm"><label for="asIn">${AA[sg.aa][1]}</label><textarea id="asIn" class="sg-in" rows="3" placeholder="e.g. Atomic physics: electrons sit at fixed energy levels">${esc(sg.ain)}</textarea>${err()}<button class="btn btn-primary btn-block">${sg.am==='public'?'Ask in the group':'Ask privately'}</button></form><p class="sg-note">Simulated replies for this preview. No AI service is connected.</p>`;
   if(g.priv.length)o+=`<div class="priv"><strong>Private to you</strong><p class="sg-meta">Not shown in the group discussion, notes or activity.</p>${g.priv.map(p=>`<div style="margin-top:12px"><span class="kind">${AA[p.action][0]} · ${p.t}</span><p><em>${esc(p.q)}</em></p><p style="white-space:pre-wrap;margin-top:6px">${esc(p.a)}</p></div>`).join('')}</div>`;
@@ -865,8 +1117,15 @@ sp.addEventListener('input',e=>{const t=e.target,d=t.dataset;
   else if(t.id==='ns'){sg.nq=t.value;$('#nList').innerHTML=nList(grp())}
   else if(t.id==='asIn')sg.ain=t.value});
 sp.addEventListener('click',e=>{const b=e.target.closest('[data-x]');if(!b)return;const x=b.dataset.x,g=grp(),i=+b.dataset.i;sg.xerr='';
+  if(x==='rmmem'){removeMember(b.dataset.u);return}
+  if(x==='exit'){exitGroup();return}
+  if(x==='copyLink'){const gg=grp();copyText(groupUrl(gg),'Invitation link copied');return}
+  if(x==='copyCode'){const gg=grp();copyText(gg.code,'Code copied');return}
   if(x==='share'){const gg=grp();if(cloud&&!gg.code){toast('One moment, setting up your invitation…');return}shareLink(groupUrl(gg),'Join '+gg.name,'Join my study group “'+gg.name+'” on Daily pledge.');return}
-  else if(x==='gopen'){sg.view='group';sg.tab='chat'}
+  else if(x==='gopen'){sg.view='group';sg.tab='overview';sg.inv=false}
+  else if(x==='inv'){sg.inv=!sg.inv}
+  else if(x==='goto'){sg.tab=b.dataset.t;sg.inv=false;if(b.dataset.f==='cf'){sg.cf=true;sg.ch=null}}
+  else if(x==='addcommit'){sg.tab='commit';sg.form=true;sg.inv=false}
   else if(x==='postch'){const c=g.chals.find(c=>c.id===sg.ch);pushMsg(g,{who:'me',kind:'Question',t:nowT(),text:'New challenge “'+c.title+'” ('+c.qs.length+' questions). Open the Challenges tab to answer it.'});sg.newCh=null;sg.tab='chat';toast('Posted to the discussion')}
   else if(x==='cf')sg.cf=!sg.cf;
   else if(x==='addq')sg.cd.qs.push({q:'',exp:''});
@@ -886,21 +1145,345 @@ sp.addEventListener('click',e=>{const b=e.target.closest('[data-x]');if(!b)retur
   else if(x==='mknote'){sg.tab='notes';sg.note='new';sg.ne=true;sg.nd={title:sg.justDone.topic,topic:sg.justDone.subject,body:''}}
   sgRender()});
 sp.addEventListener('submit',e=>{const id=e.target.id,g=grp();
+  if(id==='jcForm'){(async()=>{const v=($('#jcIn').value||'').trim().toUpperCase();
+    if(!/^[A-Z0-9]{10}$/.test(v)){sg.jcErr='Codes are 10 letters and numbers. Check it and try again.';sgRender();return}
+    if(!cloud){sg.jcErr='Joining with a code needs a connected account. Sign in with a real account first.';sgRender();return}
+    sg.jcErr='';sg.busy=true;sgRender();
+    try{const r=await sb.rpc('join_study_group',{p_code:v});if(r.error)throw r.error;await sgPull(true);const x=sg.data.groups.find(x=>x.id===r.data);sg.view=x?'group':'list';sg.gid=x?x.id:null;sg.tab='overview';toast('You joined '+(x?x.name:'the group'))}
+    catch(err){const m=String(err.message||'');sg.jcErr=netErr(err)?'Couldn’t reach the server. Please try again.':/full/i.test(m)?'That group is full.':'We couldn’t find a group with that code.'}
+    finally{sg.busy=false;sgRender()}})();return}
   if(id==='chForm'){const d=sg.cd,qs=d.qs.filter(q=>q.q.trim());if(!d.title.trim()||!d.topic.trim()||!qs.length){sg.xerr='Add a title, a topic and at least one question.';sgRender();return}
-    const nc=({id:(sg.newCh=nid('q')),title:d.title.trim(),topic:d.topic.trim(),by:'me',inst:d.inst.trim(),qs:qs.map(q=>({q:q.q.trim(),exp:q.exp.trim()})),resp:{}});g.chals.unshift(nc);cloudChal(g,nc);sg.cd={title:'',topic:'',inst:'',qs:[{q:'',exp:''},{q:'',exp:''}]};sg.cf=false;sg.ch=sg.newCh;sg.cm='answer';sgRender();toast('Challenge created')}
+    const nc=({id:(sg.newCh=nid('q')),title:d.title.trim(),topic:d.topic.trim(),by:'me',inst:d.inst.trim(),qs:qs.map(q=>({q:q.q.trim(),exp:q.exp.trim()})),resp:{}});nc.ts=new Date().toISOString();g.chals.unshift(nc);cloudChal(g,nc);sg.cd={title:'',topic:'',inst:'',qs:[{q:'',exp:''},{q:'',exp:''}]};sg.cf=false;sg.ch=sg.newCh;sg.cm='answer';sgRender();toast('Challenge created')}
   if(id==='anForm'){const c=g.chals.find(c=>c.id===sg.ch),a=sg.ans[c.id]||[];if(!c.qs.every((q,i)=>(a[i]||'').trim())){sg.xerr='Answer every question. “Not sure” is fine, so friends can help.';sgRender();return}
     c.resp.me=c.qs.map((q,i)=>a[i].trim());cloudAns(g,c);sg.cm='review';sgRender();toast('Answers submitted'+dm())}
   if(id==='noteForm'){const d=sg.nd;if(!(d.title||'').trim()||!(d.body||'').trim()){sg.xerr='A note needs a title and some text.';sgRender();return}
-    if(sg.note==='new'){const n={id:nid('n'),title:d.title.trim(),topic:(d.topic||'').trim(),by:'me',t:'Just now',body:d.body.trim()};g.notes.unshift(n);cloudNote(g,n,true);sg.note=n.id}
+    if(sg.note==='new'){const n={id:nid('n'),title:d.title.trim(),topic:(d.topic||'').trim(),by:'me',t:'Just now',body:d.body.trim()};n.ts=new Date().toISOString();g.notes.unshift(n);cloudNote(g,n,true);sg.note=n.id}
     else{const n=g.notes.find(n=>n.id===sg.note);Object.assign(n,{title:d.title.trim(),topic:(d.topic||'').trim(),body:d.body.trim()});cloudNote(g,n,false)}
     sg.ne=false;sgRender();toast(cloud?'Note saved':'Note saved on this screen (demo)')}
   if(id==='asForm'){const v=sg.ain.trim();if(!v){sg.xerr='Type a topic or some notes first.';sgRender();return}
     const r=simA(sg.aa,v),t=nowT();
-    if(sg.am==='public'){pushMsg(g,{who:'me',kind:'Asked the assistant',t,text:AA[sg.aa][0]+': '+v},{who:'Study Assistant',kind:'Assistant · simulated',t,text:r});g.act.push({who:'me',mode:'public',action:AA[sg.aa][0],t:'Just now'});cloudAct(g,'public',AA[sg.aa][0]);sg.tab='chat';sg.ain='';sgRender();toast('Added to the group discussion (demo)')}
-    else{g.priv.push({action:sg.aa,q:v,a:r,t});g.act.push({who:'me',mode:'private',t:'Just now'});cloudAct(g,'private',null);sg.ain='';sgRender();toast('Reply is private to you')}}
+    if(sg.am==='public'){pushMsg(g,{who:'me',kind:'Asked the assistant',t,text:AA[sg.aa][0]+': '+v},{who:'Study Assistant',kind:'Assistant · simulated',t,text:r});g.act.push({who:'me',mode:'public',action:AA[sg.aa][0],t:'Just now',ts:new Date().toISOString()});cloudAct(g,'public',AA[sg.aa][0]);sg.tab='chat';sg.ain='';sgRender();toast('Added to the group discussion (demo)')}
+    else{g.priv.push({action:sg.aa,q:v,a:r,t});if(SET.notice){g.act.push({who:'me',mode:'private',t:'Just now',ts:new Date().toISOString()});cloudAct(g,'private',null)}sg.ain='';sgRender();toast('Reply is private to you')}}
 });
 
 
+
+
+// ---------- ACCOUNT MENU, PROFILE PICTURE & SETTINGS ----------
+const SET=Object.assign({theme:'system',dot:true,notice:true},(()=>{try{return JSON.parse(localStorage.getItem('dp-settings'))||{}}catch(e){return {}}})());
+function saveSet(){try{localStorage.setItem('dp-settings',JSON.stringify(SET))}catch(e){}}
+function applyTheme(){const r=document.documentElement;if(SET.theme==='light'||SET.theme==='dark')r.setAttribute('data-theme',SET.theme);else r.removeAttribute('data-theme')}
+applyTheme();
+const AV_OK=['image/jpeg','image/png','image/webp'],AV_MAX=5*1024*1024;
+const pf={edit:false,pending:null,err:'',busy:false};
+function avImg(url){return url?'<img src="'+esc(url)+'" alt="" onerror="this.remove()">':''}
+function avUrl(g,n){return n==='me'?(S.avatar||''):((g&&g.avmap&&g.avmap[n])||'')}
+function myInitial(){return ((S.user&&S.user.name||'Y').trim()[0]||'Y').toUpperCase()}
+function paintMe(){const a=$('#acctAv');if(a)a.innerHTML=esc(myInitial())+avImg(S.avatar);$('#acctName').textContent=(S.user&&S.user.name)||'';$('#acctEmail').textContent=(S.user&&S.user.email)||''}
+function refreshAll(){paintMe();render();renderPartner();if(!$('#studyPage').hidden)sgRender();if(!$('#profilePage').hidden)renderProfile();if(!$('#settingsPage').hidden)renderSettings()}
+function closeAcct(){const m=$('#acctMenu');if(m&&!m.hidden){m.hidden=true;$('#acctBtn').setAttribute('aria-expanded','false')}}
+$('#acctBtn').addEventListener('click',e=>{e.stopPropagation();const m=$('#acctMenu'),open=m.hidden;m.hidden=!open;$('#acctBtn').setAttribute('aria-expanded',String(open));if(open)m.querySelector('button').focus()});
+document.addEventListener('click',e=>{if(!e.target.closest('.acct')&&!T.on)closeAcct()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#acctMenu').hidden){closeAcct();$('#acctBtn').focus()}});
+$('#goProfile').addEventListener('click',()=>switchTab('profile'));$('#goSettings').addEventListener('click',()=>switchTab('settings'));
+
+// --- profile
+function renderProfile(){
+  const name=(S.user&&S.user.name)||'',email=(S.user&&S.user.email)||'',shown=pf.pending?pf.pending.url:S.avatar;
+  let o=`<button class="sg-back" data-p="back">← Back</button><div class="pf-top"><span class="av a0 pf-av">${esc(myInitial())}${avImg(shown)}</span><h1>${esc(name)}</h1><p class="sg-meta">${esc(email)}</p></div>`;
+  if(pf.pending)o+=`<div class="pf-prev"><strong>Preview</strong><p class="sg-meta" style="margin-top:4px">This is how your picture will look. It’s cropped to a circle.</p></div><div class="pf-actions"><button class="btn btn-primary" data-p="save" ${pf.busy?'disabled':''}>${pf.busy?'Saving…':'Save picture'}</button><button class="btn btn-outline" data-p="pick" ${pf.busy?'disabled':''}>Choose another</button><button class="sg-back" data-p="cancel" ${pf.busy?'disabled':''}>Cancel</button></div>`;
+  else o+=`<div class="pf-actions">${S.avatar?'<button class="btn btn-primary" data-p="pick">Change picture</button><button class="btn btn-outline" data-p="remove" '+(pf.busy?'disabled':'')+'>Remove picture</button>':'<button class="btn btn-primary" data-p="pick">Add profile picture</button>'}</div>`;
+  o+=`<div class="sg-err" role="alert" style="text-align:center">${esc(pf.err)}</div><p class="sg-note" style="text-align:center">JPG, PNG or WebP, up to 5 MB.${cloud?'':' Offline demo: your picture is saved on this device only.'}</p>`;
+  o+=`<h2 class="sh">Your details</h2><div class="sg-card">`+(pf.edit?`<form id="pfForm" style="padding:18px"><label for="pfName" style="margin-top:0">Name</label><input id="pfName" class="sg-in" maxlength="40" value="${esc(name)}" autocomplete="name"><div style="display:flex;gap:10px;margin-top:14px"><button class="btn btn-primary" type="submit">Save name</button><button class="btn btn-outline" type="button" data-p="cancelname">Cancel</button></div></form>`:`<div class="srow"><div class="stx"><b>Name</b><small>${esc(name)}</small></div><button class="btn btn-outline sbtn" data-p="editname">Edit</button></div>`)+`</div><button class="btn btn-outline btn-block" data-p="settings">Open settings</button>`;
+  $('#profilePage').innerHTML=o}
+async function cropSquare(file){let bmp;
+  try{bmp=await createImageBitmap(file,{imageOrientation:'from-image'})}catch(e){bmp=await new Promise((res,rej)=>{const i=new Image(),u=URL.createObjectURL(file);i.onload=()=>{URL.revokeObjectURL(u);res(i)};i.onerror=rej;i.src=u})}
+  const w=bmp.width,hh=bmp.height,s=Math.min(w,hh),size=Math.min(512,s),c=document.createElement('canvas');c.width=c.height=size;
+  c.getContext('2d').drawImage(bmp,(w-s)/2,(hh-s)/2,s,s,0,0,size,size);
+  const blob=await new Promise(r=>c.toBlob(r,'image/jpeg',.9));if(!blob)throw new Error('encode');
+  return{blob,url:URL.createObjectURL(blob),data:c.toDataURL('image/jpeg',.9)}}
+function pfClear(){if(pf.pending&&pf.pending.url)URL.revokeObjectURL(pf.pending.url);pf.pending=null}
+function dropOld(url){try{const i=url.indexOf('/avatars/');if(i>0)sb.storage.from('avatars').remove([decodeURIComponent(url.slice(i+9).split('?')[0])])}catch(e){}}
+$('#avFile').addEventListener('change',async e=>{const f=e.target.files&&e.target.files[0];e.target.value='';if(!f)return;pf.err='';
+  if(!AV_OK.includes(f.type)){pf.err='Please choose a JPG, PNG or WebP image.';renderProfile();return}
+  if(f.size>AV_MAX){pf.err='That image is larger than 5 MB. Please choose a smaller one.';renderProfile();return}
+  try{const r=await cropSquare(f);pfClear();pf.pending=r}catch(x){pf.err='We couldn’t read that image. Please try another one.'}
+  renderProfile()});
+async function saveAvatar(){if(!pf.pending||pf.busy)return;pf.busy=true;pf.err='';renderProfile();
+  try{
+    if(cloud){const path=S.me+'/avatar-'+Date.now()+'.jpg',up=await sb.storage.from('avatars').upload(path,pf.pending.blob,{contentType:'image/jpeg',upsert:false});if(up.error)throw up.error;
+      const url=sb.storage.from('avatars').getPublicUrl(path).data.publicUrl,r=await sb.from('profiles').update({avatar_url:url}).eq('id',S.me);if(r.error)throw r.error;
+      const old=S.avatar;S.avatar=url;if(old)dropOld(old)}
+    else{S.avatar=pf.pending.data;try{localStorage.setItem('dp-avatar',S.avatar)}catch(e){S.avatar='';throw new Error('This browser couldn’t store the picture.')}}
+    pfClear();toast('Profile picture updated')}
+  catch(e){pf.err=netErr(e)?'Couldn’t reach the server, so your picture wasn’t saved. Please try again.':(e.message||'Couldn’t save your picture.')}
+  finally{pf.busy=false;refreshAll();if(cloud)sgLoad(true,true)}}
+async function removeAvatar(){if(pf.busy)return;pf.busy=true;pf.err='';renderProfile();
+  try{if(cloud){const r=await sb.from('profiles').update({avatar_url:null}).eq('id',S.me);if(r.error)throw r.error;const old=S.avatar;S.avatar='';if(old)dropOld(old)}
+    else{S.avatar='';try{localStorage.removeItem('dp-avatar')}catch(e){}}
+    toast('Profile picture removed')}
+  catch(e){pf.err=netErr(e)?'Couldn’t reach the server. Please try again.':(e.message||'Couldn’t remove your picture.')}
+  finally{pf.busy=false;refreshAll();if(cloud)sgLoad(true,true)}}
+async function saveName(){const v=($('#pfName').value||'').trim();if(!v||v.length>40){pf.err='Enter a name between 1 and 40 characters.';renderProfile();return}
+  try{if(cloud){const r=await sb.from('profiles').update({display_name:v}).eq('id',S.me);if(r.error)throw r.error}
+    S.user.name=v;if(!cloud)save();pf.edit=false;pf.err='';toast('Name updated');refreshAll();if(cloud)sgLoad(true,true)}
+  catch(e){pf.err=netErr(e)?'Couldn’t reach the server. Please try again.':(e.message||'Couldn’t save your name.');renderProfile()}}
+$('#profilePage').addEventListener('click',e=>{const b=e.target.closest('[data-p]');if(!b)return;const a=b.dataset.p;
+  if(a==='back')switchTab(lastTab);else if(a==='settings')switchTab('settings');
+  else if(a==='pick'){$('#avFile').value='';$('#avFile').click()}
+  else if(a==='cancel'){pfClear();pf.err='';renderProfile()}
+  else if(a==='save')saveAvatar();else if(a==='remove')removeAvatar();
+  else if(a==='editname'){pf.edit=true;pf.err='';renderProfile();$('#pfName').focus()}
+  else if(a==='cancelname'){pf.edit=false;pf.err='';renderProfile()}});
+$('#profilePage').addEventListener('submit',e=>{e.preventDefault();saveName()});
+
+// --- settings
+function tgl(k,label,desc){return `<div class="srow"><div class="stx"><b>${label}</b><small>${desc}</small></div><button class="tgl" type="button" role="switch" aria-checked="${!!SET[k]}" aria-label="${label}" data-s="${k}"><i></i></button></div>`}
+function renderSettings(){
+  const name=(S.user&&S.user.name)||'',email=(S.user&&S.user.email)||'',T=[['system','System'],['light','Light'],['dark','Dark']];
+  $('#settingsPage').innerHTML=`<button class="sg-back" data-p="back">← Back</button><h1>Settings</h1>
+  <h2 class="sh">Account</h2><div class="sg-card sgroup">
+    <div class="srow"><span class="av a0 sm">${esc(myInitial())}${avImg(S.avatar)}</span><div class="stx"><b>${esc(name)}</b><small>Name and picture</small></div><button class="btn btn-outline sbtn" data-s="profile">Edit profile</button></div>
+    <div class="srow"><div class="stx"><b>Email</b><small>${esc(email)}</small></div></div>
+    <div class="srow"><div class="stx"><b>Sign out</b><small>You can sign back in any time.</small></div><button class="btn btn-outline sbtn" data-s="signout">Sign out</button></div>
+    <p class="sg-note" style="padding:0 18px 12px;margin:0">Changing your email or deleting your account isn’t available yet.</p></div>
+  <h2 class="sh">Appearance</h2><div class="sg-card" style="padding:14px"><div class="seg" role="radiogroup" aria-label="Theme">${T.map(t=>`<button type="button" role="radio" aria-checked="${SET.theme===t[0]}" data-s="theme:${t[0]}">${t[1]}</button>`).join('')}</div><p class="sg-note" style="margin:10px 4px 0">System follows your phone or computer setting.</p></div>
+  <h2 class="sh">Notifications</h2><div class="sg-card sgroup">${tgl('dot','New activity dot','Show a dot on the Study tab when your groups have something new.')}<p class="sg-note" style="padding:0 18px 12px;margin:0">Reminders and email notifications aren’t available yet.</p></div>
+  <h2 class="sh">Privacy</h2><div class="sg-card sgroup">${tgl('notice','Show when I use the Study Assistant privately','Your group sees that you used it, never what you asked or the reply.')}</div>
+  <h2 class="sh">Legal</h2><div class="sg-card sgroup"><a class="srow" href="#privacy" style="text-decoration:none;color:var(--ink)"><div class="stx"><b>Privacy Policy</b></div><span aria-hidden="true" style="color:var(--mute)">›</span></a><a class="srow" href="#terms" style="text-decoration:none;color:var(--ink)"><div class="stx"><b>Terms of Service</b></div><span aria-hidden="true" style="color:var(--mute)">›</span></a><a class="srow" href="#cookies" style="text-decoration:none;color:var(--ink)"><div class="stx"><b>Cookie Policy</b></div><span aria-hidden="true" style="color:var(--mute)">›</span></a><a class="srow" href="#guidelines" style="text-decoration:none;color:var(--ink)"><div class="stx"><b>Community Guidelines</b></div><span aria-hidden="true" style="color:var(--mute)">›</span></a><a class="srow" href="#acceptable-use" style="text-decoration:none;color:var(--ink)"><div class="stx"><b>Acceptable Use Policy</b></div><span aria-hidden="true" style="color:var(--mute)">›</span></a><a class="srow" href="#contact" style="text-decoration:none;color:var(--ink)"><div class="stx"><b>Contact and Support</b></div><span aria-hidden="true" style="color:var(--mute)">›</span></a></div>
+  <h2 class="sh">Help</h2><div class="sg-card sgroup">
+    <div class="srow"><div class="stx"><b>App tour</b><small>A quick look at Today, Partner, Study and your account.</small></div><button class="btn btn-outline sbtn" data-s="tour:main">Replay</button></div>
+    <div class="srow"><div class="stx"><b>Study group tour</b><small>What you can do inside a study group.</small></div><button class="btn btn-outline sbtn" data-s="tour:group">Replay</button></div></div>
+  <p class="sg-note">Appearance, notification and privacy choices are saved on this device. Tour progress is saved ${cloud?'to your account':'on this device'}.</p>`}
+$('#settingsPage').addEventListener('click',e=>{const bp=e.target.closest('[data-p]');if(bp&&bp.dataset.p==='back'){switchTab(lastTab);return}
+  const b=e.target.closest('[data-s]');if(!b)return;const k=b.dataset.s;
+  if(k==='profile'){switchTab('profile');return}
+  if(k.startsWith('tour:')){replayTour(k.slice(5));return}
+  if(k==='signout'){$('#signout').click();return}
+  if(k.startsWith('theme:')){SET.theme=k.slice(6);applyTheme();saveSet();renderSettings();toast('Theme: '+({system:'System',light:'Light',dark:'Dark'})[SET.theme]);const n=$('#settingsPage [data-s="'+k+'"]');n&&n.focus();return}
+  if(k==='dot'||k==='notice'){SET[k]=!SET[k];saveSet();if(k==='dot'&&!SET.dot)$('#studyDot').style.display='none';renderSettings();toast('Saved');const n=$('#settingsPage [data-s="'+k+'"]');n&&n.focus()}});
+
+// Minimal QR Code generator: byte mode, error correction level M, versions 1-10.
+function qrMatrix(text){
+  const ECC=[0,10,16,26,18,24,16,18,22,22,26],NB=[0,1,1,1,2,2,4,4,4,5,5],RAW=[0,26,44,70,100,134,172,196,242,292,346];
+  const bytes=Array.from(new TextEncoder().encode(text));let ver=0;
+  for(let v=1;v<=10;v++){const cap=(RAW[v]-ECC[v]*NB[v])*8;if(4+(v<10?8:16)+bytes.length*8<=cap){ver=v;break}}
+  if(!ver)return null;
+  const size=ver*4+17,dataCw=RAW[ver]-ECC[ver]*NB[ver],bits=[];
+  const put=(val,n)=>{for(let i=n-1;i>=0;i--)bits.push((val>>>i)&1)};
+  put(4,4);put(bytes.length,ver<10?8:16);bytes.forEach(b=>put(b,8));
+  put(0,Math.min(4,dataCw*8-bits.length));while(bits.length%8)bits.push(0);
+  for(let pad=0xEC;bits.length<dataCw*8;pad^=0xEC^0x11)put(pad,8);
+  const data=[];for(let i=0;i<bits.length;i+=8){let b=0;for(let j=0;j<8;j++)b=b<<1|bits[i+j];data.push(b)}
+  const mul=(x,y)=>{let z=0;for(let i=7;i>=0;i--){z=(z<<1)^((z>>>7)*0x11D);z^=((y>>>i)&1)*x}return z};
+  const gen=(deg)=>{const r=new Array(deg).fill(0);r[deg-1]=1;let root=1;for(let i=0;i<deg;i++){for(let j=0;j<deg;j++){r[j]=mul(r[j],root);if(j+1<deg)r[j]^=r[j+1]}root=mul(root,2)}return r};
+  const rem=(d,g)=>{const r=new Array(g.length).fill(0);for(const b of d){const f=b^r.shift();r.push(0);g.forEach((c,i)=>r[i]^=mul(c,f))}return r};
+  const nb=NB[ver],ecl=ECC[ver],total=RAW[ver],short=nb-total%nb,shortLen=Math.floor(total/nb),g=gen(ecl),blocks=[];
+  for(let i=0,k=0;i<nb;i++){const len=shortLen-ecl+(i<short?0:1);const d=data.slice(k,k+len);k+=len;const e=rem(d,g);if(i<short)d.push(0);blocks.push(d.concat(e))}
+  const out=[];for(let i=0;i<blocks[0].length;i++)blocks.forEach((b,j)=>{if(i!==shortLen-ecl||j>=short)out.push(b[i])});
+  const mod=Array.from({length:size},()=>new Array(size).fill(false)),fn=Array.from({length:size},()=>new Array(size).fill(false));
+  const setF=(x,y,d)=>{mod[y][x]=d;fn[y][x]=true};
+  for(let i=0;i<size;i++){setF(6,i,i%2===0);setF(i,6,i%2===0)}
+  for(const [cx,cy] of [[3,3],[size-4,3],[3,size-4]])for(let dy=-4;dy<=4;dy++)for(let dx=-4;dx<=4;dx++){const d=Math.max(Math.abs(dx),Math.abs(dy)),x=cx+dx,y=cy+dy;if(x>=0&&x<size&&y>=0&&y<size)setF(x,y,d!==2&&d!==4)}
+  const al=[];if(ver>1){const n=Math.floor(ver/7)+2,step=Math.ceil((ver*4+4)/(n*2-2))*2;al.push(6);for(let p=size-7,k=1;al.length<n;p-=step)al.splice(k,0,p)}
+  for(let i=0;i<al.length;i++)for(let j=0;j<al.length;j++){if((i===0&&j===0)||(i===0&&j===al.length-1)||(i===al.length-1&&j===0))continue;for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++)setF(al[i]+dx,al[j]+dy,Math.max(Math.abs(dx),Math.abs(dy))!==1)}
+  const fmt=(mask)=>{let r=mask;for(let i=0;i<10;i++)r=(r<<1)^((r>>>9)*0x537);const b=((mask<<10)|r)^0x5412,bit=i=>((b>>>i)&1)===1;
+    for(let i=0;i<=5;i++)setF(8,i,bit(i));setF(8,7,bit(6));setF(8,8,bit(7));setF(7,8,bit(8));for(let i=9;i<15;i++)setF(14-i,8,bit(i));
+    for(let i=0;i<8;i++)setF(size-1-i,8,bit(i));for(let i=8;i<15;i++)setF(8,size-15+i,bit(i));setF(8,size-8,true)};
+  fmt(0);
+  if(ver>=7){let r=ver;for(let i=0;i<12;i++)r=(r<<1)^((r>>>11)*0x1F25);const b=ver<<12|r;for(let i=0;i<18;i++){const bit=((b>>>i)&1)===1,a=size-11+i%3,c=Math.floor(i/3);setF(a,c,bit);setF(c,a,bit)}}
+  let idx=0;for(let right=size-1;right>=1;right-=2){if(right===6)right=5;for(let v=0;v<size;v++)for(let j=0;j<2;j++){const x=right-j,up=((right+1)&2)===0,y=up?size-1-v:v;if(!fn[y][x]&&idx<out.length*8){mod[y][x]=((out[idx>>>3]>>>(7-(idx&7)))&1)===1;idx++}}}
+  const MASK=[(x,y)=>(x+y)%2===0,(x,y)=>y%2===0,(x,y)=>x%3===0,(x,y)=>(x+y)%3===0,(x,y)=>(Math.floor(x/3)+Math.floor(y/2))%2===0,(x,y)=>x*y%2+x*y%3===0,(x,y)=>(x*y%2+x*y%3)%2===0,(x,y)=>((x+y)%2+x*y%3)%2===0];
+  const penalty=m=>{let p=0;const line=a=>{let run=1;for(let i=1;i<=size;i++){if(i<size&&a[i]===a[i-1])run++;else{if(run>=5)p+=3+run-5;run=1}}
+      for(let i=0;i+10<size;i++){const w=[true,false,true,true,true,false,true,false,false,false,false],w2=w.slice().reverse();if(w.every((v,k)=>a[i+k]===v)||w2.every((v,k)=>a[i+k]===v))p+=40}};
+    for(let y=0;y<size;y++)line(m[y]);for(let x=0;x<size;x++)line(m.map(r=>r[x]));
+    for(let y=0;y<size-1;y++)for(let x=0;x<size-1;x++)if(m[y][x]===m[y][x+1]&&m[y][x]===m[y+1][x]&&m[y][x]===m[y+1][x+1])p+=3;
+    let dark=0;m.forEach(r=>r.forEach(v=>{if(v)dark++}));p+=(Math.ceil(Math.abs(dark*20-size*size*10)/(size*size))-1)*10;return p};
+  let best=null,bestP=1e9,bestMask=0;
+  for(let k=0;k<8;k++){const m=mod.map(r=>r.slice());for(let y=0;y<size;y++)for(let x=0;x<size;x++)if(!fn[y][x]&&MASK[k](x,y))m[y][x]=!m[y][x];
+    // draw format for this mask into the copy
+    const saveM=mod.map(r=>r.slice());for(let y=0;y<size;y++)mod[y]=m[y];fmt(k);const withFmt=mod.map(r=>r.slice());for(let y=0;y<size;y++)mod[y]=saveM[y];
+    const pe=penalty(withFmt);if(pe<bestP){bestP=pe;best=withFmt;bestMask=k}}
+  return best}
+function qrSvg(text,dark,light){const m=qrMatrix(text);if(!m)return '';const n=m.length,q=4;let d='';
+  for(let y=0;y<n;y++){let x=0;while(x<n){if(m[y][x]){let s=x;while(x<n&&m[y][x])x++;d+='M'+(s+q)+' '+(y+q)+'h'+(x-s)+'v1h-'+(x-s)+'z'}else x++}}
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+(n+2*q)+' '+(n+2*q)+'" shape-rendering="crispEdges" role="img" aria-label="QR code for the invitation link"><rect width="100%" height="100%" fill="'+(light||'#fff')+'"/><path d="'+d+'" fill="'+(dark||'#0B1F3A')+'"/></svg>'}
+
+// ---------- invitations panel + group overview ----------
+async function copyText(t,msg){try{await navigator.clipboard.writeText(t);toast(msg)}catch(e){window.prompt('Copy this',t)}}
+function invitePanel(g){
+  if(cloud&&!g.code)return '<div class="inv-p"><p class="sg-meta">Setting up your invitation…</p></div>';
+  const url=groupUrl(g),qr=qrSvg(url);
+  return `<div class="inv-p"><h3>Invite friends to ${esc(g.name)}</h3><p class="sg-meta" style="margin-top:4px">Anyone with this link can join the group. Send it, or let a friend scan the code.</p>
+  <div class="inv-link"><input class="sg-in" readonly value="${esc(url)}" aria-label="Invitation link" onfocus="this.select()"></div>
+  <div class="inv-btns"><button class="btn btn-primary" data-x="share">Share invitation link</button><button class="btn btn-outline" data-x="copyLink">Copy invitation link</button></div>
+  ${qr?`<div class="inv-qr"><div class="qr-box">${qr}</div><p class="sg-meta">Scan to join. Handy when you’re together.</p></div>`:'<p class="sg-note">This link is too long for a QR code. Use Share or Copy instead.</p>'}
+  ${g.members.length>=50?'<p class="sg-note">This group is full (50 members). New people can’t join until someone leaves.</p>':''}
+  ${cloud&&g.code?`<div class="inv-code"><span class="sg-meta">Or join with code</span><strong>${esc(g.code)}</strong><button data-x="copyCode" style="color:var(--green);font-weight:600;font-size:14px">Copy code</button></div>`:''}</div>`}
+const IC={"chat": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 5h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z\"/></svg>", "chal": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M6 21V4M6 5h11l-2 4 2 4H6\"/></svg>", "notes": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z\"/><path d=\"M4 21V5M9 8h6\"/></svg>", "asst": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z\"/></svg>"};
+const SPILL=s=>({planned:['Planned','p-planned'],studying:['Studying','p-studying'],done:['Completed','p-done']})[s];
+function myActive(g){return g.commits.find(c=>c.who==='me'&&c.status!=='done')||null}
+function focusCommit(g){return myActive(g)||g.commits.find(c=>c.status!=='done')||g.commits.find(c=>c.who==='me')||g.commits[0]||null}
+function memCommit(g,n){const l=g.commits.filter(c=>c.who===n);return l.find(c=>c.status!=='done')||l[0]||null}
+function feedOf(g){const it=[];
+  g.msgs.forEach(m=>{if(m.who==='Study Assistant')return;const v=m.kind==='Question'?'asked a question':m.kind==='Explanation'?'shared an explanation':m.kind==='Reply'?'replied':m.kind==='Asked the assistant'?'asked the Study Assistant':'posted';it.push({ts:m.ts||'',who:m.who,txt:v,sub:m.text,tab:'chat',t:m.ts?fmtWhen(m.ts):m.t})});
+  g.chals.forEach(c=>it.push({ts:c.ts||'',who:c.by,txt:'created a challenge',sub:c.title,tab:'chal',t:c.ts?fmtWhen(c.ts):''}));
+  g.notes.forEach(n=>it.push({ts:n.ts||'',who:n.by,txt:'saved a note',sub:n.title,tab:'notes',t:n.ts?fmtWhen(n.ts):n.t}));
+  g.act.forEach(a=>it.push({ts:a.ts||'',who:a.who,txt:a.mode==='private'?'used the Study Assistant':'used the Study Assistant in the group',sub:a.action||'',tab:'asst',t:a.ts?fmtWhen(a.ts):a.t}));
+  g.commits.forEach(c=>it.push({ts:c.ts||'',who:c.who,txt:c.status==='done'?'completed '+c.topic:c.status==='studying'?'is studying '+c.topic:'plans to study '+c.topic,sub:'',tab:'overview',t:''}));
+  const dated=it.filter(x=>x.ts).sort((a,b)=>String(b.ts).localeCompare(String(a.ts))),undated=it.filter(x=>!x.ts).reverse();
+  return dated.concat(undated).slice(0,4)}
+function vOver(g){
+  const f=focusCommit(g),mine=myActive(g),n=g.members.length,doneN=g.members.filter(m=>g.commits.some(c=>c.who===m&&c.status==='done')).length;
+  let o='';
+  if(!f)o+=`<div class="ov-now" data-tour="g-current"><div class="lp-tag">Current study</div><h2>What are you studying?</h2><p class="sg-meta" style="margin-top:6px">Add a commitment so your friends know what to ask about.</p><div class="ov-next"><p>Next for you: add what you’re studying.</p><button class="btn btn-primary" data-x="addcommit">Add my commitment</button></div></div>`;
+  else{
+    const who=f.who==='me'?'You':nm(f.who),P=SPILL(f.status);let next='';
+    if(mine&&mine.status==='planned')next=`<p>Next for you: start studying ${esc(mine.topic)}.</p><button class="btn btn-primary" data-a="start" data-id="${mine.id}">Start studying</button>`;
+    else if(mine)next=`<p>Next for you: finish studying, then explain it to the group.</p><button class="btn btn-primary" data-a="finish" data-id="${mine.id}">Mark completed and discuss</button>`;
+    else if(g.commits.some(c=>c.who==='me'))next=`<p>You finished your commitment. Share what you learned.</p><button class="btn btn-primary" data-x="goto" data-t="chat">Start a discussion</button><button class="btn btn-outline" data-x="addcommit">Add another commitment</button>`;
+    else next=`<p>Next for you: add what you’re studying.</p><button class="btn btn-primary" data-x="addcommit">Add my commitment</button>`;
+    o+=`<div class="ov-now"><div data-tour="g-current"><div class="sg-row sg-sp"><div class="lp-tag" style="margin:0">Current study</div><span class="pill ${P[1]}">${P[0]}</span></div><h2>${esc(f.topic)}</h2><p class="sg-meta" style="margin-top:4px">${esc(f.subject)}${f.material?' · '+esc(f.material):''} · ${esc(who)}</p>${f.goal?`<p style="margin-top:10px">${esc(f.goal)}</p>`:''}
+    <div class="ov-next">${next}</div></div>
+    <div class="ov-prog"><div class="sg-row sg-sp"><strong>${doneN} of ${n} ${n===1?'member has':'members have'} completed a commitment</strong></div><div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="${n}" aria-valuenow="${doneN}"><i style="width:${Math.round(doneN/n*100)}%"></i></div></div>
+    <div style="margin-top:8px">${g.members.slice(0,5).map(m=>{const c=memCommit(g,m),pp=c&&SPILL(c.status);return `<div class="mrow" style="border:0"><span>${av(g,m)}<span><strong>${esc(nm(m))}</strong>${c?`<span class="sg-meta"> · ${esc(c.topic)}</span>`:''}</span></span>${pp?`<span class="pill ${pp[1]}">${pp[0]}</span>`:'<span class="sg-meta">No commitment yet</span>'}</div>`}).join('')}</div>
+    <div class="sg-row sg-sp" style="margin-top:6px"><button class="sg-meta" data-a="tab" data-t="commit" style="color:var(--green);font-weight:600">All commitments</button>${n>5?`<button class="sg-meta" data-a="tab" data-t="mem" style="color:var(--green);font-weight:600">See all ${n} members</button>`:''}</div></div>`}
+  const fd=feedOf(g);
+  o+=`<div class="ov-h"><h3>Group activity</h3></div>`+(fd.length?`<div class="feed">${fd.map(x=>`<button class="fr" data-x="goto" data-t="${x.tab}">${av(g,x.who)}<span class="ft"><span><b>${esc(nm(x.who))}</b> ${esc(x.txt)}</span>${x.sub?`<small>${esc(x.sub)}</small>`:''}</span>${x.t?`<time>${esc(x.t)}</time>`:''}</button>`).join('')}</div>`:`<p class="sg-meta" style="margin-top:8px">Nothing yet. Start a discussion and your group’s activity will show up here.</p>`);
+  o+=`<div class="ov-h"><h3>Study tools</h3></div><div class="tools">
+   <button class="tool" data-x="goto" data-t="chat">${IC.chat}<b>Discussion</b><small>Explain what you learned and ask each other questions.</small><em>${g.msgs.length?g.msgs.length+(g.msgs.length===1?' message':' messages')+' · ':''}Start discussion</em></button>
+   <button class="tool" data-x="goto" data-t="chal" data-f="cf">${IC.chal}<b>Challenges</b><small>Quiz your friends on what you’re studying.</small><em>${g.chals.length?g.chals.length+(g.chals.length===1?' challenge':' challenges')+' · ':''}Create challenge</em></button>
+   <button class="tool" data-x="goto" data-t="notes">${IC.notes}<b>Knowledge</b><small>Saved explanations your group can revise later.</small><em>${g.notes.length?g.notes.length+(g.notes.length===1?' note':' notes')+' · ':''}View notes</em></button>
+   <button class="tool" data-x="goto" data-t="asst">${IC.asst}<b>Study Assistant</b><small>Question ideas or a summary when you’re stuck.</small><em>Ask for help</em></button></div><div style="margin-top:26px;text-align:center"><button class="rm-btn" data-x="exit">Exit group</button></div>`;
+  return o}
+function vGroup(){
+  const g=grp(),T=[['overview','Overview'],['chat','Discussion'],['chal','Challenges'],['notes','Knowledge'],['asst','Assistant']],sub=sg.tab==='commit'||sg.tab==='mem',sel=sub?'overview':sg.tab,n=g.members.length;
+  let o=`<button class="sg-back" data-a="home">← Study groups</button>
+  <div class="gh"><span class="grp-av a${ci(g.name)}">${esc(initials(g.name))}</span><div style="min-width:0"><h2 style="overflow-wrap:anywhere">${esc(g.name)}</h2>${g.desc?`<p class="sg-meta">${esc(g.desc)}</p>`:''}</div></div><div id="callSlot"></div>
+  <div class="sg-row sg-sp" style="margin-top:14px;flex-wrap:nowrap"><button class="sg-row" data-a="tab" data-t="mem" aria-label="See members" style="gap:10px;flex-wrap:nowrap">${avs(g)}<span class="sg-meta" style="white-space:nowrap">${n} ${n===1?'member':'members'}</span></button><button class="btn btn-outline" style="height:40px;padding:0 16px;flex:none" data-x="inv" data-tour="g-invite">${sg.inv?'Close':'Invite friends'}</button></div>
+  ${sg.inv?invitePanel(g):''}
+  <div class="sg-tabs" role="tablist" aria-label="Study group sections">${T.map(t=>`<button role="tab" data-a="tab" data-t="${t[0]}" data-tour="g-tab-${t[0]}" aria-selected="${sel===t[0]}">${t[1]}</button>`).join('')}</div>`;
+  if(sub)o+=`<button class="sg-back" data-a="tab" data-t="overview" style="margin-top:18px">← Overview</button><h2 style="margin-top:6px">${sg.tab==='commit'?'Study commitments':'Members'}</h2>`;
+  if(sg.tab==='overview')o+=vOver(g);else if(sg.tab==='chat')o+=vChat(g);else if(sg.tab==='commit')o+=vCommit(g);else if(sg.tab==='chal')o+=vChal(g);else if(sg.tab==='notes')o+=vNotes(g);else if(sg.tab==='asst')o+=vAsst(g);else o+=vMem(g);
+  return o}
+
+
+// ---------- GUIDED TOURS ----------
+const T={on:false,k:null,i:0,steps:[],el:null,undo:null,prev:null,busy:false};const REDUCE=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const tVis=e=>e&&e.getClientRects().length>0&&getComputedStyle(e).visibility!=='hidden';
+const tPause=ms=>new Promise(r=>setTimeout(r,ms));
+function openAcct(){const m=$('#acctMenu');m.hidden=false;$('#acctBtn').setAttribute('aria-expanded','true')}
+async function inGroup(){switchTab('study');if(sg.view!=='group'||!grp()){const g=sg.data.groups[0];if(!g)return;sg.view='group';sg.gid=g.id}sg.tab='overview';sg.inv=false;sgRender();await tPause(40)}
+const TOURS={
+  main:[
+    {sels:['[data-tour=task-add]','#todayPage h1'],before:async()=>{switchTab('today')},title:'Plan your day',text:'Add up to three things you’ll do today, with a time if you like.'},
+    {sels:['#lockBtn'],before:async()=>{switchTab('today')},title:'Lock it in',text:'When your tasks are set, lock them in. A locked day can’t be changed, which is what makes it a pledge.'},
+    {sels:['.tab[data-tab=partner]'],title:'Invite a friend',text:'Link up with one accountability partner. You’ll see each other’s days and can cheer each other on.'},
+    {sels:['.tab[data-tab=study]'],title:'Study together',text:'Create a study group, or join one from a friend’s invitation link. Study, discuss and quiz each other.'},
+    {sels:['#acctMenu'],before:async()=>{openAcct();return closeAcct},title:'Profile and settings',text:'Add a profile picture, choose Light or Dark, and replay this tour from Settings any time.'}],
+  group:[
+    {sels:['[data-tour=g-current]'],before:inGroup,title:'Group overview',text:'The group’s home: what everyone is studying, your next step, and who has finished.'},
+    {sels:['[data-tour=g-tab-chat]'],before:inGroup,title:'Discussion',text:'Explain what you learned in your own words and ask each other questions.'},
+    {sels:['[data-tour=g-tab-chal]'],before:inGroup,title:'Challenges',text:'Write questions for your friends, answer theirs, then talk it through together.'},
+    {sels:['[data-tour=g-tab-notes]'],before:inGroup,title:'Knowledge',text:'Save useful explanations from your discussions so the group can revise them later.'},
+    {sels:['[data-tour=g-tab-asst]'],before:inGroup,title:'Study Assistant',text:'An optional helper for question ideas and summaries. Ask in the group or privately. Your friends stay the main event.'},
+    {sels:['[data-tour=g-invite]'],before:inGroup,title:'Invite friends',text:'Share a link or QR code so friends can join this group.'}]};
+const tKey=()=>'dp-tours:'+(cloud&&S.me?S.me:'demo');
+function tLocal(){try{return JSON.parse(localStorage.getItem(tKey()))||{}}catch(e){return {}}}
+function tourDone(k){return !!(tLocal()[k]||(S.prefs&&S.prefs.tours&&S.prefs.tours[k]))}
+function markTour(k){const l=tLocal();l[k]=true;try{localStorage.setItem(tKey(),JSON.stringify(l))}catch(e){}
+  if(cloud&&S.me){S.prefs=S.prefs||{};S.prefs.tours=Object.assign({},S.prefs.tours,{[k]:true});try{sb.from('user_prefs').upsert({user_id:S.me,prefs:S.prefs,updated_at:new Date().toISOString()}).then(()=>{},()=>{})}catch(e){}}}
+function tourDom(){if($('#tourBlock'))return;const d=document.createElement('div');
+  d.innerHTML='<div id="tourBlock"></div><div id="tourHole"></div><div id="tourTip" role="dialog" aria-modal="true" aria-labelledby="ttT" aria-describedby="ttP" tabindex="-1"><div class="tt-s" id="ttS"></div><h3 id="ttT"></h3><p id="ttP"></p><div class="tt-c"><button type="button" class="tt-skip" id="ttSkip">Skip tour</button><span style="flex:1"></span><button type="button" class="btn btn-outline" id="ttBack">Back</button><button type="button" class="btn btn-primary" id="ttNext">Next</button></div></div>';
+  while(d.firstChild)document.body.appendChild(d.firstChild);
+  $('#ttSkip').onclick=()=>endTour(true);$('#ttBack').onclick=()=>tStep(-1);$('#ttNext').onclick=()=>{if(T.i>=T.steps.length-1)endTour(false);else tStep(1)}}
+async function tSettle(el){let last=-1,same=0;for(let n=0;n<12&&same<2;n++){const t=el.getBoundingClientRect().top;if(Math.abs(t-last)<1)same++;else same=0;last=t;await tPause(REDUCE?20:70)}}
+function tPlace(){if(!T.on||!T.el)return;const e=T.el;if(!tVis(e))return;const r=e.getBoundingClientRect(),vw=innerWidth,vh=innerHeight,pad=8;
+  const top=Math.max(r.top-pad,6),left=Math.max(r.left-pad,6),right=Math.min(r.right+pad,vw-6),bottom=Math.min(r.bottom+pad,vh-6),hole=$('#tourHole'),tip=$('#tourTip');
+  Object.assign(hole.style,{top:top+'px',left:left+'px',width:(right-left)+'px',height:(bottom-top)+'px'});
+  const tw=Math.min(320,vw-24);tip.style.width=tw+'px';const th=tip.offsetHeight,below=vh-bottom,above=top;let y,pos;
+  if(below>=th+18){y=bottom+14;pos='down'}else if(above>=th+18){y=top-th-14;pos='up'}else{y=vh-th-12;pos='pin'}
+  const cx=(left+right)/2,x=Math.max(12,Math.min(cx-tw/2,vw-tw-12));tip.style.left=x+'px';tip.style.top=Math.max(8,y)+'px';tip.dataset.pos=pos;tip.style.setProperty('--ca',Math.max(22,Math.min(cx-x,tw-22))+'px')}
+let tRaf=0;const tSched=()=>{if(!T.on||tRaf)return;tRaf=requestAnimationFrame(()=>{tRaf=0;tPlace()})};
+async function tShow(i){const st=T.steps[i];if(T.undo){try{T.undo()}catch(e){}T.undo=null}
+  if(st.before){try{T.undo=(await st.before())||null}catch(e){}}await tPause(60);
+  let el=null;for(const s of st.sels){const c=document.querySelector(s);if(tVis(c)){el=c;break}}if(!el)return false;
+  T.i=i;T.el=el;$('#ttS').textContent='Step '+(i+1)+' of '+T.steps.length;$('#ttT').textContent=st.title;$('#ttP').textContent=st.text;
+  $('#ttBack').hidden=i===0;$('#ttNext').textContent=i===T.steps.length-1?'Finish':'Next';
+  const strip=el.closest('.sg-tabs');if(strip)strip.scrollLeft=Math.max(0,el.offsetLeft-(strip.clientWidth-el.offsetWidth)/2);
+  const rr=el.getBoundingClientRect(),tall=rr.height>innerHeight*.5;el.scrollIntoView({block:tall?'start':'center',behavior:REDUCE?'auto':'smooth'});await tSettle(el);
+  if(tall){window.scrollBy(0,-70)}tPlace();$('#ttNext').focus({preventScroll:true});return true}
+async function tStep(dir){if(T.busy)return;T.busy=true;try{let i=T.i+dir;while(i>=0&&i<T.steps.length){if(await tShow(i))return;i+=dir}if(dir>0)endTour(false)}finally{T.busy=false}}
+async function startTour(k){if(T.on)return;hideOffer();T.on=true;T.k=k;T.steps=TOURS[k];T.i=-1;T.prev=document.activeElement;tourDom();document.body.classList.add('touring');
+  $('#tourBlock').hidden=$('#tourHole').hidden=$('#tourTip').hidden=false;await tStep(1)}
+function endTour(skipped){if(!T.on)return;if(T.undo){try{T.undo()}catch(e){}T.undo=null}markTour(T.k);T.on=false;document.body.classList.remove('touring');
+  $('#tourBlock').hidden=$('#tourHole').hidden=$('#tourTip').hidden=true;if(T.prev&&document.contains(T.prev)&&T.prev.focus)try{T.prev.focus({preventScroll:true})}catch(e){}
+  toast(skipped?'Tour skipped. Replay it any time from Settings.':'Tour complete. Replay it any time from Settings.')}
+document.addEventListener('keydown',e=>{if(!T.on)return;
+  if(e.key==='Escape'){e.preventDefault();endTour(true)}
+  else if(e.key==='ArrowRight'){e.preventDefault();$('#ttNext').click()}else if(e.key==='ArrowLeft'&&!$('#ttBack').hidden){e.preventDefault();$('#ttBack').click()}
+  else if(e.key==='Tab'){const f=[...$('#tourTip').querySelectorAll('button')].filter(b=>!b.hidden);if(!f.length)return;const i=f.indexOf(document.activeElement);e.preventDefault();f[(i+(e.shiftKey?-1:1)+f.length)%f.length].focus()}});
+addEventListener('resize',tSched);addEventListener('scroll',tSched,{passive:true,capture:true});
+// offers: quiet, once per kind, never blocking
+const offered={};
+const OFFER={main:['Take a quick tour?','See where to plan your day, invite a friend, find study groups and open your settings. It takes about 30 seconds.'],group:['New to study groups?','Take a short tour of what you can do inside a group: overview, discussion, challenges, knowledge and the assistant.']};
+function offerValid(k){if(!$('#app').classList.contains('on'))return false;if(k==='main')return !$('#todayPage').hidden;return sg.view==='group'&&sg.tab==='overview'&&!$('#studyPage').hidden}
+function hideOffer(){const o=$('#tourOffer');if(o)o.remove()}
+function syncOffer(){const o=$('#tourOffer');if(o&&!offerValid(o.dataset.k))o.remove()}
+function maybeOffer(k){if(T.on||offered[k]||tourDone(k)||$('#tourOffer')||!offerValid(k))return;offered[k]=true;
+  const o=document.createElement('div');o.id='tourOffer';o.dataset.k=k;o.setAttribute('role','region');o.setAttribute('aria-label','Guided tour');
+  o.innerHTML='<strong>'+OFFER[k][0]+'</strong><p>'+OFFER[k][1]+'</p><div class="tt-c"><button type="button" class="tt-skip" data-o="skip">Skip</button><span style="flex:1"></span><button type="button" class="btn btn-primary" data-o="go">Start tour</button></div>';
+  o.addEventListener('click',e=>{const b=e.target.closest('[data-o]');if(!b)return;if(b.dataset.o==='go')startTour(k);else{markTour(k);o.remove();toast('No problem. Replay it any time from Settings.')}});
+  document.body.appendChild(o)}
+async function replayTour(k){if(T.on)return;if(k==='main'){switchTab('today');await tPause(120);startTour('main');return}
+  const g=(sg.view==='group'&&grp())||sg.data.groups[0];if(!g){toast('Create or join a study group first.');return}
+  switchTab('study');sg.view='group';sg.gid=g.id;sg.tab='overview';sg.inv=false;sgRender();await tPause(120);startTour('group')}
+
+const LEGAL_DRAFT=true;
+const LEGAL_PAGES={"privacy": {"title": "Privacy Policy", "html": "\n<p class=\"meta\">Last updated: <span class=\"ph\">[DATE OF PUBLICATION]</span></p>\n<p>This policy explains what personal information Daily Pledge collects, why we use it, who can see it, and the choices you have. Daily Pledge is a product of DRHEMA INC, based in Ibadan and Lagos, Nigeria. <span class=\"ph\">[TEMPORARY: confirm the registered legal name, registration details and street address after company registration]</span> In this policy, “we” and “us” mean DRHEMA INC. We are responsible for your personal data under the Nigeria Data Protection Act 2023 (NDPA). <span class=\"lr\" title=\"Needs review by a qualified Nigerian lawyer before publication\">LEGAL REVIEW</span></p>\n\n<h2>1. What we collect</h2>\n<p>We only collect what the app needs to work. This is everything the app currently stores:</p>\n<ul>\n<li><b>Account:</b> your name, email address and password. Your password is sent to our sign-in provider (Supabase) to create or check your account. Our app does not store it. We also keep a sign-in session so you stay signed in.</li>\n<li><b>Profile:</b> your display name, an optional profile picture, your personal partner invite code, and who your accountability partner is.</li>\n<li><b>Daily Tasks:</b> the tasks you add (up to three a day), their times, whether you finished them, whether the day is locked, your end-of-day notes, and the encouragement messages you send to or receive from your partner.</li>\n<li><b>Study Groups:</b> the groups you create or join, their name and description, who the members are, study commitments (subject, topic, material, goal, due date and status), discussion messages, challenges and your answers, knowledge notes, and a record that someone used the Study Assistant.</li>\n<li><b>Study Assistant:</b> the assistant currently gives built-in sample replies. What you type is not sent to an AI service. If you ask in the group, your request and the reply are saved as group messages. If you ask privately, the question and reply stay on your screen only and are not saved. We save only a notice that you used the assistant, and only if you leave that option on in Settings.</li>\n<li><b>App tours:</b> whether you finished the app tours is saved to your account.</li>\n<li><b>Saved on your device:</b> your appearance and notification choices, and temporary items such as a pending group invitation. See the <a href=\"#cookies\">Cookie Policy</a>.</li>\n<li><b>Technical information:</b> our service providers automatically receive technical details such as your IP address, browser type and the time of each request. This is normal for any website.</li></ul>\n<p>We do not collect payment details, your contacts, your precise location, or advertising identifiers. We do not use analytics or advertising trackers.</p>\n\n<h2>2. Why we use your information</h2>\n<ul><li>To create and secure your account, and send verification and password-reset emails.</li>\n<li>To run the features you use: Daily Tasks, your partner link, Study Groups, challenges, notes and your profile.</li>\n<li>To keep the service safe, prevent abuse and fix problems.</li>\n<li>To answer your questions and requests.</li>\n<li>To meet legal duties.</li></ul>\n<p>Our legal bases under the NDPA are: performing our agreement with you (providing the service), our legitimate interests (security and preventing abuse, balanced against your rights), your consent where we ask for it, and legal obligations. <span class=\"lr\" title=\"Needs review by a qualified Nigerian lawyer before publication\">LEGAL REVIEW</span> <span class=\"ph\">[CONFIRM LAWFUL BASIS FOR EACH PURPOSE]</span></p>\n\n<h2>3. Who can see your information</h2>\n<ul><li><b>Your accountability partner</b> can see your tasks, check-ins and the encouragement messages you exchange.</li>\n<li><b>Members of your study groups</b> can see your name, profile picture and what you share in the group (commitments, messages, challenge answers, notes and assistant activity). Each group has an admin, who can see who the members are and can remove members.</li>\n<li><b>Anyone with the exact link</b> to a profile picture can open that picture. Links are not listed publicly, but they are not password protected.</li>\n<li><b>Our service providers</b> (below) process information for us.</li>\n<li><b>Authorities</b>, only where the law requires it.</li></ul>\n<p>We do not sell your personal information.</p>\n\n<h2>4. Service providers we use</h2>\n<div class=\"tbl\"><table><thead><tr><th>Provider</th><th>What it does</th><th>Information involved</th></tr></thead><tbody>\n<tr><td>Supabase</td><td>Database, sign-in, file storage for profile pictures, and sending sign-up and password emails (for now from Supabase’s built-in email sender). Our project is hosted in London, United Kingdom.</td><td>All account, profile, task and study group information above.</td></tr>\n<tr><td>Vercel</td><td>Hosts and delivers the website through a global network.</td><td>IP address, browser details and request logs.</td></tr>\n<tr><td>Google Fonts</td><td>Supplies the fonts used on the site.</td><td>Your IP address and browser details when the fonts load.</td></tr>\n<tr><td>jsDelivr</td><td>Delivers a code library the app needs.</td><td>Your IP address and browser details when it loads.</td></tr></tbody></table></div>\n<p>If we add another provider, such as a custom email sender, we will update this list.</p>\n\n<h2>5. Transfers outside Nigeria</h2>\n<p>Yes. Our database and file storage are in the United Kingdom. Vercel, Google and jsDelivr may process technical information in other countries, including the United States. The NDPA allows personal data to leave Nigeria only with appropriate protection. We rely on <span class=\"ph\">[TRANSFER SAFEGUARDS, E.G. PROVIDER CONTRACTUAL TERMS]</span>. <span class=\"lr\" title=\"Needs review by a qualified Nigerian lawyer before publication\">LEGAL REVIEW</span></p>\n\n<h2>6. How we protect it</h2>\n<ul><li>Our database has access rules so you can only read data you are allowed to see. For example, you can only open your own tasks, and only members of a group can read that group.</li>\n<li>Connections to the website and database use HTTPS.</li>\n<li>Passwords are handled by our sign-in provider, not stored in our app.</li></ul>\n<p>No online service is completely secure. We rely on our providers’ own security measures and have not had them independently audited. <span class=\"ph\">[ADD ANY CERTIFICATION OR AUDIT ONLY IF VERIFIED]</span></p>\n\n<h2>7. How long we keep it</h2>\n<p>We keep your information while your account is active. We do not currently delete information automatically.</p>\n<p>If you ask us to delete your account, we will delete your personal information, including your profile picture and the content you posted in groups, within <span class=\"ph\">[DELETION TIMEFRAME]</span>. We may need to keep some information where the law requires it, or where it cannot technically be removed straight away, for example security records. Backups and provider logs may keep copies for <span class=\"ph\">[BACKUP AND LOG RETENTION PERIOD]</span>. We cannot edit backups on request, so copies in backups are removed only when they expire or are overwritten under our providers’ schedules.</p>\n<p>If you are a group’s admin when your account is deleted, the group stays for its other members and admin rights pass to the member who joined earliest. Messages and other content you posted in groups are deleted with your account. If you were the only member, the group is deleted too.</p>\n<p>Self-service account deletion is not available yet. To ask, follow the steps in section 8. <span class=\"lr\" title=\"Needs review by a qualified Nigerian lawyer before publication\">LEGAL REVIEW</span></p>\n\n<h2>8. Your rights</h2>\n<p>Under the NDPA you can ask us to:</p>\n<ul><li>tell you what personal data we hold and how we use it (access);</li><li>correct information that is wrong;</li><li>delete your information;</li><li>limit or stop some uses of it;</li><li>give you a copy in a usable format (portability);</li><li>withdraw consent you have given, at any time.</li></ul>\n<p>To make a request, contact us at <span class=\"ph\">[PRIVACY CONTACT EMAIL]</span>. We may ask you to confirm who you are first. We aim to reply within <span class=\"ph\">[RESPONSE TIME]</span>. If you are unhappy with our answer, you can complain to the Nigeria Data Protection Commission (NDPC).</p>\n\n<h3>Asking us to delete your account and personal data</h3>\n<ol><li>Email <span class=\"ph\">[PRIVACY CONTACT EMAIL]</span> from the address on your account, with the subject “Delete my account”. If you cannot use that address, contact us another way listed on the <a href=\"#contact\">Contact and Support</a> page and we will check who you are.</li><li>We may ask you to confirm your identity. We will never ask for your password.</li><li>We will confirm we received your request and tell you what will happen, within <span class=\"ph\">[RESPONSE TIME]</span>.</li><li>We then delete your account and personal information as described in section 7, and tell you when it is done.</li></ol>\n<p>If some information has to stay (for example, because the law requires it or because it sits in backups for now), we will tell you.</p>\n\n<h2>9. Children</h2>\n<p>Daily Pledge is not designed for children under <span class=\"ph\">[MINIMUM AGE]</span>. If you think a child has given us personal information, contact us and we will deal with it. <span class=\"lr\" title=\"Needs review by a qualified Nigerian lawyer before publication\">LEGAL REVIEW</span> <span class=\"ph\">[CONFIRM AGE RULES AND PARENTAL CONSENT UNDER THE NDPA]</span></p>\n\n<h2>10. Cookies and similar technologies</h2>\n<p>Daily Pledge does not set cookies of its own and does not use analytics or advertising trackers. We checked the app’s code and ran the app in a test browser, and no cookies were stored. It does save a few items in your browser. The <a href=\"#cookies\">Cookie Policy</a> lists them.</p>\n\n<h2>11. Changes to this policy</h2>\n<p>We may update this policy. If the change is important, we will tell you in the app or by email before it applies.</p>\n\n<h2>12. Contact</h2>\n<p>DRHEMA INC, based in Ibadan and Lagos, Nigeria <span class=\"ph\">[TEMPORARY: confirm the registered legal name, registration details and street address after company registration]</span>. Privacy contact: <span class=\"ph\">[PRIVACY CONTACT EMAIL]</span>. <span class=\"ph\">[DATA PROTECTION OFFICER NAME AND CONTACT]</span>. Phone: <span class=\"ph\">[PHONE NUMBER]</span>. See also <a href=\"#contact\">Contact and Support</a>.</p>"}, "terms": {"title": "Terms of Service", "html": "\n<p class=\"meta\">Last updated: <span class=\"ph\">[DATE OF PUBLICATION]</span></p>\n<p>These terms are an agreement between you and DRHEMA INC, based in Ibadan and Lagos, Nigeria <span class=\"ph\">[TEMPORARY: confirm the registered legal name, registration details and street address after company registration]</span> They apply when you use Daily Pledge. By creating an account or using the service you agree to them. If you do not agree, please do not use Daily Pledge. <span class=\"lr\" title=\"Needs review by a qualified Nigerian lawyer before publication\">LEGAL REVIEW</span></p>\n\n<h2>1. What Daily Pledge is</h2>\n<p>Daily Pledge is a productivity and study-accountability tool. You plan daily tasks, share your progress with an accountability partner, and study with friends in study groups. It is a tool to help you stay consistent. We do not promise any academic, work or personal result.</p>\n\n<h2>2. Your account</h2>\n<ul><li>You must be at least <span class=\"ph\">[MINIMUM AGE]</span> to use Daily Pledge. <span class=\"lr\" title=\"Needs review by a qualified Nigerian lawyer before publication\">LEGAL REVIEW</span></li>\n<li>Give accurate information and keep it up to date.</li>\n<li>Keep your password private. You are responsible for what happens under your account. Tell us quickly if you think someone else has used it.</li>\n<li>One person, one account.</li></ul>\n\n<h2>3. Using Daily Tasks and your partner link</h2>\n<p>Use Daily Tasks for your own real commitments. Your accountability partner can see your tasks and check-ins. Only link with people you trust, and unlink if that changes.</p>\n\n<h2>4. Study Groups</h2>\n<p>Each group has an admin who can remove members. You can leave a group at any time. If a group’s admin leaves, admin rights pass to the member who joined earliest. If you are removed from or leave a group, you lose access to it, but your account and your other information stay as they are. Groups hold up to 50 members.</p>\n<p>Groups are for studying together. Join groups you are welcome in, be respectful, and follow our <a href=\"#guidelines\">Community Guidelines</a>. Anyone with a group’s invitation link can join, so share links with care.</p>\n\n<h2>5. Your content</h2>\n<p>You keep ownership of what you add, including tasks, messages, notes, challenges and your picture. You give us permission to store it, show it to the people you chose to share it with, and process it only to run the service for you. You are responsible for your content and must have the right to share it. Do not post anything unlawful or anything that breaks our <a href=\"#acceptable-use\">Acceptable Use Policy</a>.</p>\n\n<h2>6. What you must not do</h2>\n<p>See the <a href=\"#acceptable-use\">Acceptable Use Policy</a>. In short: do not harm other people, other accounts or the service.</p>\n\n<h2>7. Suspending or ending accounts</h2>\n<p>We may limit, suspend or end an account if someone seriously or repeatedly breaks these terms, puts others at risk, or the law requires it. Where we can, we will tell you why. You can stop using Daily Pledge at any time and ask us to delete your account (see the <a href=\"#privacy\">Privacy Policy</a>).</p>\n\n<h2>8. Availability</h2>\n<p>We work to keep Daily Pledge running, but we cannot promise it will always be available or error free. There may be interruptions for maintenance, updates or reasons outside our control. Please do not rely on it as the only place you keep something important.</p>\n\n<h2>9. Changes</h2>\n<p>We may change the service or these terms. For important changes we will tell you in the app or by email beforehand. If you keep using Daily Pledge after a change takes effect, you accept the new terms.</p>\n\n<h2>10. Liability</h2>\n<p>The service is provided “as is”. To the extent the law allows, DRHEMA INC is not responsible for losses that are indirect or that we could not reasonably have foreseen, or for results you do or do not achieve while using the service. Nothing in these terms limits liability that cannot be limited by law. <span class=\"lr\" title=\"Needs review by a qualified Nigerian lawyer before publication\">LEGAL REVIEW</span> <span class=\"ph\">[LIABILITY CAP, IF ANY]</span></p>\n\n<h2>11. Governing law</h2>\n<p>These terms are governed by the laws of the Federal Republic of Nigeria. <span class=\"ph\">[COURTS OR DISPUTE RESOLUTION PROCESS]</span> <span class=\"lr\" title=\"Needs review by a qualified Nigerian lawyer before publication\">LEGAL REVIEW</span></p>\n\n<h2>12. Contact</h2>\n<p>Questions about these terms: <span class=\"ph\">[SUPPORT EMAIL]</span>. See <a href=\"#contact\">Contact and Support</a>.</p>"}, "cookies": {"title": "Cookie Policy", "html": "\n<p class=\"meta\">Last updated: <span class=\"ph\">[DATE OF PUBLICATION]</span></p>\n<p>This page explains what Daily Pledge saves in your browser and the third-party content it loads. We checked the app, and here is what we found.</p>\n<div class=\"card\"><p><b>The short version:</b> Daily Pledge does not set cookies of its own. We checked the app’s code and ran the app in a test browser, and no cookies were stored. It does not use analytics, advertising or tracking tools. It saves a few small items in your browser’s local storage so the app works and remembers your choices.</p></div>\n\n<h2>1. What is saved in your browser</h2>\n<div class=\"tbl\"><table><thead><tr><th>Item</th><th>What it is for</th><th>Type</th><th>How long</th></tr></thead><tbody>\n<tr><td>Sign-in session (stored by Supabase)</td><td>Keeps you signed in.</td><td>Essential</td><td>Until you sign out or it expires</td></tr>\n<tr><td>dp-pending</td><td>Remembers a study group or friend invitation while you sign up or verify your email.</td><td>Essential</td><td>Up to 24 hours</td></tr>\n<tr><td>dp-settings</td><td>Your theme, activity-dot and privacy choices from Settings.</td><td>Preference</td><td>Until you clear it</td></tr>\n<tr><td>dp-tours:…</td><td>Remembers which app tours you have finished or skipped.</td><td>Preference</td><td>Until you clear it</td></tr>\n<tr><td>dp-welcome</td><td>Remembers that you hid the welcome card.</td><td>Preference</td><td>Until you clear it</td></tr>\n<tr><td>dp-proto-v2, dp-avatar</td><td>Offline demo mode only: keeps demo data and a demo picture on this device.</td><td>Essential for demo mode</td><td>Until you clear it</td></tr></tbody></table></div>\n\n<p>Supabase’s code keeps your sign-in session in your browser’s local storage by default, not in a cookie. <span class=\"ph\">[VERIFY ON THE LIVE SITE: in your browser developer tools open Application, then Local Storage and Cookies, and confirm]</span> Our hosting provider can set technical cookies in some situations (for example on protected preview websites). None were found on the app itself in our tests. <span class=\"ph\">[RE-CHECK ON THE LIVE ADDRESS AFTER DEPLOYMENT]</span></p>\n<h2>2. Categories</h2>\n<ul><li><b>Essential:</b> needed for sign-in and for the app to work.</li>\n<li><b>Preferences:</b> remember choices you make in the app. They are saved only after you make that choice.</li>\n<li><b>Analytics:</b> <b>none used.</b></li>\n<li><b>Marketing or tracking:</b> <b>none used.</b></li></ul>\n\n<h2>3. Third-party content</h2>\n<p>When a page loads, your browser asks other companies for fonts (Google Fonts) and a code library (jsDelivr). They receive your IP address and browser details to send the files. Our website is hosted by Vercel and our data is held by Supabase. For now, sign-up and password emails are sent by Supabase’s built-in email service. See the <a href=\"#privacy\">Privacy Policy</a>.</p>\n\n<h2>4. Do we show a cookie banner?</h2>\n<p>No, because we do not use optional cookies or trackers. If we add analytics or marketing tools in the future, we will first show a clear choice (Accept all, Reject non-essential, Manage preferences). Nothing optional will load before you agree, and you will be able to change your mind at any time. <span class=\"lr\" title=\"Needs review by a qualified Nigerian lawyer before publication\">LEGAL REVIEW</span> <span class=\"ph\">[CONFIRM CONSENT REQUIREMENTS FOR PREFERENCE STORAGE UNDER THE NDPA]</span></p>\n\n<h2>5. Your choices</h2>\n<p>You can remove the preferences saved on this device here. This does not sign you out and does not delete your account.</p>\n<p><button class=\"btn btn-outline\" id=\"clearPrefs\" type=\"button\" style=\"width:auto;padding:0 22px\">Clear preferences saved on this device</button></p>\n<p>You can also sign out from the account menu, or clear this site’s data in your browser settings.</p>\n\n<h2>6. Contact</h2>\n<p>Questions about this policy: <span class=\"ph\">[PRIVACY CONTACT EMAIL]</span>. See <a href=\"#contact\">Contact and Support</a>.</p>"}, "guidelines": {"title": "Community Guidelines", "html": "\n<p class=\"meta\">Last updated: <span class=\"ph\">[DATE OF PUBLICATION]</span></p>\n<p>Daily Pledge works best when it feels like friends studying together. These simple guidelines help keep study groups friendly and safe.</p>\n<h2>Be kind and respectful</h2>\n<p>Disagree politely. Explain things patiently, and remember that everyone is learning at their own pace.</p>\n<h2>No harassment, bullying, hate or threats</h2>\n<ul><li>Do not bully, insult or repeatedly target anyone.</li><li>Do not post hate speech or threats.</li><li>Do not share anything sexual or violent in groups.</li></ul>\n<h2>No spam</h2>\n<p>Do not flood groups with unrelated messages, adverts or repeated links.</p>\n<h2>Be yourself</h2>\n<p>Do not pretend to be another person or mislead others about who you are.</p>\n<h2>Respect privacy</h2>\n<p>Do not share other people’s private details, messages or pictures without their permission. What happens in a study group stays in the group.</p>\n<h2>Share study materials responsibly</h2>\n<p>Share notes and materials you made or have the right to share. Do not post exam papers, answers or content that is protected by copyright without permission. Do not use groups to cheat in exams.</p>\n<h2>Use discussions and challenges well</h2>\n<p>Use discussions to explain and ask questions. Use challenges to test each other kindly. Do not use them to mock people for wrong answers.</p>\n<h2>Reporting a problem</h2>\n<p>If someone breaks these guidelines, you can leave the group at any time, and the group’s admin can remove people from the group. To report a person or a group, contact us using the details on the <a href=\"#contact\">Contact and Support</a> page. Daily Pledge does not have a report button inside the app yet. Tell us the group name, who it was, and what happened. <span class=\"lr\" title=\"Needs review by a qualified Nigerian lawyer before publication\">LEGAL REVIEW</span> <span class=\"ph\">[DESCRIBE HOW REPORTS ARE REVIEWED AND WHAT ACTION MAY FOLLOW]</span></p>\n<p>Serious or repeated breaches can lead to restrictions or suspension, as described in the <a href=\"#terms\">Terms of Service</a>.</p>"}, "acceptable-use": {"title": "Acceptable Use Policy", "html": "\n<p class=\"meta\">Last updated: <span class=\"ph\">[DATE OF PUBLICATION]</span></p>\n<p>This policy lists what is not allowed on Daily Pledge. It is part of our <a href=\"#terms\">Terms of Service</a>. <span class=\"lr\" title=\"Needs review by a qualified Nigerian lawyer before publication\">LEGAL REVIEW</span></p>\n<h2>You must not</h2>\n<ul>\n<li>Try to get into another person’s account, or share or sell access to an account.</li>\n<li>Find or exploit security weaknesses, or test the service in ways that could harm it or other people’s data. If you find a weakness, please report it to us instead (see <a href=\"#contact\">Contact and Support</a>).</li>\n<li>Share links or files that are malicious, harmful or designed to trick people.</li>\n<li>Send spam to people or groups.</li>\n<li>Get around limits or access rules, such as joining groups you were not invited to or reading data that is not yours.</li>\n<li>Abuse invitation links or codes: for example, by guessing codes, posting private group links publicly, or using them to flood groups with unwanted people.</li>\n<li>Scrape, copy or collect other users’ information without permission, or use automated tools against the service.</li>\n<li>Use Daily Pledge for anything unlawful, or to harm, threaten or defraud others.</li>\n<li>Upload content you do not have the right to share.</li></ul>\n<h2>What happens if rules are broken</h2>\n<p>We may remove content, restrict features, suspend or end accounts, and where the law requires or allows, report serious matters to the authorities. Where we can, we will tell you why. If you think we made a mistake, contact us. <span class=\"ph\">[APPEALS PROCESS, IF ANY]</span></p>\n<h2>Questions</h2>\n<p>See <a href=\"#contact\">Contact and Support</a>.</p>"}, "contact": {"title": "Contact and Support", "html": "\n<p class=\"meta\">Daily Pledge is a product of DRHEMA INC.</p>\n<p>We are still setting up our support channels. The details below are placeholders and will be replaced with real contact information before launch.</p>\n<div class=\"card\"><h3 style=\"margin-top:0\">How to reach us</h3>\n<p><b>Support email:</b> <span class=\"ph\">[SUPPORT EMAIL]</span></p><p><b>Privacy email:</b> <span class=\"ph\">[PRIVACY CONTACT EMAIL]</span></p><p><b>Phone:</b> <span class=\"ph\">[PHONE NUMBER]</span></p><p><b>Business location:</b> Ibadan and Lagos, Nigeria <span class=\"ph\">[TEMPORARY: confirm the registered legal name, registration details and street address after company registration]</span></p><p><b>Support hours:</b> <span class=\"ph\">[SUPPORT HOURS]</span></p><p><b>Usual reply time:</b> <span class=\"ph\">[REPLY TIME]</span></p></div>\n\n<h2>Account help</h2>\n<p>For help signing in, verifying your email, or changing your details, write to <span class=\"ph\">[SUPPORT EMAIL]</span>. Tell us the email address on your account. <b>Never send us your password.</b></p>\n<h2>Report abuse</h2>\n<p>To report someone’s behaviour in a study group, write to <span class=\"ph\">[SUPPORT EMAIL]</span> with the group name, who was involved, what happened, and screenshots if you have them. Read the <a href=\"#guidelines\">Community Guidelines</a> to see what is not allowed. Daily Pledge does not have an in-app report button yet.</p>\n<h2>Privacy requests</h2>\n<p>To see, correct or delete your information, or to ask a privacy question, write to <span class=\"ph\">[PRIVACY CONTACT EMAIL]</span>. We may ask you to confirm who you are. See the <a href=\"#privacy\">Privacy Policy</a>.</p>\n<h2>Security problems</h2>\n<p>If you find a security problem, please tell us at <span class=\"ph\">[SECURITY CONTACT EMAIL]</span> before sharing it with anyone else, and do not access other people’s data to prove it. See the <a href=\"#acceptable-use\">Acceptable Use Policy</a>.</p>"}};
+
+// ---------- LEGAL PAGES ----------
+let legalFrom='landing';
+const legalSlug=()=>{const s=location.hash.replace(/^#/,'');return LEGAL_PAGES[s]?s:null};
+function showLegal(slug){const cur=document.querySelector('.screen.on');if(cur&&cur.id!=='legal')legalFrom=cur.id;
+  const pg=LEGAL_PAGES[slug];$('#legalBrand').innerHTML='';$('#legalBrand').appendChild(document.querySelector('#landing .lp-nav .brand').cloneNode(true));
+  $('#legalBody').innerHTML='<h1>'+pg.title+'</h1>'+(LEGAL_DRAFT?'<div class="legal-draft" role="note"><b>Draft for legal review.</b> Anything in <span class="ph">[orange brackets]</span> must be completed or confirmed, and sections marked <span class="lr">LEGAL REVIEW</span> should be checked by a qualified Nigerian lawyer before this page is published.</div>':'')+pg.html;
+  $('#legalFoot').innerHTML=document.querySelector('#landing .lp-footer').innerHTML;
+  document.querySelectorAll('#legalBody table').forEach(t=>{const hs=[...t.querySelectorAll('thead th')].map(x=>x.textContent);t.querySelectorAll('tbody tr').forEach(r=>[...r.children].forEach((td,i)=>td.setAttribute('data-label',hs[i]||'')))});
+  document.title=pg.title+' · Daily Pledge';show('legal');window.scrollTo(0,0);const ci=$('#clearPrefs');if(ci)ci.addEventListener('click',clearPrefs)}
+function legalBack(){try{history.replaceState(null,'',baseUrl())}catch(e){}document.title='Daily Pledge';show(legalFrom&&legalFrom!=='legal'?legalFrom:'landing');if(legalFrom==='app')refreshAll()}
+function clearPrefs(){try{Object.keys(localStorage).filter(k=>k==='dp-settings'||k==='dp-welcome'||k.startsWith('dp-tours:')).forEach(k=>localStorage.removeItem(k))}catch(e){}
+  Object.assign(SET,{theme:'system',dot:true,notice:true});applyTheme();toast('Saved preferences cleared on this device.')}
+$('#legalBack').addEventListener('click',legalBack);
+addEventListener('hashchange',()=>{const s=legalSlug();if(s)showLegal(s);else if($('#legal').classList.contains('on'))legalBack()});
+
+
+// ---------- GROUP MEMBERSHIP: remove member, exit group ----------
+function askConfirm({title,text,ok,danger}){return new Promise(res=>{const prev=document.activeElement,d=document.createElement('div');d.id='dlg';
+  d.innerHTML='<div class="dlg-b"></div><div class="dlg" role="alertdialog" aria-modal="true" aria-labelledby="dlgT" aria-describedby="dlgP" tabindex="-1"><h3 id="dlgT"></h3><p id="dlgP"></p><div class="tt-c"><span style="flex:1"></span><button type="button" class="btn btn-outline" data-d="no">Cancel</button><button type="button" class="btn '+(danger?'btn-danger':'btn-primary')+'" data-d="yes"></button></div></div>';
+  d.querySelector('#dlgT').textContent=title;d.querySelector('#dlgP').textContent=text;d.querySelector('[data-d=yes]').textContent=ok;document.body.appendChild(d);
+  const done=v=>{document.removeEventListener('keydown',kd,true);d.remove();if(prev&&document.contains(prev)&&prev.focus)try{prev.focus({preventScroll:true})}catch(e){}res(v)};
+  const kd=e=>{if(e.key==='Escape'){e.preventDefault();e.stopPropagation();done(false)}else if(e.key==='Tab'){const f=[...d.querySelectorAll('button')];const i=f.indexOf(document.activeElement);e.preventDefault();f[(i+(e.shiftKey?-1:1)+f.length)%f.length].focus()}};
+  document.addEventListener('keydown',kd,true);
+  d.addEventListener('click',e=>{const b=e.target.closest('[data-d]');if(b)done(b.dataset.d==='yes');else if(e.target.classList.contains('dlg-b'))done(false)});
+  d.querySelector('[data-d=no]').focus()})}
+async function removeMember(uid){const g=grp();if(!g||!g.minfo)return;const m=g.minfo.find(x=>x.uid===uid);if(!m)return;
+  const ok=await askConfirm({title:'Remove '+m.label+'?',text:m.label+' will lose access to '+g.name+' and its messages, challenges and notes. Their account and everything else they have in Daily Pledge stays as it is.',ok:'Remove',danger:true});if(!ok)return;
+  sg.busy=true;sgRender();
+  try{const r=await sb.rpc('remove_study_member',{p_group:g.id,p_user:uid});if(r.error)throw r.error;await sgPull(true);toast(m.label+' was removed from the group')}
+  catch(e){toast(netErr(e)?'Couldn’t reach the server. Nothing was changed.':(/only the group admin/i.test(String(e.message))?'Only the group admin can remove members.':'Couldn’t remove that member.'));try{await sgPull(true)}catch(x){}}
+  finally{sg.busy=false;sgRender()}}
+async function exitGroup(){const g=grp();if(!g)return;const others=g.minfo?g.minfo.filter(x=>x.uid!==S.me):g.members.filter(x=>x!=='me').map(n=>({label:n}));
+  let text='You’ll lose access to this group and its messages, challenges and notes. To come back, you’ll need a new invitation.';
+  if(g.isAdmin&&others.length)text+=' Admin rights will pass to '+others[0].label+', who joined earliest.';
+  if(!others.length)text='You’re the only member. Exiting will delete this group and everything in it. This can’t be undone.';
+  const ok=await askConfirm({title:'Exit '+g.name+'?',text,ok:'Exit group',danger:true});if(!ok)return;
+  sg.leaving=true;
+  if(!cloud){sg.data.groups=sg.data.groups.filter(x=>x.id!==g.id);sg.view='list';sg.gid=null;sg.leaving=false;sgRender();toast('You left '+g.name);return}
+  sg.busy=true;sgRender();
+  try{const r=await sb.rpc('exit_study_group',{p_group:g.id});if(r.error)throw r.error;sg.view='list';sg.gid=null;await sgPull(true);toast('You left '+g.name)}
+  catch(e){toast(netErr(e)?'Couldn’t reach the server. You’re still in the group.':'Couldn’t exit the group. Please try again.')}
+  finally{sg.busy=false;sg.leaving=false;sgRender()}}
 
 // ---------- STUDY GROUPS (shared, Supabase) ----------
 const nid=p=>(cloud&&window.crypto&&crypto.randomUUID)?crypto.randomUUID():p+Date.now();
@@ -910,26 +1493,26 @@ const fmtWhen=ts=>{const d=new Date(ts),n=new Date();return d.toDateString()===n
 let sgHash='',sgBusy=0;
 async function sgPull(force){
   const t=n=>sb.from(n).select('*');
-  const R=await Promise.all([t('study_groups'),t('study_members'),t('study_commitments'),t('study_messages'),t('study_challenges'),t('study_responses'),t('study_notes'),t('study_activity'),sb.from('profiles').select('id,display_name')]);
+  const R=await Promise.all([t('study_groups'),t('study_members'),t('study_commitments'),t('study_messages'),t('study_challenges'),t('study_responses'),t('study_notes'),t('study_activity'),sb.from('profiles').select('id,display_name,avatar_url')]);
   R.forEach(r=>{if(r.error)throw r.error});
   const [gs,ms,cs,msg,chs,rs,ns,ac,pr]=R.map(r=>r.data||[]);
-  const nameOf={};pr.forEach(x=>nameOf[x.id]=x.display_name||'Friend');
+  const nameOf={},avOf={};pr.forEach(x=>{nameOf[x.id]=x.display_name||'Friend';avOf[x.id]=x.avatar_url||''});
   const prev={};sg.data.groups.forEach(g=>prev[g.id]=g.priv||[]);
   const asc=(a,b)=>String(a.created_at).localeCompare(String(b.created_at)),desc=(a,b)=>asc(b,a);
-  const groups=gs.slice().sort(desc).map(g=>{
-    const mem=ms.filter(m=>m.group_id===g.id).sort((a,b)=>String(a.joined_at).localeCompare(String(b.joined_at)));
+  const groups=gs.map(g=>{
+    const mem=ms.filter(m=>m.group_id===g.id).sort((a,b)=>String(a.joined_at).localeCompare(String(b.joined_at))||String(a.user_id).localeCompare(String(b.user_id)));
     const used={},lab={};mem.forEach(m=>{if(m.user_id===S.me){lab[m.user_id]='me';return}const n=nameOf[m.user_id]||'Friend';used[n]=(used[n]||0)+1;lab[m.user_id]=used[n]>1?n+' ('+used[n]+')':n});
-    const L=u=>lab[u]||nameOf[u]||'Friend';
-    return {id:g.id,name:g.name,desc:g.description||'',code:g.invite_code,by:L(g.created_by),members:['me'].concat(mem.filter(m=>m.user_id!==S.me).map(m=>lab[m.user_id])),
-      commits:cs.filter(c=>c.group_id===g.id).sort(asc).map(c=>({id:c.id,who:L(c.user_id),subject:c.subject,topic:c.topic,material:c.material||'',goal:c.goal||'',due:c.due||'',status:c.status})),
-      msgs:msg.filter(m=>m.group_id===g.id).sort(asc).map(m=>({who:m.is_assistant?'Study Assistant':L(m.user_id),kind:m.kind||'Message',t:fmtWhen(m.created_at),text:m.body})),
-      chals:chs.filter(c=>c.group_id===g.id).sort(desc).map(c=>({id:c.id,title:c.title,topic:c.topic,by:L(c.created_by),inst:c.instructions||'',qs:c.questions,resp:Object.fromEntries(rs.filter(r=>r.challenge_id===c.id).map(r=>[L(r.user_id),r.answers]))})),
-      notes:ns.filter(n=>n.group_id===g.id).sort(desc).map(n=>({id:n.id,title:n.title,topic:n.topic||'',by:L(n.user_id),t:fmtWhen(n.created_at),body:n.body})),
-      act:ac.filter(a=>a.group_id===g.id).sort(asc).map(a=>({who:L(a.user_id),mode:a.mode,action:a.action||'',t:fmtWhen(a.created_at)})),
-      priv:prev[g.id]||[]}});
+    const L=u=>lab[u]||'Former member';
+    return {id:g.id,name:g.name,desc:g.description||'',code:g.invite_code,minfo:mem.map(m=>({uid:m.user_id,label:lab[m.user_id],role:m.role,joined:m.joined_at})),isAdmin:mem.some(m=>m.user_id===S.me&&m.role==='owner'),by:L(g.created_by),avmap:Object.fromEntries(mem.filter(m=>m.user_id!==S.me).map(m=>[lab[m.user_id],avOf[m.user_id]||''])),members:['me'].concat(mem.filter(m=>m.user_id!==S.me).map(m=>lab[m.user_id])),
+      commits:cs.filter(c=>c.group_id===g.id).sort(asc).map(c=>({id:c.id,who:L(c.user_id),subject:c.subject,topic:c.topic,material:c.material||'',goal:c.goal||'',due:c.due||'',status:c.status,ts:c.created_at})),
+      msgs:msg.filter(m=>m.group_id===g.id).sort(asc).map(m=>({who:m.is_assistant?'Study Assistant':L(m.user_id),kind:m.kind||'Message',t:fmtWhen(m.created_at),ts:m.created_at,text:m.body})),
+      chals:chs.filter(c=>c.group_id===g.id).sort(desc).map(c=>({id:c.id,title:c.title,topic:c.topic,by:L(c.created_by),inst:c.instructions||'',ts:c.created_at,qs:c.questions,resp:Object.fromEntries(rs.filter(r=>r.challenge_id===c.id).map(r=>[L(r.user_id),r.answers]))})),
+      notes:ns.filter(n=>n.group_id===g.id).sort(desc).map(n=>({id:n.id,title:n.title,topic:n.topic||'',by:L(n.user_id),t:fmtWhen(n.created_at),ts:n.created_at,body:n.body})),
+      act:ac.filter(a=>a.group_id===g.id).sort(asc).map(a=>({who:L(a.user_id),mode:a.mode,action:a.action||'',t:fmtWhen(a.created_at),ts:a.created_at})),
+      priv:prev[g.id]||[],lastTs:[g.created_at].concat(msg.filter(m=>m.group_id===g.id).map(m=>m.created_at),cs.filter(c=>c.group_id===g.id).map(c=>c.created_at)).sort().pop()}}).sort((a,b)=>String(b.lastTs).localeCompare(String(a.lastTs)));
   const sig=JSON.stringify(groups.map(g=>Object.assign({},g,{priv:0})));
   const changed=!!force||sig!==sgHash;sgHash=sig;
-  if(changed){sg.data={groups};if(sg.gid&&!groups.some(g=>g.id===sg.gid)){sg.view='list';sg.gid=null}}
+  if(changed){const old=sg.gid&&sg.data.groups.find(g=>g.id===sg.gid);sg.data={groups};if(sg.gid&&!groups.some(g=>g.id===sg.gid)){sg.view='list';sg.gid=null;if(old&&!sg.leaving)toast('You’re no longer a member of '+old.name+'.')}}
   return changed}
 async function sgw(fn){sgBusy++;try{await persist(fn)}finally{sgBusy--}}
 function pushMsg(g,...ms){ms.forEach((m,k)=>{m.ts=new Date(Date.now()+k*5).toISOString();g.msgs.push(m);cloudMsg(g,m)})}
@@ -941,9 +1524,19 @@ function cloudChal(g,c){if(cloud)sgw(()=>sb.from('study_challenges').insert({id:
 function cloudAns(g,c){if(cloud)sgw(()=>sb.from('study_responses').insert({challenge_id:c.id,group_id:g.id,user_id:S.me,answers:c.resp.me}))}
 function cloudNote(g,n,isNew){if(cloud)sgw(()=>isNew?sb.from('study_notes').insert({id:n.id,group_id:g.id,user_id:S.me,title:n.title,topic:nn(n.topic),body:n.body}):sb.from('study_notes').update({title:n.title,topic:nn(n.topic),body:n.body,updated_at:new Date().toISOString()}).eq('id',n.id))}
 function cloudAct(g,mode,action){if(cloud)sgw(()=>sb.from('study_activity').insert({group_id:g.id,user_id:S.me,mode,action:nn(action)}))}
+
+async function sgLoad(force,quiet){if(!cloud)return;
+  try{await sgPull(force);sg.loaded=true;sg.loadErr=''}
+  catch(e){if(!sg.loaded||!quiet)sg.loadErr=netErr(e)?'Couldn’t reach the server. Check your connection and try again.':'Couldn’t load your groups. Try again.'}
+  if(!$('#studyPage').hidden&&$('#app').classList.contains('on')&&sg.view==='list')sgRender()}
+async function cloudMake(){if(sg.busy)return;sg.busy=true;sg.err='';sgRender();const id=nid('g');
+  try{const r=await sb.rpc('create_study_group',{p_id:id,p_name:sg.draft.name,p_desc:sg.draft.desc||''});if(r.error)throw r.error;
+    await sgPull(true);sg.loaded=true;sg.loadErr='';sg.gid=id;sg.view='created';sg.tab='overview';toast('Group created')}
+  catch(e){sg.err=netErr(e)?'Couldn’t reach the server, so your group wasn’t created. Please try again.':(e.message||'Couldn’t create the group.')}
+  finally{sg.busy=false;sgRender()}}
 setInterval(async()=>{if(!cloud||document.hidden||!S.me||sgBusy)return;
-  try{const ch=await sgPull();if(!ch)return;const onStudy=$('#app').classList.contains('on')&&!$('#studyPage').hidden,ae=document.activeElement,typing=ae&&$('#studyPage').contains(ae)&&/INPUT|TEXTAREA|SELECT/.test(ae.tagName);
-    if(onStudy&&!typing)sgRender();else if(!onStudy)$('#studyDot').style.display=''}catch(e){}},10000);
+  try{const ch=await sgPull();const hadErr=!!sg.loadErr||!sg.loaded;sg.loaded=true;sg.loadErr='';if(!ch&&!hadErr)return;const onStudy=$('#app').classList.contains('on')&&!$('#studyPage').hidden,ae=document.activeElement,typing=ae&&$('#studyPage').contains(ae)&&/INPUT|TEXTAREA|SELECT/.test(ae.tagName);
+    if(onStudy&&!typing)sgRender();else if(!onStudy&&SET.dot)$('#studyDot').style.display=''}catch(e){}},10000);
 
 // ---------- INVITATIONS, SHARING & DEEP LINKS ----------
 const PEND='dp-pending';let pendMem=null,curInv=null;
@@ -954,7 +1547,7 @@ function readIntent(){const hs=location.hash.replace(/^#/,''),q=new URLSearchPar
   if(m)return{type:'friend',code:m[1].toUpperCase()};m=hs.match(/^group-([A-Za-z0-9_-]+)$/);if(m){if(/^[A-Z0-9]{10}$/.test(m[1]))return{type:'cgroup',code:m[1]};return{type:'group',tok:m[1]}}if(/^group-/.test(hs))return{type:'group',tok:'!'};if(/^invite-/.test(hs))return{type:'friend',code:'!'};
   if(q.get('invite'))return{type:'friend',code:q.get('invite').toUpperCase()};if(q.get('group'))return{type:'group',tok:q.get('group')};return null}
 const setPend=i=>{pendMem=i;try{localStorage.setItem(PEND,JSON.stringify({i,t:Date.now()}))}catch(e){}};
-const getPend=()=>{if(pendMem)return pendMem;try{const o=JSON.parse(localStorage.getItem(PEND));return o&&Date.now()-o.t<36e5?o.i:null}catch(e){return null}};
+const getPend=()=>{if(pendMem)return pendMem;try{const o=JSON.parse(localStorage.getItem(PEND));return o&&Date.now()-o.t<864e5?o.i:null}catch(e){return null}};
 const clearPend=()=>{pendMem=null;try{localStorage.removeItem(PEND)}catch(e){}try{history.replaceState(null,'',baseUrl())}catch(e){}};
 async function shareLink(url,title,text){
   if(navigator.share){try{await navigator.share({title,text,url});return}catch(e){if(e&&e.name==='AbortError')return}}
@@ -980,8 +1573,8 @@ function renderInv(){
   else if(st==='offline')o=invHTML('Can’t reach the server','Check your connection and try again.',[['Try again','retry',1],['Back to Daily pledge','home']]);
   else if(st==='member')o=invHTML('You’re already in '+esc(g.n),'Open it to pick up where you left off.',out?[['Log in to open it','login',1]]:[['Open group','opengrp',1]]);
   else if(!isG)o=invHTML(curInv.fname?esc(curInv.fname)+' invited you to be accountability partners':'You’re invited to be accountability partners','Plan your day, check in, and see how each other is doing. '+(out?'Create a free account to accept.':'Accept to start seeing each other’s days.'),out?[['Create account to accept','signup',1],['I already have an account','login']]:[['Accept invitation','accept',1],['Not now','decline']]);
-  else{const card='<div class="sg-card"><div style="font-size:13px;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:.06em">Study group</div><h2 style="margin-top:6px">'+esc(g.n)+'</h2>'+(g.d?'<p style="margin-top:8px">'+esc(g.d)+'</p>':'')+'<p class="sg-meta" style="margin-top:10px">Created by '+esc(g.c)+' · '+g.m+(g.m===1?' member':' members')+'</p></div>';
-    o=invHTML('You’re invited to join','',out?[['Create account to join','signup',1],['I already have an account','login']]:[['Join group','join',1],['Decline','decline']],card)+(i.type==='group'?'<p class="sg-note">Preview: study groups aren’t shared between devices yet, so you’ll join your own copy.</p>':'')}
+  else{const card='<div class="sg-card"><span class="grp-av a'+ci(g.n)+'" style="margin-bottom:12px">'+esc(initials(g.n))+'</span><div style="font-size:13px;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:.06em">Study group</div><h2 style="margin-top:6px">'+esc(g.n)+'</h2>'+(g.d?'<p style="margin-top:8px">'+esc(g.d)+'</p>':'')+'<p class="sg-meta" style="margin-top:10px">Created by '+esc(g.c)+' · '+g.m+(g.m===1?' member':' members')+'</p></div>';
+    o=invHTML('You’re invited to join '+esc(g.n),'',out?[['Create account to join','signup',1],['I already have an account','login']]:[['Join group','join',1],['Decline','decline']],card)+(i.type==='group'?'<p class="sg-note">Preview: study groups aren’t shared between devices yet, so you’ll join your own copy.</p>':'')}
   $('#inviteBody').innerHTML=o;
 }
 async function showInvite(intent){curInv={intent,state:'ok'};show('invite');
@@ -990,7 +1583,7 @@ async function showInvite(intent){curInv={intent,state:'ok'};show('invite');
       if(intent.type==='friend'){const r=await sb.rpc('invite_info',{p_code:intent.code});if(r.error)throw r.error;
         if(!r.data)curInv.state='invalid';else{curInv.fname=r.data;curInv.state=(cloud&&S.invite===intent.code)?'own':'ok'}}
       else{const r=await sb.rpc('group_invite_info',{p_code:intent.code});if(r.error)throw r.error;
-        if(!r.data)curInv.state='invalid';else{const d=r.data;curInv.g={n:d.name,d:d.description||'',c:d.creator,m:d.members};curInv.state=d.is_member?'member':'ok'}}
+        if(!r.data)curInv.state='invalid';else{const d=r.data;curInv.g={n:d.name,d:d.description||'',c:d.creator,m:d.members};curInv.state=d.is_member?'member':(d.full?'full':'ok')}}
     }catch(e){curInv.state=netErr(e)?'offline':'invalid'}
   }else if(intent.type==='cgroup')curInv.state='offline';
   renderInv()}
@@ -1005,14 +1598,14 @@ $('#inviteBody').addEventListener('click',async e=>{const b=e.target.closest('[d
     try{const r=await sb.rpc('link_partner',{code:i.code});if(r.error)throw r.error;await pull(S.me);clearPend();show('app');switchTab('partner');render();toast('You and '+S.partner.name+' are now partners')}
     catch(err){const m=String(err.message||'');setInv(netErr(err)?'offline':/own code/i.test(m)?'own':/already has a partner/i.test(m)?'taken':'invalid')}}
   else if(a==='join'&&i.type==='cgroup'){if(!cloud){setInv('offline');return}setInv('busy');
-    try{const r=await sb.rpc('join_study_group',{p_code:i.code});if(r.error)throw r.error;await sgPull(true);const x=sg.data.groups.find(x=>x.id===r.data);clearPend();show('app');sg.view=x?'group':'list';sg.gid=x?x.id:null;sg.tab='chat';switchTab('study');toast('You joined '+(x?x.name:'the group'))}
+    try{const r=await sb.rpc('join_study_group',{p_code:i.code});if(r.error)throw r.error;await sgPull(true);const x=sg.data.groups.find(x=>x.id===r.data);clearPend();show('app');sg.view=x?'group':'list';sg.gid=x?x.id:null;sg.tab='overview';switchTab('study');toast('You joined '+(x?x.name:'the group'))}
     catch(err){const m=String(err.message||'');setInv(netErr(err)?'offline':/full/i.test(m)?'full':'invalid')}}
-  else if(a==='opengrp'&&i.type==='cgroup'){try{await sgPull(true)}catch(x){}const x=sg.data.groups.find(x=>x.code===i.code);clearPend();show('app');sg.view=x?'group':'list';sg.gid=x?x.id:null;sg.tab='chat';switchTab('study')}
+  else if(a==='opengrp'&&i.type==='cgroup'){try{await sgPull(true)}catch(x){}const x=sg.data.groups.find(x=>x.code===i.code);clearPend();show('app');sg.view=x?'group':'list';sg.gid=x?x.id:null;sg.tab='overview';switchTab('study')}
   else if(a==='join'||a==='opengrp'){const g=curInv.g;let x=sg.data.groups.find(x=>x.name===g.n&&x.by===g.c);
     if(!x){x={id:'g'+Date.now(),name:g.n,desc:g.d,by:g.c,members:['me',g.c],commits:[],msgs:[]};sg.data.groups.unshift(x)}
-    clearPend();show('app');sg.view='group';sg.gid=x.id;sg.tab='chat';switchTab('study');toast(a==='join'?'You joined '+g.n:'Welcome back')}
+    clearPend();show('app');sg.view='group';sg.gid=x.id;sg.tab='overview';switchTab('study');toast(a==='join'?'You joined '+g.n:'Welcome back')}
 });
-function vCreated(){const g=grp();return `<div class="sg-empty"><h3>${esc(g.name)} is ready</h3><p>Invite friends so you can study together.</p></div><button class="btn btn-primary btn-block" data-x="share">Invite friends</button><button class="btn btn-outline btn-block" data-x="gopen">Go to the group</button><p class="sg-note">Friends open your link, see this group, and tap Join.${cloud?'':' (Preview: members aren’t shared across devices in demo mode.)'}</p>`}
+function vCreated(){const g=grp();return `<div class="sg-ok"><span class="sg-ok-i"><svg width="26" height="26" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg></span><h2>Group created</h2><p><b>${esc(g.name)}</b> is in your groups. Invite friends so you can study together.</p></div>${invitePanel(g)}<button class="btn btn-primary btn-block" data-x="gopen">Go to the group</button><button class="sg-back" data-a="home" style="margin-top:18px">See all my groups</button>${cloud?'':'<p class="sg-note">Preview: members aren’t shared across devices in demo mode.</p>'}`}
 // ---------- WELCOME (first-run guidance) ----------
 function renderWelcome(){const el=$('#welcome');let gone=false;try{gone=localStorage.getItem('dp-welcome')==='1'}catch(e){}
   const fresh=!Object.keys(S.days).some(k=>S.days[k].tasks&&S.days[k].tasks.length);
@@ -1027,11 +1620,12 @@ $('#welcome').addEventListener('click',e=>{const b=e.target.closest('[data-w]');
   else{try{localStorage.setItem('dp-welcome','1')}catch(x){}renderWelcome()}});
 
 window.addEventListener('hashchange',()=>{const i=readIntent();if(i){setPend(i);showInvite(i)}});
-$('#studyDot').style.display='';
+$('#studyDot').style.display=SET.dot?'':'none';
 
 const intent0=readIntent();if(intent0)setPend(intent0);
-const sbReady=sb?sb.auth.getSession().then(async r=>{const s=r&&r.data&&r.data.session;if(!s)return;try{cloud=true;S=fresh();S.me=s.user.id;S.user={name:'',email:s.user.email};await pull(S.me);sg.data={groups:[]};sgHash='';await sgPull(true).catch(()=>{});enter()}catch(e){cloud=false;S=fresh()}}).catch(()=>{}):Promise.resolve();
+const sbReady=sb?sb.auth.getSession().then(async r=>{const s=r&&r.data&&r.data.session;try{if(/access_token|refresh_token|type=(signup|recovery|magiclink|invite|email_change)/.test(URL_HASH0))history.replaceState(null,'',baseUrl())}catch(e){}if(!s)return;if(/type=recovery/.test(URL_HASH0)){showReset();return}try{cloud=true;S=fresh();S.me=s.user.id;S.user={name:'',email:s.user.email};await pull(S.me);sg.data={groups:[]};sgHash='';sg.loaded=false;sg.loadErr='';await sgLoad(true);enter()}catch(e){cloud=false;S=fresh()}}).catch(()=>{}):Promise.resolve();
 if(S.user)enter();else setMode('signup');
+if(legalSlug())showLegal(legalSlug());
 if(getPend())sbReady.then(()=>{if(!$('#app').classList.contains('on')&&!$('#invite').classList.contains('on'))showInvite(getPend())});
 })();
 </script>
@@ -1058,9 +1652,9 @@ $$('.demo').forEach(d=>{
     d.querySelectorAll('[data-bar]').forEach(e=>{const a=e.dataset.bar.split(' ');e.style.width=a[Math.min(k,a.length-1)]+'%'});
     d.querySelectorAll('[data-txt]').forEach(e=>{const a=e.dataset.txt.split('|');e.textContent=a[Math.min(k,a.length-1)]});
     seen=true}
-  function tick(){if(manual)return;k=k>=n?0:k+1;apply();tm=setTimeout(tick,k>=n?3800:2300)}
+  function tick(){if(manual)return;k=k>=n?0:k+1;apply();if(k>=n)d.dispatchEvent(new Event('demoend'));tm=setTimeout(tick,k>=n?3800:2300)}
   function play(){clearTimeout(tm);if(!reduce&&!manual)tm=setTimeout(tick,1000)}
-  function set(x,man){if(man){manual=true;clearTimeout(tm)}k=x;apply()}
+  function set(x,man){if(man){manual=true;clearTimeout(tm);d.dispatchEvent(new Event('demomanual'))}k=x;apply()}
   function replay(){manual=false;k=0;apply();play()}
   d._replay=replay;d._set=set;
   d.addEventListener('click',e=>{const g=e.target.closest('[data-go-step]');if(g)set(+g.dataset.goStep,true);const m=e.target.closest('[data-mode-btn]');
@@ -1068,6 +1662,24 @@ $$('.demo').forEach(d=>{
   apply();if(reduce)set(n,true);
   if(IO&&!reduce){new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){if(!manual&&!tm)play()}else{clearTimeout(tm);tm=null}}),{threshold:.4}).observe(d)}
 });
+
+// hero slideshow: illustration -> animated product window, looping continuously
+const hs=$('#hs');
+if(hs){const slides=[...hs.querySelectorAll('.hs-slide')],dots=[...hs.querySelectorAll('.hs-dot')],track=hs.querySelector('.hs-track'),demo=hs.querySelector('.demo');
+  let cur=0,timer=null,off=false;const auto=!reduce;
+  function schedule(){clearTimeout(timer);if(!auto||off)return;timer=setTimeout(()=>go(cur+1),cur===0?6500:12000)}
+  function go(i){cur=(i+slides.length)%slides.length;track.style.transform='translateX('+(-100*cur)+'%)';
+    slides.forEach((s,j)=>{s.toggleAttribute('inert',j!==cur);s.setAttribute('aria-hidden',j!==cur?'true':'false')});
+    dots.forEach((d,j)=>d.setAttribute('aria-current',j===cur));
+    schedule();
+    if(cur===1&&demo&&demo._replay)setTimeout(()=>demo._replay(),reduce?0:350)}
+  dots.forEach((d,j)=>d.addEventListener('click',()=>go(j)));
+  if(demo)demo.addEventListener('demoend',()=>{if(auto&&!off&&cur===1){clearTimeout(timer);timer=setTimeout(()=>go(0),2800)}});
+  let sx=null;track.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+  track.addEventListener('touchend',e=>{if(sx==null)return;const dx=e.changedTouches[0].clientX-sx;sx=null;if(Math.abs(dx)>48)go(cur+(dx<0?1:-1))});
+  if(IO)new IntersectionObserver(es=>{off=!es[0].isIntersecting;if(off)clearTimeout(timer);else schedule()},{threshold:.2}).observe(hs);
+  go(0);
+}
 })();
 </script>
 </body>
